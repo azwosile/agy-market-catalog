@@ -1,0 +1,6 @@
+url: https://github.com/Curelove/agy-anchor-wheel
+pluginRoot: .
+category: productivity
+description:
+  zh: Google Antigravity 零侵入右侧栏导航增强插件：中键双侧分类轮盘、Tab 竖向层级树、0.25s 悬停快览、双向反链与自动防乱码。
+  en: Non-overwriting Antigravity side-pane enhancer with hold-release Bilateral Category Wheel, Tab vertical-ancestor tree, 0.25s fast previews, Obsidian backlinks, and auto-encoding repair.
