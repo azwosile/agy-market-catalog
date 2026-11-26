@@ -1,0 +1,7 @@
+url: https://github.com/YukiKaguraA/agy-archive-manager
+pluginRoot: .
+category: productivity
+releaseAsset: archive-manager.tar.gz
+description:
+  zh: Google Antigravity 原生会话与归档管理插件：支持分类检索、完整记录免恢复预览、超长自动折叠、原地归档/恢复撤回与导出 Markdown。
+  en: Native session & archive manager for Google Antigravity with full-text search, full-transcript preview, auto-collapse, instant archive/restore with undo, and Markdown export.
