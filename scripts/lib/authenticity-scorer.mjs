@@ -49,7 +49,6 @@ export const BENIGN_LENIENT_MANIFEST_KEYS = new Set([
 export const CLAUDE_CODE_MANIFEST_KEYS = new Set([
   'commands',
   'agents',
-  'skills',
   'hooks',
   'mcpServers',
   'lspServers',
@@ -361,6 +360,14 @@ export function scoreAntigravityAuthenticity({
   const hasSkill = Boolean(compSignals.hasSkill || fileInfo.hasSkills || badges.includes('declarative-only'));
   const hasRule = Boolean(compSignals.hasRule || fileInfo.hasRules || badges.includes('global-rules'));
   const hasAgent = Boolean(compSignals.hasAgent || fileInfo.hasAgents);
+  const hostEnhancementKind = Array.isArray(capabilities?.hostEnhancementKind)
+    ? capabilities.hostEnhancementKind.filter(Boolean)
+    : [];
+  const hasHostEnhancement = Boolean(
+    compSignals.hasHostEnhancement ||
+      badges.includes('host-enhancement') ||
+      hostEnhancementKind.length > 0,
+  );
 
   const mergedHookEvents = [...new Set([...capHookEvents, ...fileInfo.hooksJsonEvents])];
   const validAgyHooks = mergedHookEvents.filter((ev) => ANTIGRAVITY_HOOK_EVENTS.has(ev));
@@ -374,8 +381,15 @@ export function scoreAntigravityAuthenticity({
 
   const hasAnyComponent = Boolean(
     compSignals.hasAnyComponent !== undefined
-      ? compSignals.hasAnyComponent
-      : hasSidecar || hasMcp || hasSkill || hasRule || hasAgent || validAgyHooks.length > 0 || badges.length > 0,
+      ? compSignals.hasAnyComponent || hasHostEnhancement
+      : hasSidecar ||
+          hasMcp ||
+          hasSkill ||
+          hasRule ||
+          hasAgent ||
+          validAgyHooks.length > 0 ||
+          hasHostEnhancement ||
+          badges.length > 0,
   );
 
   const signals = {
@@ -608,9 +622,10 @@ export function scoreAntigravityAuthenticity({
     addPos('agy_install_path_ref', 1.0);
   }
 
-  // Component presence signals (modest so cross-agent SKILL.md / hooks alone cannot pass)
+  // Component presence signals (modest so cross-agent SKILL.md / hooks / host scripts alone cannot pass)
   if (hasSkill) addPos('has_skill', 0.9);
   if (hasRule || hasAgent) addPos('has_rule_or_agent', 0.7);
+  if (hasHostEnhancement) addPos('has_host_enhancement', 0.5);
   if (validAgyHooks.length > 0 && !hasAgyExclusiveHook) {
     addPos('has_shared_hook_events', 0.4);
   }

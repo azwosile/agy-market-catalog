@@ -873,8 +873,10 @@ test('Dot-directory .antigravity-plugin/plugin.json, root sidecars.json, lenient
   assert.equal(lenientInspected.manifestPath, '.antigravity-plugin/plugin.json');
   assert.equal(lenientInspected.manifest.name, 'linear-official');
   assert.equal(lenientInspected.version, '1.0.0');
-  assert.equal(lenientInspected.manifest.$schema, undefined);
-  assert.equal(lenientInspected.manifest.license, undefined);
+  assert.equal(lenientInspected.manifest.$schema, 'https://antigravity.google/schemas/v1/plugin.json');
+  assert.equal(lenientInspected.manifest.license, 'MIT');
+  assert.equal(lenientInspected.manifest.compatibility, undefined);
+  assert.equal(lenientInspected.manifest.main, undefined);
   assert.equal(lenientInspected.manifest.suggestedPrompts.length, 3);
   assert.ok(lenientInspected.capabilities.badges.includes('mcp-remote'));
   assert.equal(lenientInspected.iconArtifact.ext, '.svg');

@@ -135,7 +135,7 @@ description:
      - **GitHub Actions 手动调度（`workflow_dispatch`）**：在 Actions 页运行 `Maintainer One-Click Plugin PR Merge (Fork-Safe)`，输入 `pr_number`（单个 PR 如 `2`、逗号分隔批量如 `2,3,4` 或 `all` 处理全部开放插件 PR），可选勾选 `dry_run` 或 `skip_age_check`。
    - **100% Fork 安全原子流水线**：始终只检出受信任的 `main` 分支（绝不使用 `pull_request_target` 或执行 PR 代码），通过 `git archive` 仅提取 `data/plugins/*.yml`，执行 `validate-entries.mjs`、`node --test` 与 `check-submission.mjs`；使用 `--match-head-commit` Squash Merge 后再基于最新 `origin/main` 原子写入 `state/ledger.json` 与 `state/versions-lock.json`（共享 `catalog-state-publish` 并发锁，杜绝状态覆盖），同步刷新 README 收录表，发布双语 PR 评论，并在任务内直接部署 `gh-pages` 使线上目录即时生效。
    - 若新仓库未满 24 小时但其余校验全过，CI 会自动贴上 `pending: repo-age` 标签并告知解锁 UTC 时间，由 **`regate.yml`（每 6 小时）** 自动复审、合并、锁状态并部署 `gh-pages`。
-3. **后续发版 0-PR 自动同步**：合并后 **`sync-catalog.yml`（每 30 分钟）** 自动轮询新 SemVer Release，执行能力增量审核（`PRIVILEGE_REVIEW`），刷新 `dist/`、同步 README 表格并推送 `gh-pages`（若启用 `NPM_PUBLISH_ENABLED=true` 亦同步发布 npm 数据包）。
+3. **后续发版 0-PR 自动同步（单插件异常隔离）**：合并后 **`sync-catalog.yml`（每 30 分钟）** 自动轮询新 SemVer Release，执行能力增量审核（`PRIVILEGE_REVIEW`），并对单个插件或单个 Release 的校验失败（如 `ERR_PLUGIN_JSON_UNKNOWN_KEY`）做隔离跳过、保留原合规锁定版本且输出告警日志（`RELEASE_VALIDATION_FAILED` / `PLUGIN_SYNC_FAILED`），绝不阻断其余插件的同步与 `gh-pages` 发布（若启用 `NPM_PUBLISH_ENABLED=true` 亦同步发布 npm 数据包）。
 
 ---
 
@@ -203,7 +203,7 @@ CI 全程仅在内存中流式只读分析，**绝不执行任何插件代码或
 5. **图标体积、魔数校验与 SVG XSS/XXE 清洗**：`scripts/sanitize-icon.mjs` 强制 `<= 2 MB` 上限（`ERR_ICON_TOO_LARGE`）、校验 PNG/JPEG/WebP 文件头魔数（`ERR_ICON_MAGIC_MISMATCH`），拒绝 `<!ENTITY>` XXE 并剥离 SVG 中的 `<script>`、`foreignObject`、`javascript:` 与 `on*=` 事件属性。
 
 ### 宽容能力画像（明确欢迎 CDP 与 `app.asar` 界面增强）
-所有合法的 Antigravity 扩展形态——包括 **CDP 调试桥接**（如毛玻璃/动态壁纸皮肤）与 **`resources/app.asar` 补丁**（如应用内桌面挂件）——**完全允许进入 Track 1，绝不封禁或降权**，仅透明标注温和的 `host-enhancement`（`💡 宿主界面增强`）徽章，同时完整画像 `declarative-only`、`global-rules`、`sidecar-ui`、`mcp-stdio`、`mcp-remote` 与 `lifecycle-hooks`。对于 `app-asar` 插件，建议作者在 README 写明安装与更新后重新运行补丁脚本的步骤，并使用 `agy-market.json` 的 `preservePaths` 保留用户本地配置。
+所有合法的 Antigravity 扩展形态——包括 **CDP 调试桥接**（如毛玻璃/动态壁纸皮肤）与 **`resources/app.asar` 补丁**（如应用内桌面挂件或独立上下文/Token 看板）——**完全允许进入 Track 1 与 Track 2 / Tier-0 社区提名，绝不封禁或降权**；即使不含 `skills/` 或 `sidecars/` 的纯宿主增强插件，只要具备合法 `plugin.json` 并满足 Antigravity 生态亲和度校验亦可正常收录，仅透明标注温和的 `host-enhancement`（`💡 宿主界面增强`）徽章，同时完整画像 `declarative-only`、`global-rules`、`sidecar-ui`、`mcp-stdio`、`mcp-remote` 与 `lifecycle-hooks`。对于 `app-asar` 插件，建议作者在 README 写明安装与更新后重新运行补丁脚本的步骤，并使用 `agy-market.json` 的 `preservePaths` 保留用户本地配置。
 
 ---
 

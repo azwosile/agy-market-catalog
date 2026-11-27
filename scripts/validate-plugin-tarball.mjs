@@ -261,7 +261,7 @@ export function validatePluginManifestObject(
     for (const key of Object.keys(manifest)) {
       if (!PLUGIN_JSON_ALLOWED_KEYS.has(key)) {
         throw new Error(
-          `ERR_PLUGIN_JSON_UNKNOWN_KEY: "${key}" is outside Antigravity's 10-field plugin.json allowlist`,
+          `ERR_PLUGIN_JSON_UNKNOWN_KEY: "${key}" is outside Antigravity's official 15-field plugin.json allowlist`,
         );
       }
     }
@@ -305,6 +305,44 @@ export function validatePluginManifestObject(
       ) {
         throw new Error('ERR_PLUGIN_JSON_PROMPTS: "suggestedPrompts" must be an array of 1..3 non-empty strings');
       }
+    }
+
+    if (manifest.$schema !== undefined && (typeof manifest.$schema !== 'string' || !manifest.$schema.trim())) {
+      throw new Error('ERR_PLUGIN_JSON_SCHEMA: "$schema" must be a non-empty string');
+    }
+
+    if (manifest.skills !== undefined) {
+      const skillEntries = Array.isArray(manifest.skills) ? manifest.skills : [manifest.skills];
+      if (
+        skillEntries.length === 0 ||
+        skillEntries.some(
+          (s) =>
+            typeof s !== 'string' ||
+            !s.trim() ||
+            s.startsWith('/') ||
+            s.includes('..'),
+        )
+      ) {
+        throw new Error('ERR_PLUGIN_JSON_SKILLS: "skills" must be a relative directory string or array of relative directory strings');
+      }
+    }
+
+    if (manifest.license !== undefined && typeof manifest.license !== 'string') {
+      throw new Error('ERR_PLUGIN_JSON_LICENSE: "license" must be an SPDX string');
+    }
+
+    if (
+      manifest.keywords !== undefined &&
+      (!Array.isArray(manifest.keywords) || manifest.keywords.some((k) => typeof k !== 'string'))
+    ) {
+      throw new Error('ERR_PLUGIN_JSON_KEYWORDS: "keywords" must be an array of strings');
+    }
+
+    if (
+      manifest.extensions !== undefined &&
+      (!manifest.extensions || typeof manifest.extensions !== 'object' || Array.isArray(manifest.extensions))
+    ) {
+      throw new Error('ERR_PLUGIN_JSON_EXTENSIONS: "extensions" must be an object');
     }
 
     return manifest;
@@ -969,7 +1007,7 @@ export function validatePluginTarball(
     }
     if (!signals.hasAnyComponent) {
       throw new Error(
-        'ERR_NOT_ANTIGRAVITY_PLUGIN: Archive does not contain any valid Antigravity component (skills, agents, rules, hooks.json, mcp_config.json, or sidecars)',
+        'ERR_NOT_ANTIGRAVITY_PLUGIN: Archive does not contain any valid Antigravity component (skills, agents, rules, hooks.json, mcp_config.json, sidecars, or host-enhancement scripts)',
       );
     }
     if (

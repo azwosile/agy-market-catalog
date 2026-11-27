@@ -1150,3 +1150,188 @@ test('Nomination issue parser & GitHub Actions workflow invariants', () => {
     'ingest-nomination.yml must not pass literal \\n inside double-quoted --body',
   );
 });
+
+test('Issue #11: sync-releases isolates per-release validation failures (ERR_PLUGIN_JSON_UNKNOWN_KEY) and per-plugin sync errors without blocking other plugins', async () => {
+  // 1. evaluateRepoSyncUpdate skips invalid candidate release (e.g. $schema in plugin.json), preserves locked version, and still accepts later valid releases
+  const v100Tar = makeRichPluginTarball({
+    name: 'demo-plug',
+    displayName: 'Demo Plug',
+    version: '1.0.0',
+    description: 'Antigravity demo plugin.',
+  });
+  const v110BadTar = createTarGzBuffer({
+    'demo-plug-v1.1.0/plugin.json': JSON.stringify({
+      name: 'demo-plug',
+      version: '1.1.0',
+      description: 'Contains unknown custom key outside official 15-field allowlist.',
+      unsupportedCustomField: true,
+    }),
+    'demo-plug-v1.1.0/skills/demo/SKILL.md': '---\nname: demo\ndescription: demo skill\n---\n# Demo\n',
+  });
+  const v120GoodTar = createTarGzBuffer({
+    'demo-plug-v1.2.0/plugin.json': JSON.stringify({
+      $schema: 'https://antigravity.google/schemas/v1/plugin.json',
+      name: 'demo-plug',
+      displayName: 'Demo Plug',
+      version: '1.2.0',
+      description: 'Official v1 15-field Antigravity demo plugin.',
+      license: 'MIT',
+      keywords: ['antigravity', 'demo'],
+      skills: ['./skills'],
+      extensions: { custom: { enabled: true } },
+    }),
+    'demo-plug-v1.2.0/skills/demo/SKILL.md': '---\nname: demo\ndescription: demo skill\n---\n# Demo\n',
+  });
+
+  const baseLedger = {
+    canonicalName: 'demo-plug',
+    entrySlug: 'alice__demo-plug',
+    repoFullName: 'alice/demo-plug',
+    repositoryId: 8801,
+    ownerId: 881,
+    pluginRoot: '.',
+    status: 'active',
+  };
+  const baseLock = {
+    latest: '1.0.0',
+    versions: {
+      '1.0.0': {
+        gitTag: 'v1.0.0',
+        commitSha: SHA_1,
+        sha256: '1'.repeat(64),
+        sizeBytes: v100Tar.length,
+        tarballUrl: 'https://example.invalid/v1.0.0.tar.gz',
+        capabilities: { badges: ['declarative-only'], rulesEstimatedTokens: 0, mcpServers: [], mcpRemoteDomains: [], hookEvents: [], hostEnhancementKind: [] },
+      },
+    },
+  };
+  const repoObj = { id: 8801, full_name: 'alice/demo-plug', owner: { id: 881 }, archived: false, disabled: false, stargazers_count: 10 };
+
+  // Only bad v1.1.0 candidate -> skipped, v1.0.0 preserved
+  const onlyBadRes = evaluateRepoSyncUpdate({
+    ledgerRecord: baseLedger,
+    lockRecord: baseLock,
+    repoAtOldSlug: repoObj,
+    repoByNumericId: repoObj,
+    releases: [{ tagName: 'v1.1.0', commitSha: SHA_2, tarballUrl: 'https://example.invalid/v1.1.0.tar.gz' }],
+    tarballBuffersByTag: new Map([['v1.1.0', v110BadTar]]),
+    nowIso: '2026-11-27T10:00:00Z',
+  });
+  assert.equal(onlyBadRes.lockRecord.latest, '1.0.0');
+  assert.equal(onlyBadRes.lockRecord.versions['1.1.0'], undefined);
+  assert.ok(
+    onlyBadRes.events.some((e) => e.startsWith('RELEASE_VALIDATION_FAILED:demo-plug@v1.1.0:') && e.includes('ERR_PLUGIN_JSON_UNKNOWN_KEY')),
+    `Expected RELEASE_VALIDATION_FAILED event, got: ${JSON.stringify(onlyBadRes.events)}`,
+  );
+
+  // Bad v1.1.0 + good v1.2.0 -> skips v1.1.0 and locks v1.2.0
+  const mixedRes = evaluateRepoSyncUpdate({
+    ledgerRecord: baseLedger,
+    lockRecord: baseLock,
+    repoAtOldSlug: repoObj,
+    repoByNumericId: repoObj,
+    releases: [
+      { tagName: 'v1.1.0', commitSha: SHA_2, tarballUrl: 'https://example.invalid/v1.1.0.tar.gz' },
+      { tagName: 'v1.2.0', commitSha: SHA_3, tarballUrl: 'https://example.invalid/v1.2.0.tar.gz' },
+    ],
+    tarballBuffersByTag: new Map([
+      ['v1.1.0', v110BadTar],
+      ['v1.2.0', v120GoodTar],
+    ]),
+    nowIso: '2026-11-27T10:00:00Z',
+  });
+  assert.equal(mixedRes.lockRecord.latest, '1.2.0');
+  assert.equal(mixedRes.lockRecord.versions['1.1.0'], undefined);
+  assert.ok(mixedRes.lockRecord.versions['1.2.0']);
+
+  // 2. syncAllRegisteredReleases isolates one broken plugin so another valid plugin still syncs & persists
+  const tmpRoot = mkdtempSync(join(tmpdir(), 'agy-issue11-sync-'));
+  try {
+    mkdirSync(join(tmpRoot, 'state'), { recursive: true });
+    writeFileSync(
+      join(tmpRoot, 'state', 'ledger.json'),
+      JSON.stringify({
+        schemaVersion: 1,
+        entries: {
+          'broken-plug': {
+            canonicalName: 'broken-plug',
+            entrySlug: 'alice__broken-plug',
+            repoFullName: 'alice/broken-plug',
+            repositoryId: 8802,
+            ownerId: 882,
+            pluginRoot: '.',
+            status: 'active',
+          },
+          'healthy-plug': {
+            canonicalName: 'healthy-plug',
+            entrySlug: 'bob__healthy-plug',
+            repoFullName: 'bob/healthy-plug',
+            repositoryId: 8803,
+            ownerId: 883,
+            pluginRoot: '.',
+            status: 'active',
+          },
+        },
+      }),
+    );
+    writeFileSync(
+      join(tmpRoot, 'state', 'versions-lock.json'),
+      JSON.stringify({
+        schemaVersion: 1,
+        locks: {
+          'alice__broken-plug': { latest: '1.0.0', versions: {} },
+          'bob__healthy-plug': { latest: '1.0.0', versions: {} },
+        },
+      }),
+    );
+
+    const healthyV110 = makeRichPluginTarball({
+      name: 'healthy-plug',
+      displayName: 'Healthy Plug',
+      version: '1.1.0',
+      description: 'Antigravity healthy plugin.',
+    });
+
+    const syncRes = await syncAllRegisteredReleases({
+      repoRoot: tmpRoot,
+      token: '',
+      nowIso: '2026-11-27T10:00:00Z',
+      fetchImpl: async (url) => {
+        const s = String(url);
+        if (s === 'https://api.github.com/repositories/8802') {
+          return new Response(JSON.stringify({ id: 8802, full_name: 'alice/broken-plug', owner: { id: 882 }, archived: false, disabled: false }), { status: 200 });
+        }
+        if (s === 'https://api.github.com/repos/alice/broken-plug') {
+          throw new Error('simulated unexpected crash on broken-plug');
+        }
+        if (s === 'https://api.github.com/repositories/8803' || s === 'https://api.github.com/repos/bob/healthy-plug') {
+          return new Response(JSON.stringify({ id: 8803, full_name: 'bob/healthy-plug', owner: { id: 883 }, archived: false, disabled: false, stargazers_count: 15 }), { status: 200 });
+        }
+        if (s === 'https://api.github.com/repositories/8803/releases?per_page=10') {
+          return new Response(JSON.stringify([{ tag_name: 'v1.1.0', draft: false, prerelease: false, published_at: '2026-11-27T09:00:00Z', assets: [] }]), { status: 200 });
+        }
+        if (s === 'https://api.github.com/repositories/8803/tags?per_page=10') {
+          return new Response(JSON.stringify([]), { status: 200 });
+        }
+        if (s === 'https://api.github.com/repositories/8803/commits/v1.1.0') {
+          return new Response(JSON.stringify({ sha: SHA_2, commit: { committer: { date: '2026-11-27T09:00:00Z' } } }), { status: 200 });
+        }
+        if (s.includes('bob/healthy-plug/archive/')) {
+          return new Response(healthyV110, { status: 200 });
+        }
+        return new Response('not found', { status: 404 });
+      },
+    });
+
+    assert.equal(syncRes.synced, 2);
+    assert.ok(
+      syncRes.events.some((e) => e.startsWith('PLUGIN_SYNC_FAILED:alice__broken-plug:broken-plug:')),
+      `Expected PLUGIN_SYNC_FAILED event, got: ${JSON.stringify(syncRes.events)}`,
+    );
+    const savedLock = JSON.parse(readFileSync(join(tmpRoot, 'state', 'versions-lock.json'), 'utf8'));
+    assert.equal(savedLock.locks['alice__broken-plug'].latest, '1.0.0');
+    assert.equal(savedLock.locks['bob__healthy-plug'].latest, '1.1.0');
+  } finally {
+    rmSync(tmpRoot, { recursive: true, force: true });
+  }
+});

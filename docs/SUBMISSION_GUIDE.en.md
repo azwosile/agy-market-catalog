@@ -55,7 +55,7 @@ my-agy-plugin/
 
 #### 1.1 Author `plugin.json` (Strict 10-Field Allowlist)
 
-Antigravity silently strips unknown top-level keys, and the catalog gate strictly validates that **`plugin.json` (or `.antigravity-plugin/plugin.json`) contains ONLY these 10 keys** (any extra key triggers `ERR_PLUGIN_JSON_UNKNOWN_KEY`):
+Antigravity silently strips unknown top-level keys, and the catalog gate strictly validates that **`plugin.json` (or `.antigravity-plugin/plugin.json`) contains ONLY the official v1 15 keys (including `$schema`, `skills`, `license`, `keywords`, `extensions`)** (any extra key triggers `ERR_PLUGIN_JSON_UNKNOWN_KEY`):
 
 | Key | Required | Type / Constraints | Notes |
 | :--- | :---: | :--- | :--- |
@@ -282,7 +282,7 @@ git push -u origin feat/add-my-agy-plugin
    - **Fork-Safe Atomic Pipeline**: Checks out trusted `main` only (never `pull_request_target` or untrusted PR code), extracts only `data/plugins/*.yml` via `git archive`, checks `>= 3` distinct tree-hash commits (`MIN_NON_EMPTY_COMMITS = 3`), `>= 1` day age (`MIN_AGE_DAYS = 1`), 10-field manifest, `<= 2 MB` icon, 4-layer scanner, and ledger uniqueness; squash-merges with `--match-head-commit`, atomically commits `state/ledger.json` + `state/versions-lock.json` + synced `README.md` / `README.en.md` on freshly rebased `origin/main` (guarded by `concurrency: catalog-state-publish`), posts a bilingual summary comment, and deploys `gh-pages` directly in-job.
    - **Brand-New Repo (`< 24h`)?** If every check passes except `MIN_AGE_DAYS = 1`, CI applies **`pending: repo-age`** and comments the exact **UTC unlock timestamp**. **`regate.yml` (every 6h)** automatically re-verifies, merges, locks state, and publishes `gh-pages` once matured!
 3. **Permissive Host-Enhancement Policy & 5 Hard Redlines**:
-   - **CDP** and **`resources/app.asar`** enhancements are **100% allowed in Track 1** with a gentle `host-enhancement` badge.
+   - **CDP** and **`resources/app.asar`** enhancements are **100% allowed in both Track 1 and Track 2 / Tier-0 nominations** with a gentle `host-enhancement` badge. Standalone host-enhancement plugins without `skills/` or `sidecars/` are accepted as valid components as long as they provide a valid `plugin.json` and satisfy Antigravity ecosystem affinity checks.
    - Only genuine threats are blocked: archive `..` / absolute paths / symlinks; locked tag/digest mutation; `rules/*.md` out-of-root `@[...](..)` exfiltration or `> 24,000` bytes; invisible Unicode Tag/Bidi injection; `> 2 MB` / magic-mismatch / XXE or un-sanitizable active-script SVG icons.
 4. **Post-Merge 0-PR Sync & Always-On `PRIVILEGE_REVIEW` Guard**:
    - **`sync-catalog.yml` (every 30m)** polls new SemVer releases, updates `dist/`, syncs README tables, and pushes `gh-pages` (plus opt-in `@agy-market/catalog` npm publishing only when `NPM_PUBLISH_ENABLED=true`).
@@ -312,10 +312,10 @@ Anyone can nominate a public GitHub repo via **[Nominate Community Antigravity P
 | `ERR_SLUG_URL_MISMATCH` | Filename `<owner>__<repo>` differs from `url` | Match `<owner>` and `<repo>` in filename (lowercase) to `url` |
 | `ERR_PR_PATH_FORBIDDEN` / `ERR_PR_SYMLINK_FORBIDDEN` / `ERR_PR_TOO_MANY_ENTRIES` | PR modified files outside `data/plugins/*.yml`, committed a symlink entry, or touched > 3 entries | Revert unrelated edits, keep `data/plugins/*.yml` as regular files (never symlinks), and keep `<= 3` entries |
 | `ERR_FORBIDDEN_HANDWRITTEN_KEY` | Handwrote `sha256`, `npm`, `npmMirrorPkg`, `repositoryId`, `ownerId` | Remove machine-computed keys |
-| `ERR_PLUGIN_JSON_UNKNOWN_KEY` | `plugin.json` contains keys outside the 10-field allowlist | Move extra metadata into `agy-market.json` |
+| `ERR_PLUGIN_JSON_UNKNOWN_KEY` | `plugin.json` contains unknown keys outside the official v1 15-field allowlist | Move extra metadata into `agy-market.json`; during post-merge sync, non-compliant new releases are isolated and skipped (`RELEASE_VALIDATION_FAILED`) while keeping the previous compliant version live |
 | `ERR_PLUGIN_JSON_LOGO_PATH` / `ERR_MISSING_LOGO_FILE` | `logo` uses `https://`, `/`, or `..`, or file missing in tarball | Place icon inside `pluginRoot` (e.g., `assets/logo.svg`) and use a relative path |
 | `ERR_ICON_TOO_LARGE` / `ERR_ICON_MAGIC_MISMATCH` | Logo > `2 MB`, invalid PNG/JPEG/WebP header, or SVG XXE/XSS | Compress icon `<= 2 MB`, ensure valid image magic bytes / clean SVG |
-| `ERR_NOT_ANTIGRAVITY_PLUGIN` / `ERR_FOREIGN_HOST_HOOKS` | Missing Antigravity components, non-Antigravity `hooks.json` events, or low affinity | Include valid `plugin.json` (or `.antigravity-plugin/plugin.json`) + Antigravity components |
+| `ERR_NOT_ANTIGRAVITY_PLUGIN` / `ERR_FOREIGN_HOST_HOOKS` | Missing Antigravity components (`skills/`, `agents/`, `rules/`, `sidecars/`, `mcp_config.json`, `hooks.json`, or `cdp`/`app.asar` host-enhancement scripts), non-Antigravity `hooks.json` events, or low affinity | Include valid `plugin.json` (or `.antigravity-plugin/plugin.json`), at least one valid component or host-enhancement script, and clear Antigravity documentation |
 | `ERR_UNBUILT_SOURCE_ARCHIVE` / `ERR_UNBUNDLED_NPM_DEPS` | Source archive lacks built Sidecar HTML or has unbundled `dependencies` | Build locally/in CI and upload a self-contained `.tar.gz` Release asset |
 | `ERR_TAR_SYMLINK_FORBIDDEN` / `ERR_TAR_PATH_TRAVERSAL` | Archive contains symlinks, hardlinks, `..`, or absolute paths | Remove links and pack real files cleanly |
 | `ERR_SKILL_NAME_MISMATCH` / `ERR_RESERVED_SKILL_NAME` | `skills/<dir>/SKILL.md` frontmatter `name` mismatches `<dir>` or collides with built-in | Match frontmatter `name:` to `<dir>` and avoid built-in skill names |

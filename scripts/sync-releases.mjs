@@ -166,12 +166,22 @@ export function evaluateRepoSyncUpdate({
       // Check sha256 immutability if buffer also supplied
       const buf = tarballBuffersByTag.get(rel.tagName);
       if (buf) {
-        const check = validatePluginTarball(buf, {
-          pluginRoot: updatedLedger.pluginRoot || '.',
-          allowScopedName: false,
-          fallbackVersion: rel.tagName,
-          tarInfo: preInspectedTarInfo,
-        });
+        let check;
+        try {
+          check = validatePluginTarball(buf, {
+            pluginRoot: updatedLedger.pluginRoot || '.',
+            allowScopedName: false,
+            fallbackVersion: rel.tagName,
+            tarInfo: preInspectedTarInfo,
+          });
+        } catch (err) {
+          const msg = err?.message || String(err);
+          console.warn(
+            `[sync-releases] Skipping locked release re-validation for ${updatedLedger.canonicalName}@${rel.tagName}: ${msg}`,
+          );
+          events.push(`RELEASE_VALIDATION_FAILED:${updatedLedger.canonicalName}@${rel.tagName}:${msg}`);
+          continue;
+        }
         if (check.sha256 !== updatedLock.versions[sem.version].sha256) {
           updatedLedger.status = 'TAG_MUTATION_BLOCKED';
           events.push(`TAG_MUTATION_BLOCKED:${updatedLedger.canonicalName}@${rel.tagName}`);
@@ -184,13 +194,23 @@ export function evaluateRepoSyncUpdate({
     const buf = tarballBuffersByTag.get(rel.tagName);
     if (!buf) continue;
 
-    const inspected = validatePluginTarball(buf, {
-      pluginRoot: updatedLedger.pluginRoot || '.',
-      allowScopedName: false,
-      fallbackVersion: rel.tagName,
-      requireSelfContained: Boolean(rel.requireSelfContained),
-      tarInfo: preInspectedTarInfo,
-    });
+    let inspected;
+    try {
+      inspected = validatePluginTarball(buf, {
+        pluginRoot: updatedLedger.pluginRoot || '.',
+        allowScopedName: false,
+        fallbackVersion: rel.tagName,
+        requireSelfContained: Boolean(rel.requireSelfContained),
+        tarInfo: preInspectedTarInfo,
+      });
+    } catch (err) {
+      const msg = err?.message || String(err);
+      console.warn(
+        `[sync-releases] Skipping invalid release candidate ${updatedLedger.canonicalName}@${rel.tagName} (preserving locked version ${updatedLock.latest || 'none'}): ${msg}`,
+      );
+      events.push(`RELEASE_VALIDATION_FAILED:${updatedLedger.canonicalName}@${rel.tagName}:${msg}`);
+      continue;
+    }
 
     if (inspected.manifest.name !== updatedLedger.canonicalName) {
       events.push(`NAME_DRIFT_IGNORED:${inspected.manifest.name}!=${updatedLedger.canonicalName}`);
@@ -420,6 +440,7 @@ export async function syncAllRegisteredReleases({
 
   const allEvents = [];
   for (const rec of activeRecords) {
+    try {
     let repoByNumericId = null;
     let repoAtOldSlug = null;
     const releases = [];
@@ -582,6 +603,13 @@ export async function syncAllRegisteredReleases({
     ledger.entries[rec.canonicalName] = out.ledgerRecord;
     versionsLock.locks[rec.entrySlug] = out.lockRecord;
     allEvents.push(...out.events);
+    } catch (err) {
+      const msg = err?.message || String(err);
+      console.warn(
+        `[sync-releases] Isolated per-plugin sync failure for ${rec.entrySlug} (${rec.canonicalName}): ${msg}`,
+      );
+      allEvents.push(`PLUGIN_SYNC_FAILED:${rec.entrySlug}:${rec.canonicalName}:${msg}`);
+    }
   }
 
   // Prune historical READMEs across all lock entries before persisting

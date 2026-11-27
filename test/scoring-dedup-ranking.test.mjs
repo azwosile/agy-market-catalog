@@ -805,3 +805,47 @@ test('taxonomy-classifier v2 fixes live misclassifications, supports README/SKIL
   assert.equal(summary.en, 'Real-time token speed and quota dashboard for Google Antigravity.');
   assert.equal(summary.zh, '适用于 Google Antigravity 的实时 Token 吞吐率与额度监控面板。');
 });
+
+test('Standalone host-enhancement (app-asar/cdp) Antigravity plugins pass component & authenticity gates while non-AGY Electron repos stay rejected', () => {
+  // 1. Standalone host-enhancement plugin (e.g. elviscjn-cjn/antigravity-context-viewer) with no skills/sidecars
+  const acv = scoreAntigravityAuthenticity({
+    pluginRoot: '.',
+    rawManifest: {
+      name: 'context-meter',
+      displayName: '上下文查看器与 Token 看板',
+      version: '0.9.3',
+      description: '查看对话上下文、生成速度与 Token 用量.',
+    },
+    scopedFiles: filesMap({
+      'plugin.json': '{"name":"context-meter","version":"0.9.3"}',
+      'asar-engine.js': 'const target = "resources/app.asar";',
+      'live-host.js': 'const portFile = "DevToolsActivePort";',
+      'README.md': '# Antigravity Context Viewer\nMonitor Google Antigravity context window and token usage.',
+    }),
+    capabilities: { badges: ['host-enhancement'], hostEnhancementKind: ['app-asar', 'cdp'] },
+    components: { signals: { hasHostEnhancement: true, hasAnyComponent: true, hasStrongSignal: false } },
+    repoMeta: { name: 'antigravity-context-viewer', topics: ['antigravity', 'google-antigravity'] },
+  });
+  assert.equal(acv.decision, 'accept');
+  assert.equal(acv.compatTier, 'native');
+  assert.ok(acv.score >= 0.9);
+
+  // 2. Non-Antigravity Electron app with clean plugin.json + app.asar/cdp MUST NOT auto-pass (stays gray/reject)
+  const genericElectron = scoreAntigravityAuthenticity({
+    pluginRoot: '.',
+    rawManifest: {
+      name: 'desktop-patcher',
+      version: '1.0.0',
+      description: 'Generic Electron desktop patcher utility.',
+    },
+    scopedFiles: filesMap({
+      'plugin.json': '{"name":"desktop-patcher","version":"1.0.0"}',
+      'patch.js': 'const target = "resources/app.asar";',
+      'README.md': '# Desktop Patcher\nPatches generic Electron desktop apps.',
+    }),
+    capabilities: { badges: ['host-enhancement'], hostEnhancementKind: ['app-asar'] },
+    components: { signals: { hasHostEnhancement: true, hasAnyComponent: true, hasStrongSignal: false } },
+    repoMeta: { name: 'desktop-patcher', topics: ['electron'] },
+  });
+  assert.notEqual(genericElectron.decision, 'accept');
+});

@@ -14,6 +14,7 @@ export const DEFAULT_CATALOG_RAW_URL = 'https://raw.githubusercontent.com/azwosi
 export const OFFICIAL_MARKET_CLIENT_REPO = 'azwosile/agy-market';
 
 export const PLUGIN_JSON_ALLOWED_KEYS = new Set([
+  '$schema',
   'name',
   'displayName',
   'description',
@@ -24,6 +25,10 @@ export const PLUGIN_JSON_ALLOWED_KEYS = new Set([
   'repository',
   'suggestedPrompts',
   'disabled',
+  'skills',
+  'license',
+  'keywords',
+  'extensions',
 ]);
 
 export const AGY_MARKET_JSON_ALLOWED_KEYS = new Set([

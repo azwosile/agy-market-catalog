@@ -386,6 +386,7 @@ export function scanPluginCapabilities(pluginFilesMap, { pluginName = '' } = {})
 
   const rulesEstimatedTokens = hasRules ? Math.ceil(totalRuleBytes / 4) : 0;
   const hostEnhancementKind = [...hostEnhancementKinds].sort();
+  const hasHostEnhancement = hostEnhancementKind.length > 0;
   const hasAntigravityHookEvent = [...hookEvents].some((ev) => ANTIGRAVITY_HOOK_EVENTS.has(ev));
   const hasMcp = hasMcpStdio || hasMcpRemote;
   const hasAnyComponent =
@@ -394,7 +395,8 @@ export function scanPluginCapabilities(pluginFilesMap, { pluginName = '' } = {})
     nonEmptyRulesCount > 0 ||
     hasMcp ||
     hasSidecarUi ||
-    hookEvents.size > 0;
+    hookEvents.size > 0 ||
+    hasHostEnhancement;
   const hasStrongSignal =
     nonEmptySkillsCount > 0 || hasMcp || hasSidecarUi || hasAntigravityHookEvent;
 
@@ -441,6 +443,7 @@ export function scanPluginCapabilities(pluginFilesMap, { pluginName = '' } = {})
         hasHooks: hookEvents.size > 0 || hooksJsonNonMetaKeyCount > 0,
         hooksJsonNonMetaKeyCount,
         hasAntigravityHookEvent,
+        hasHostEnhancement,
         hasAnyComponent,
         hasStrongSignal,
       },

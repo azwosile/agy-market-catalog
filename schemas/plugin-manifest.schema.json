@@ -1,11 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/azwosile/agy-market-catalog/main/schemas/plugin-manifest.schema.json",
-  "title": "Antigravity Native Plugin Manifest (10-Field Strict Allowlist)",
+  "title": "Antigravity Native Plugin Manifest (Official v1 15-Field Allowlist)",
   "type": "object",
   "additionalProperties": false,
   "required": ["name", "description"],
   "properties": {
+    "$schema": { "type": "string" },
     "name": {
       "type": "string",
       "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
@@ -26,6 +27,7 @@
           "required": ["name"],
           "properties": {
             "name": { "type": "string", "minLength": 1 },
+            "email": { "type": "string" },
             "url": { "type": "string", "pattern": "^https://" }
           }
         }
@@ -51,6 +53,24 @@
       "maxItems": 3,
       "items": { "type": "string", "minLength": 1 }
     },
-    "disabled": { "type": "boolean" }
+    "skills": {
+      "oneOf": [
+        { "type": "string", "pattern": "\\S" },
+        {
+          "type": "array",
+          "items": { "type": "string", "pattern": "\\S" }
+        }
+      ]
+    },
+    "disabled": { "type": "boolean" },
+    "license": { "type": "string" },
+    "keywords": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": { "type": "object" }
+    }
   }
 }

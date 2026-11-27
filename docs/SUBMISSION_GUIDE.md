@@ -55,7 +55,7 @@ my-agy-plugin/
 
 #### 1.1 编写 `plugin.json`（严格 10 字段白名单）
 
-Antigravity 宿主会静默剥离白名单之外的顶层字段，目录门禁也会严格校验 **`plugin.json`（或 `.antigravity-plugin/plugin.json`）只能包含以下 10 个顶层键**（出现任何额外字段都会触发 `ERR_PLUGIN_JSON_UNKNOWN_KEY`）：
+Antigravity 宿主会静默剥离白名单之外的顶层字段，目录门禁也会严格校验 **`plugin.json`（或 `.antigravity-plugin/plugin.json`）只能包含官方 v1 Schema 规定的以下 15 个顶层键（含 `$schema`、`skills`、`license`、`keywords`、`extensions`）**（出现任何额外字段都会触发 `ERR_PLUGIN_JSON_UNKNOWN_KEY`）：
 
 | 字段名 | 是否必填 | 类型 / 格式要求 | 说明 |
 | :--- | :---: | :--- | :--- |
@@ -288,7 +288,7 @@ git push -u origin feat/add-my-agy-plugin
    - **100% Fork 安全原子流程**：无论是 `pr-gate.yml` 还是 `merge-pr.yml`，都只检出受信任的 `main` 分支，**永不检出或执行 PR 代码**，仅通过 `git archive` 提取 `data/plugins/*.yml`，执行 `validate-entries.mjs`、`node --test` 与流式包扫描（检查 10 字段清单、图标、`>= 3` 不同树哈希非空提交 `MIN_NON_EMPTY_COMMITS = 3`、`>= 1` 天冷启动门槛 `MIN_AGE_DAYS = 1`、防碰撞账本与 4 层安全扫描）；全部通过后先用 `--match-head-commit` 执行 Squash Merge，再基于最新 `origin/main` 原子写入 `state/ledger.json` 与 `state/versions-lock.json`、同步刷新 README 表格、在 PR 下发表双语收录报告，并直接部署 `gh-pages`。
    - **刚建的新仓库未满 24 小时？无需重新提 PR！** 只要其他全部校验通过，CI 会自动给 PR 贴上 **`pending: repo-age`** 标签并评论告知精确的 **UTC 解锁时间**。**`regate.yml`（每 6 小时自动巡检一次）** 会在满 24 小时后自动复审、移除标签、合并、锁状态并发布 `gh-pages`。
 3. **关于 CDP 与 `app.asar` 宿主界面增强插件的友好政策**：
-   - 只要没有触发真实供应链/窃密红线，使用 **Chrome DevTools Protocol（CDP）** 或 **`resources/app.asar` 补丁**的插件**100% 欢迎收录进 Track 1**，仅自动标注温和的 `💡 宿主界面增强`（`host-enhancement`）提示徽章。
+   - 只要没有触发真实供应链/窃密红线，使用 **Chrome DevTools Protocol（CDP）** 或 **`resources/app.asar` 补丁**的插件**100% 欢迎收录进 Track 1 与 Track 2 / Tier-0 社区提名**，仅自动标注温和的 `💡 宿主界面增强`（`host-enhancement`）提示徽章；即使不含 `skills/` 或 `sidecars/` 的纯宿主增强插件，只要提供合法 `plugin.json` 并满足 Antigravity 生态亲和度校验也可正常收录。
    - **仅 5 类真实安全红线会被硬拦截**：压缩包 `..` 路径穿越或软/硬链接；已锁定 Tag 篡改；`rules/*.md` 越界 `@[...](..)` 读取插件外本地文件或单文件超过 `24,000` 字节；Markdown 中的不可见 Unicode Tag / Bidi 隐藏注入字符；超过 `2 MB` / 魔数不符 / 含 `<!ENTITY>` XXE 或残余主动脚本的图标。
 4. **合并后永久 0-PR 自动同步与权限升级护栏**：
    - PR 合并后，**`sync-catalog.yml` 每 30 分钟**自动轮询你的仓库：每当你发布新的正式 SemVer Release 或 Tag，系统自动校验、提取新版多语言 README 与图标、刷新 `README.md` / `README.en.md` 表格并部署至 **GitHub Pages**（及 `gh-pages` Raw 回退通道；若维护者配置 `NPM_PUBLISH_ENABLED=true` 亦同步发布 `@agy-market/catalog` npm 镜像包）。
@@ -318,10 +318,10 @@ git push -u origin feat/add-my-agy-plugin
 | `ERR_SLUG_URL_MISMATCH` | YAML 文件名与 `url` 指向的仓库不一致 | 核对文件名中的 `<owner>`、`<repo>` 与 `url` 是否一致（文件名必须全小写） |
 | `ERR_PR_PATH_FORBIDDEN` / `ERR_PR_SYMLINK_FORBIDDEN` / `ERR_PR_TOO_MANY_ENTRIES` | PR 修改了 `data/plugins/*.yml` 之外的文件、提交了符号链接文件或超过 3 个条目 | 撤销无关文件修改，确保 `data/plugins/*.yml` 为普通文件（非软链）且单个 PR 仅保留 `<= 3` 个条目 |
 | `ERR_FORBIDDEN_HANDWRITTEN_KEY` | 手写了 `sha256`、`npm`、`npmMirrorPkg`、`repositoryId`、`ownerId` | 删除这些机算字段，由 CI 自动生成 |
-| `ERR_PLUGIN_JSON_UNKNOWN_KEY` | `plugin.json` 含 10 字段白名单外的顶层键 | 移除自定义键，把扩展配置迁入 `agy-market.json` |
+| `ERR_PLUGIN_JSON_UNKNOWN_KEY` | `plugin.json` 含官方 v1 15 字段白名单外的未知顶层键 | 移除自定义键，把扩展配置迁入 `agy-market.json`；若发生在已收录插件的新 Release 同步阶段，同步器会隔离跳过该不合规版本并保留原合规版本（输出 `RELEASE_VALIDATION_FAILED` 告警） |
 | `ERR_PLUGIN_JSON_LOGO_PATH` / `ERR_MISSING_LOGO_FILE` | `logo` 填了 `https://` 链接、`..` / `/` 路径，或包内缺该文件 | 将图标文件放进仓库（如 `assets/logo.svg`）并填包内相对路径 |
 | `ERR_ICON_TOO_LARGE` / `ERR_ICON_MAGIC_MISMATCH` | 图标超过 `2 MB` 或扩展名与真实文件头魔数不符（或 SVG 含 XXE/XSS） | 压缩图标至 `<= 2 MB` 并确保 `.png`/`.jpg`/`.webp`/`.svg` 内容真实合法 |
-| `ERR_NOT_ANTIGRAVITY_PLUGIN` / `ERR_FOREIGN_HOST_HOOKS` | 缺少有效 Antigravity 组件、钩子事件非 Antigravity 生命周期事件或宿主亲和度不足 | 确保包含有效 `plugin.json`（或 `.antigravity-plugin/plugin.json`）及对应组件与文档说明 |
+| `ERR_NOT_ANTIGRAVITY_PLUGIN` / `ERR_FOREIGN_HOST_HOOKS` | 缺少有效 Antigravity 组件（含 `skills/`、`agents/`、`rules/`、`sidecars/`、`mcp_config.json`、`hooks.json` 或 `cdp`/`app.asar` 宿主增强脚本）、钩子事件非 Antigravity 生命周期事件或宿主亲和度不足 | 确保包含有效 `plugin.json`（或 `.antigravity-plugin/plugin.json`）、至少一项合法组件或宿主增强脚本及清晰的 Antigravity 文档说明 |
 | `ERR_UNBUILT_SOURCE_ARCHIVE` / `ERR_UNBUNDLED_NPM_DEPS` | 未上传预构建 `.tar.gz`，且源码归档缺少已构建的 Sidebar HTML 或含未打包的 `dependencies` | 构建后打包自包含 `.tar.gz` 上传为 GitHub Release 资产 |
 | `ERR_TAR_SYMLINK_FORBIDDEN` / `ERR_TAR_PATH_TRAVERSAL` | 压缩包内包含符号/硬链接、`..` 路径穿越或绝对路径 | 移除符号链接或打包时拷贝真实文件（Windows 下 Antigravity 也会跳过符号链接） |
 | `ERR_SKILL_NAME_MISMATCH` / `ERR_RESERVED_SKILL_NAME` | `skills/<dir>/SKILL.md` frontmatter `name` 与目录名不一致或与内置技能重名 | 修改 frontmatter 中的 `name:` 使其与 `<dir>` 完全一致并避开内置名称 |
