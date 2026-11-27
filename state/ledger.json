@@ -86,7 +86,8 @@
       "claimedMcpServers": [
         "azure-corridor_azure-corridor-nav"
       ],
-      "registeredAt": "2026-11-27T03:20:43.798Z"
+      "registeredAt": "2026-11-27T03:20:43.798Z",
+      "nodeId": "R_kgDOV1HNcA"
     },
     "azure-prism": {
       "entrySlug": "a16nights__antigravity-azure-prism",
@@ -101,7 +102,8 @@
       "claimedMcpServers": [
         "azure-prism_azure-prism"
       ],
-      "registeredAt": "2026-11-27T03:20:44.805Z"
+      "registeredAt": "2026-11-27T03:20:44.805Z",
+      "nodeId": "R_kgDOV3KWeg"
     },
     "lanxi-memory": {
       "entrySlug": "a16nights__antigravity-lanxi-memory",
@@ -118,7 +120,8 @@
       "claimedMcpServers": [
         "lanxi-memory_lanxi-memory"
       ],
-      "registeredAt": "2026-11-27T03:20:45.779Z"
+      "registeredAt": "2026-11-27T03:20:45.779Z",
+      "nodeId": "R_kgDOV01gPA"
     },
     "agent-presets": {
       "entrySlug": "a16nights__antigravity-azure-compass",
@@ -135,7 +138,8 @@
       "claimedMcpServers": [
         "agent-presets_agent-presets-nav"
       ],
-      "registeredAt": "2026-11-27T03:21:01.292Z"
+      "registeredAt": "2026-11-27T03:21:01.292Z",
+      "nodeId": "R_kgDOV1BYaA"
     },
     "soul-md": {
       "entrySlug": "a16nights__antigravity-soul-md",
@@ -152,7 +156,8 @@
       "claimedMcpServers": [
         "soul-md_soul-md"
       ],
-      "registeredAt": "2026-11-27T03:21:02.280Z"
+      "registeredAt": "2026-11-27T03:21:02.280Z",
+      "nodeId": "R_kgDOV01gzQ"
     },
     "think-zh": {
       "entrySlug": "a16nights__antigravity-think-zh",
@@ -169,7 +174,8 @@
       "claimedMcpServers": [
         "think-zh_think-zh"
       ],
-      "registeredAt": "2026-11-27T03:21:03.424Z"
+      "registeredAt": "2026-11-27T03:21:03.424Z",
+      "nodeId": "R_kgDOV06XsQ"
     },
     "azure-orbit": {
       "entrySlug": "a16nights__antigravity-azure-orbit",
@@ -186,7 +192,8 @@
       "claimedMcpServers": [
         "azure-orbit_azure-orbit"
       ],
-      "registeredAt": "2026-11-27T03:21:19.640Z"
+      "registeredAt": "2026-11-27T03:21:19.640Z",
+      "nodeId": "R_kgDOV09YjQ"
     },
     "external-orchestrator": {
       "entrySlug": "a16nights__antigravity-external-orchestrator",
@@ -203,7 +210,28 @@
       "claimedMcpServers": [
         "external-orchestrator_orchestrator"
       ],
-      "registeredAt": "2026-11-27T03:21:22.364Z"
+      "registeredAt": "2026-11-27T03:21:22.364Z",
+      "nodeId": "R_kgDOV05tLA",
+      "lastEscalation": {
+        "fromVersion": "1.4.6",
+        "toVersion": "1.2.2",
+        "severity": "MODERATE",
+        "reasons": [
+          "ADDED_MCP:external-orchestrator_external-orchestrator"
+        ],
+        "escalation": {
+          "addedBadges": [],
+          "addedRemoteDomains": [],
+          "addedHookEvents": [],
+          "addedHostEnhancementKinds": [],
+          "addedMcpServers": [
+            "external-orchestrator_external-orchestrator"
+          ],
+          "rulesTokenDelta": -19,
+          "suspiciousShellFindings": []
+        },
+        "detectedAt": "2026-11-27T16:42:33.750Z"
+      }
     },
     "azure-wand": {
       "entrySlug": "a16nights__antigravity-azure-wand",
@@ -222,7 +250,8 @@
         "azure-wand_azure-wand-independent",
         "azure-wand_azure-wand-nav"
       ],
-      "registeredAt": "2026-11-27T03:21:36.674Z"
+      "registeredAt": "2026-11-27T03:21:36.674Z",
+      "nodeId": "R_kgDOV66e7A"
     },
     "agy-anchor-wheel": {
       "entrySlug": "curelove__agy-anchor-wheel",
@@ -235,7 +264,8 @@
       "claimedSkills": [],
       "claimedAgents": [],
       "claimedMcpServers": [],
-      "registeredAt": "2026-11-27T03:21:49.778Z"
+      "registeredAt": "2026-11-27T03:21:49.778Z",
+      "nodeId": "R_kgDOV5L37g"
     },
     "usage-monitor": {
       "entrySlug": "yuhuan-dev__antigravity-usage-monitor",
@@ -250,7 +280,8 @@
       "claimedMcpServers": [
         "usage-monitor_host"
       ],
-      "registeredAt": "2026-11-27T03:22:04.828Z"
+      "registeredAt": "2026-11-27T03:22:04.828Z",
+      "nodeId": "R_kgDOVIKs4g"
     },
     "archive-manager": {
       "entrySlug": "yukikaguraa__agy-archive-manager",
@@ -265,7 +296,8 @@
       ],
       "claimedAgents": [],
       "claimedMcpServers": [],
-      "registeredAt": "2026-11-27T03:22:19.143Z"
+      "registeredAt": "2026-11-27T03:22:19.143Z",
+      "nodeId": "R_kgDOV8u88Q"
     },
     "answer-card": {
       "entrySlug": "asthestarsfalll__answer-card",
@@ -282,7 +314,8 @@
       "claimedMcpServers": [
         "answer-card_settings"
       ],
-      "registeredAt": "2026-11-27T15:47:57.179Z"
+      "registeredAt": "2026-11-27T15:47:57.179Z",
+      "nodeId": "R_kgDOVwEtow"
     }
   }
 }
