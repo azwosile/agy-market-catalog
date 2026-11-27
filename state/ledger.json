@@ -266,6 +266,23 @@
       "claimedAgents": [],
       "claimedMcpServers": [],
       "registeredAt": "2026-11-27T03:22:19.143Z"
+    },
+    "answer-card": {
+      "entrySlug": "asthestarsfalll__answer-card",
+      "canonicalName": "answer-card",
+      "repositoryId": 1459695011,
+      "ownerId": 72954905,
+      "repoFullName": "Asthestarsfalll/answer-card",
+      "pluginRoot": ".",
+      "status": "active",
+      "claimedSkills": [
+        "answer-card-settings"
+      ],
+      "claimedAgents": [],
+      "claimedMcpServers": [
+        "answer-card_settings"
+      ],
+      "registeredAt": "2026-11-27T15:47:57.179Z"
     }
   }
 }
