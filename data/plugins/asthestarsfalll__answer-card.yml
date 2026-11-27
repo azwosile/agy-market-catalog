@@ -1,0 +1,6 @@
+url: https://github.com/Asthestarsfalll/answer-card
+pluginRoot: .
+category: productivity
+description:
+  zh: macOS 置顶悬浮回答卡片：当 Antigravity、DSH 或 Zed 中的 Agent 需要你批准工具调用、回答问题或回合结束时，直接在悬浮窗里一键决策、输入追问，无需切换窗口。
+  en: macOS always-on-top answer card for Antigravity, DSH and Zed: approve tool calls, answer agent questions and follow up on turn completion from a floating window.
