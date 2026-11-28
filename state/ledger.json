@@ -78,7 +78,7 @@
       "ownerId": 104626775,
       "repoFullName": "A16Nights/antigravity-azure-corridor",
       "pluginRoot": ".",
-      "status": "active",
+      "status": "TAG_MUTATION_BLOCKED",
       "claimedSkills": [
         "azure-corridor"
       ],
