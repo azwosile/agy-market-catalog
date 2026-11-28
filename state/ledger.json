@@ -352,6 +352,23 @@
         "trajectory-lens_trajectory-lens"
       ],
       "registeredAt": "2026-11-28T04:23:05.415Z"
+    },
+    "novel-forge": {
+      "entrySlug": "yuezhu114__agy-novel-forge",
+      "canonicalName": "novel-forge",
+      "repositoryId": 1474754773,
+      "ownerId": 299222958,
+      "repoFullName": "yuezhu114/agy-novel-forge",
+      "pluginRoot": ".",
+      "status": "active",
+      "claimedSkills": [
+        "novel"
+      ],
+      "claimedAgents": [],
+      "claimedMcpServers": [
+        "novel-forge_novel-forge"
+      ],
+      "registeredAt": "2026-11-28T04:23:19.640Z"
     }
   }
 }
