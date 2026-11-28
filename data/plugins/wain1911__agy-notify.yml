@@ -1,0 +1,6 @@
+url: https://github.com/wain1911/agy-notify
+pluginRoot: .
+category: productivity
+description:
+  zh: Antigravity 桌面消息提醒、原生提示音与 Discord/Bark/Gotify/Webhook 通知转发插件。
+  en: Desktop alerts with Antigravity default sound, anti-disturb quiet rules, focus auto-dismiss, and Discord/Bark/Gotify/Webhook forwarding.
