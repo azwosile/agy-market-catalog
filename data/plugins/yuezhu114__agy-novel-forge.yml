@@ -1,0 +1,6 @@
+url: https://github.com/yuezhu114/agy-novel-forge
+pluginRoot: .
+category: writing-knowledge
+description:
+  zh: Antigravity 中文长篇写作工程插件（移植自 dsh-novel-forge）：24 个 novel_* 硬门禁/账本/审计 MCP 工具 + Sidecar 侧栏工作台 + /novel 写作技能。
+  en: Engineering guardrails for long-form Chinese fiction in Antigravity (ported from dsh-novel-forge), featuring 24 novel_* MCP tools, hard gates, ledgers, /novel skill, and a Sidecar workbench.
