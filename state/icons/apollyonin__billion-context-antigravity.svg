@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" fill="none">
+  <defs>
+    <linearGradient id="bc-grad-a" x1="16" y1="20" x2="112" y2="108" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="55%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="bc-grad-b" x1="20" y1="64" x2="108" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer folded context container (~12% margin inside 128x128) -->
+  <rect x="16" y="16" width="96" height="96" rx="22" stroke="url(#bc-grad-a)" stroke-width="6.5" fill="none"/>
+  <!-- Upper & lower context layers compressing toward center -->
+  <path d="M36 39H92" stroke="url(#bc-grad-b)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M44 52H84" stroke="url(#bc-grad-a)" stroke-width="5.5" stroke-linecap="round" stroke-opacity="0.9"/>
+  <!-- Inward compression chevrons -->
+  <path d="M34 64L46 57V71L34 64Z" fill="#38BDF8"/>
+  <path d="M94 64L82 57V71L94 64Z" fill="#8B5CF6"/>
+  <!-- Core lossless folded summary pill -->
+  <rect x="52" y="59" width="24" height="10" rx="5" fill="url(#bc-grad-a)"/>
+  <!-- Lower context fold -->
+  <path d="M44 76H84" stroke="url(#bc-grad-a)" stroke-width="5.5" stroke-linecap="round" stroke-opacity="0.9"/>
+  <path d="M36 89H92" stroke="url(#bc-grad-b)" stroke-width="6" stroke-linecap="round"/>
+</svg>

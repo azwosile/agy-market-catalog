@@ -316,6 +316,42 @@
       ],
       "registeredAt": "2026-11-27T15:47:57.179Z",
       "nodeId": "R_kgDOVwEtow"
+    },
+    "billion-context": {
+      "entrySlug": "apollyonin__billion-context-antigravity",
+      "canonicalName": "billion-context",
+      "repositoryId": 1467800333,
+      "ownerId": 359833271,
+      "repoFullName": "Apollyonin/billion-context-antigravity",
+      "pluginRoot": ".",
+      "status": "active",
+      "claimedSkills": [
+        "acp",
+        "acp-cache",
+        "bili-setup"
+      ],
+      "claimedAgents": [],
+      "claimedMcpServers": [
+        "billion-context_billion-context"
+      ],
+      "registeredAt": "2026-11-28T04:23:04.589Z"
+    },
+    "trajectory-lens": {
+      "entrySlug": "apollyonin__trajectory-lens-antigravity",
+      "canonicalName": "trajectory-lens",
+      "repositoryId": 1467809462,
+      "ownerId": 359833271,
+      "repoFullName": "Apollyonin/trajectory-lens-antigravity",
+      "pluginRoot": ".",
+      "status": "active",
+      "claimedSkills": [
+        "trajectory"
+      ],
+      "claimedAgents": [],
+      "claimedMcpServers": [
+        "trajectory-lens_trajectory-lens"
+      ],
+      "registeredAt": "2026-11-28T04:23:05.415Z"
     }
   }
 }

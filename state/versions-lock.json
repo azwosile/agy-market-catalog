@@ -7712,6 +7712,155 @@
           "iconExt": ".svg"
         }
       }
+    },
+    "apollyonin__billion-context-antigravity": {
+      "latest": "1.0.0",
+      "versions": {
+        "1.0.0": {
+          "gitTag": "v1.0.0",
+          "commitSha": "86b43fe723b312f709cd09725758a4369c366582",
+          "tarballUrl": "https://github.com/Apollyonin/billion-context-antigravity/releases/download/v1.0.0/billion-context.tar.gz",
+          "sha256": "f54e920bfe6744c49602f225a9dc7b792c6200c12db329b1140033dc788844f9",
+          "sizeBytes": 292204,
+          "publishedAt": "2026-11-27T18:06:18Z",
+          "manifest": {
+            "name": "billion-context",
+            "displayName": "Billion Context",
+            "version": "1.0.0",
+            "description": "AI-assisted Antigravity port of ranxianglei/billion-context in Official Safe Mode (zero-proxy transcript.jsonl context telemetry, native /compact copy helper), plus an added fork-like Fresh Session Handoff feature.",
+            "logo": "assets/logo.svg",
+            "suggestedPrompts": [
+              "查看当前会话的上下文占用率与折叠边界（/acp），并打开 Billion Context 侧边面板",
+              "分析当前会话的 Prompt Cache 统计（/acp-cache）",
+              "打开 Billion Context 侧边面板进行 /compact 复制或类 Fork 新会话交接"
+            ],
+            "author": "Billion Context for Antigravity (powered by ranxianglei/billion-context)",
+            "homepage": "https://github.com/Apollyonin/billion-context-antigravity",
+            "repository": "https://github.com/Apollyonin/billion-context-antigravity"
+          },
+          "companion": {
+            "schemaVersion": 1,
+            "pluginRoot": ".",
+            "categories": [
+              "context-cache",
+              "monitoring-quota"
+            ],
+            "tags": [
+              "context",
+              "compact",
+              "prompt-cache",
+              "handoff",
+              "fork",
+              "mcp-app"
+            ],
+            "platforms": [
+              "win32",
+              "darwin",
+              "linux"
+            ],
+            "releaseAsset": "billion-context.tar.gz"
+          },
+          "capabilities": {
+            "badges": [
+              "global-rules",
+              "mcp-stdio",
+              "lifecycle-hooks"
+            ],
+            "rulesEstimatedTokens": 340,
+            "mcpServers": [
+              "billion-context_billion-context"
+            ],
+            "mcpRemoteDomains": [],
+            "hookEvents": [
+              "PostInvocation",
+              "PreInvocation",
+              "SessionStart",
+              "Stop"
+            ],
+            "hostEnhancementKind": []
+          },
+          "stars": 0,
+          "readmeMarkdown": "# Billion Context for Antigravity\n\n> **声明 / Notice**：本项目仅为在开源项目 [`ranxianglei/billion-context`](https://github.com/ranxianglei/billion-context) 原有基础上，**使用 AI 移植适配至 Google Antigravity** 的衍生插件，并**新增了类 Fork 会话延续功能**（普通/极致交接 · 开新会话）。\n\n---\n\n## 核心特性\n\n### 1. 官方直连 · 零代理安全模式（默认）\n- **无代理、无环境篡改**：默认运行在 **Official Safe Mode**（`BILI_ENABLE_LEGACY_PROXY !== \"1\"`），不会自动拉起本地 MITM 代理，也不会修改 `CLOUD_CODE_URL`，确保 Antigravity 通过官方原生通道直连 Google 上游。\n- **官方遥测上下文占用**：通过 Antigravity 官方 `transcript.jsonl`（读取 `PLANNER_RESPONSE` token 用量与 `CHECKPOINT` 压缩边界）及 `hooks.json`（`SessionStart`、`PreInvocation`、`PostInvocation`、`Stop` -> `hooks/session-hook.mjs`）精确监控会话上下文占用率。\n- **双端交互面板**：提供原生 MCP App 界面（`ui://billion-context/dashboard.html`），集成于 Antigravity 右侧辅助面板（`aux_pane`）与左侧全局边栏，支持查看 `/acp` 状态、`/acp-cache` 统计、历史归档搜索与安全操作台。\n\n### 2. 新增：类 Fork 会话延续功能（Fresh Session Handoff）\n- 针对上下文接近上限但希望保留关键成果继续推进的场景，右侧面板提供 **「普通交接 · 开新会话」** 与 **「极致交接 · 开新会话」** 按钮：\n  - 通过 `server/transcript-fallback.mjs` 中的 `buildTranscriptHandoff` 从当前会话 `transcript.jsonl` 蒸馏结构化上下文摘要（`normal` / `extreme` 两档粒度）；\n  - 通过 `server/mcp-server.mjs` 暴露的 `app_prepare_handoff` 与官方 MCP Apps SDK `app.sendMessage`（`_meta: { \"com.google.antigravity/message\": { target: \"new\" } }`），**一键开启干净的新官方会话并注入交接上下文**，实现类似 Fork 的无缝接力工作流。\n\n### 3. 原地原生 `/compact` 压缩辅助\n- 侧边栏提供 **「普通压缩 (/compact)」** 与 **「极致压缩 (/compact)」** 按钮（底层调用 `app_prepare_compress`）：\n  - 一键生成并复制对应的 `/compact ...` 定制指令到剪贴板，同时在面板内显示自动全选的兜底文本框（`#bc-compact-preview`）；\n  - 由于 Antigravity 插件权限边界无法静默代发斜杠命令，用户只需在对话输入框中 `Ctrl+V` 粘贴并按回车，即可触发 Antigravity 原生上下文压缩。\n\n### 4. 遗留代理适配代码说明\n- 仓库中保留了 `server/v1internal-bridge.mjs`、`server/proxy-manager.mjs`、`server/antigravity-models.mjs` 与 `scripts/*.ps1`，**默认处于关闭状态**，仅在用户显式设置 `BILI_ENABLE_LEGACY_PROXY=1` 时才会启用本地代理/桥接路径。\n\n---\n\n## 目录结构\n\n| 路径 | 职责 |\n|---|---|\n| `hooks/session-hook.mjs` | 生命周期钩子，绑定当前会话 `conversationId` 与 `transcriptPath` |\n| `server/mcp-server.mjs` | MCP Server 与安全模式控制（`acp_status`、`acp_cache`、`acp_sessions`、`acp_inspect_block`、`acp_proxy_control`、`app_prepare_compress`、`app_prepare_handoff`） |\n| `server/transcript-fallback.mjs` | 官方 `transcript.jsonl` 遥测解析与 `buildTranscriptHandoff` 交接生成器 |\n| `ui/src/app.ts` / `ui/dist/dashboard.html` | 侧边面板交互前端与打包产物 |\n| `skills/` | `/acp`、`/acp-cache`、`/bili-setup` 技能定义 |\n| `rules/AGENTS.md` | 官方零代理安全模式行为约束 |\n| `tests/` | 冒烟测试（`smoke-test.mjs`）与 `v1internal` 预检测试（`v1internal-preflight.test.mjs`） |\n\n---\n\n## 安装与验证\n\n1. 将仓库克隆至 Antigravity 插件目录：\n   - **Windows**：`%USERPROFILE%\\.gemini\\config\\plugins\\billion-context`\n   - **macOS / Linux**：`~/.gemini/config/plugins/billion-context`\n2. 安装依赖并运行验证测试：\n   ```bash\n   cd ~/.gemini/config/plugins/billion-context\n   npm install\n   npm test\n   ```\n   如需重新构建前端面板产物：\n   ```bash\n   npm run build:ui\n   ```\n3. 在 Antigravity 的 **Plugins Manager** 中启用 `billion-context`（或重启 Antigravity），即可在右侧辅助面板看到 **Billion Context**。\n\n---\n\n## 致谢与许可（Attribution & License）\n\n- 本项目核心上下文压缩思想、分层块概念、CloudCode `v1internal` 协议适配与缓存账本引擎基于开源项目 **[`ranxianglei/billion-context`](https://github.com/ranxianglei/billion-context)**（及 `acp-kernel`），**在此基础上使用 AI 完成针对 Google Antigravity 的移植与类 Fork 会话延续扩展**。\n- 遵循原项目 **MIT License + 附加产品出处标注条款（Additional Term — Attribution on Product Surfaces）**，详见 [`LICENSE`](./LICENSE)。\n",
+          "readmeZhMarkdown": "# Billion Context for Antigravity\n\n> **声明 / Notice**：本项目仅为在开源项目 [`ranxianglei/billion-context`](https://github.com/ranxianglei/billion-context) 原有基础上，**使用 AI 移植适配至 Google Antigravity** 的衍生插件，并**新增了类 Fork 会话延续功能**（普通/极致交接 · 开新会话）。\n\n---\n\n## 核心特性\n\n### 1. 官方直连 · 零代理安全模式（默认）\n- **无代理、无环境篡改**：默认运行在 **Official Safe Mode**（`BILI_ENABLE_LEGACY_PROXY !== \"1\"`），不会自动拉起本地 MITM 代理，也不会修改 `CLOUD_CODE_URL`，确保 Antigravity 通过官方原生通道直连 Google 上游。\n- **官方遥测上下文占用**：通过 Antigravity 官方 `transcript.jsonl`（读取 `PLANNER_RESPONSE` token 用量与 `CHECKPOINT` 压缩边界）及 `hooks.json`（`SessionStart`、`PreInvocation`、`PostInvocation`、`Stop` -> `hooks/session-hook.mjs`）精确监控会话上下文占用率。\n- **双端交互面板**：提供原生 MCP App 界面（`ui://billion-context/dashboard.html`），集成于 Antigravity 右侧辅助面板（`aux_pane`）与左侧全局边栏，支持查看 `/acp` 状态、`/acp-cache` 统计、历史归档搜索与安全操作台。\n\n### 2. 新增：类 Fork 会话延续功能（Fresh Session Handoff）\n- 针对上下文接近上限但希望保留关键成果继续推进的场景，右侧面板提供 **「普通交接 · 开新会话」** 与 **「极致交接 · 开新会话」** 按钮：\n  - 通过 `server/transcript-fallback.mjs` 中的 `buildTranscriptHandoff` 从当前会话 `transcript.jsonl` 蒸馏结构化上下文摘要（`normal` / `extreme` 两档粒度）；\n  - 通过 `server/mcp-server.mjs` 暴露的 `app_prepare_handoff` 与官方 MCP Apps SDK `app.sendMessage`（`_meta: { \"com.google.antigravity/message\": { target: \"new\" } }`），**一键开启干净的新官方会话并注入交接上下文**，实现类似 Fork 的无缝接力工作流。\n\n### 3. 原地原生 `/compact` 压缩辅助\n- 侧边栏提供 **「普通压缩 (/compact)」** 与 **「极致压缩 (/compact)」** 按钮（底层调用 `app_prepare_compress`）：\n  - 一键生成并复制对应的 `/compact ...` 定制指令到剪贴板，同时在面板内显示自动全选的兜底文本框（`#bc-compact-preview`）；\n  - 由于 Antigravity 插件权限边界无法静默代发斜杠命令，用户只需在对话输入框中 `Ctrl+V` 粘贴并按回车，即可触发 Antigravity 原生上下文压缩。\n\n### 4. 遗留代理适配代码说明\n- 仓库中保留了 `server/v1internal-bridge.mjs`、`server/proxy-manager.mjs`、`server/antigravity-models.mjs` 与 `scripts/*.ps1`，**默认处于关闭状态**，仅在用户显式设置 `BILI_ENABLE_LEGACY_PROXY=1` 时才会启用本地代理/桥接路径。\n\n---\n\n## 目录结构\n\n| 路径 | 职责 |\n|---|---|\n| `hooks/session-hook.mjs` | 生命周期钩子，绑定当前会话 `conversationId` 与 `transcriptPath` |\n| `server/mcp-server.mjs` | MCP Server 与安全模式控制（`acp_status`、`acp_cache`、`acp_sessions`、`acp_inspect_block`、`acp_proxy_control`、`app_prepare_compress`、`app_prepare_handoff`） |\n| `server/transcript-fallback.mjs` | 官方 `transcript.jsonl` 遥测解析与 `buildTranscriptHandoff` 交接生成器 |\n| `ui/src/app.ts` / `ui/dist/dashboard.html` | 侧边面板交互前端与打包产物 |\n| `skills/` | `/acp`、`/acp-cache`、`/bili-setup` 技能定义 |\n| `rules/AGENTS.md` | 官方零代理安全模式行为约束 |\n| `tests/` | 冒烟测试（`smoke-test.mjs`）与 `v1internal` 预检测试（`v1internal-preflight.test.mjs`） |\n\n---\n\n## 安装与验证\n\n1. 将仓库克隆至 Antigravity 插件目录：\n   - **Windows**：`%USERPROFILE%\\.gemini\\config\\plugins\\billion-context`\n   - **macOS / Linux**：`~/.gemini/config/plugins/billion-context`\n2. 安装依赖并运行验证测试：\n   ```bash\n   cd ~/.gemini/config/plugins/billion-context\n   npm install\n   npm test\n   ```\n   如需重新构建前端面板产物：\n   ```bash\n   npm run build:ui\n   ```\n3. 在 Antigravity 的 **Plugins Manager** 中启用 `billion-context`（或重启 Antigravity），即可在右侧辅助面板看到 **Billion Context**。\n\n---\n\n## 致谢与许可（Attribution & License）\n\n- 本项目核心上下文压缩思想、分层块概念、CloudCode `v1internal` 协议适配与缓存账本引擎基于开源项目 **[`ranxianglei/billion-context`](https://github.com/ranxianglei/billion-context)**（及 `acp-kernel`），**在此基础上使用 AI 完成针对 Google Antigravity 的移植与类 Fork 会话延续扩展**。\n- 遵循原项目 **MIT License + 附加产品出处标注条款（Additional Term — Attribution on Product Surfaces）**，详见 [`LICENSE`](./LICENSE)。\n",
+          "readmeEnMarkdown": "# Billion Context for Antigravity\n\n> **Notice**: This repository is an **AI-assisted port** of [`ranxianglei/billion-context`](https://github.com/ranxianglei/billion-context) adapted for **Google Antigravity**, with an added **fork-like Fresh Session Handoff** feature (Normal / Extreme handoff into a clean new session).\n\n---\n\n## Key Features\n\n### 1. Official Direct · Zero-Proxy Safe Mode (Default)\n- **Zero proxy & zero env mutation**: Runs in **Official Safe Mode** (`BILI_ENABLE_LEGACY_PROXY !== \"1\"`) by default — does not spawn local MITM proxies or modify `CLOUD_CODE_URL`, keeping Antigravity connected directly to Google's official upstream.\n- **Official transcript telemetry**: Reads Antigravity's official `transcript.jsonl` (`PLANNER_RESPONSE` token usage and `CHECKPOINT` compaction boundaries) and passive lifecycle hooks (`SessionStart`, `PreInvocation`, `PostInvocation`, `Stop` -> `hooks/session-hook.mjs`) to monitor context occupancy accurately.\n- **Dual-pane MCP App**: Renders `ui://billion-context/dashboard.html` in Antigravity's right auxiliary pane (`aux_pane`) and left sidebar for `/acp` status, `/acp-cache` ledger stats, archive search, and safe actions.\n\n### 2. Added: Fork-like Fresh Session Handoff\n- When context approaches the window limit and you want to carry key progress forward, the side pane provides **Normal Handoff · New Session** and **Extreme Handoff · New Session**:\n  - `buildTranscriptHandoff` (`server/transcript-fallback.mjs`) distills structured context from the active `transcript.jsonl` (`normal` or `extreme` granularity);\n  - `app_prepare_handoff` (`server/mcp-server.mjs`) and official MCP Apps SDK `app.sendMessage` (`_meta: { \"com.google.antigravity/message\": { target: \"new\" } }`) launch a clean new official session pre-seeded with the handoff brief.\n\n### 3. Native `/compact` Copy Helper\n- Provides one-click **Normal `/compact`** and **Extreme `/compact`** buttons (`app_prepare_compress`) that copy tailored `/compact ...` instructions to the clipboard (plus a selectable fallback box `#bc-compact-preview`). Paste (`Ctrl+V`) and press Enter in the chat box to trigger Antigravity's native compaction.\n\n### 4. Legacy Proxy Code (Disabled by Default)\n- `server/v1internal-bridge.mjs`, `server/proxy-manager.mjs`, `server/antigravity-models.mjs`, and `scripts/*.ps1` remain disabled unless `BILI_ENABLE_LEGACY_PROXY=1` is explicitly set.\n\n---\n\n## Installation & Verification\n\nInstall via **AGY Market** or clone into `~/.gemini/config/plugins/billion-context` (Windows: `%USERPROFILE%\\.gemini\\config\\plugins\\billion-context`), then enable `billion-context` in **Plugins Manager**.\n\nFor development from source:\n```bash\nnpm install\nnpm run build:ui\nnpm test\n```\n\n---\n\n## Attribution & License\n\nBuilt on top of [`ranxianglei/billion-context`](https://github.com/ranxianglei/billion-context) (and [`ranxianglei/acp-kernel`](https://github.com/ranxianglei/acp-kernel)) using AI-assisted adaptation for Google Antigravity and fork-like session handoff extensions.\n\nLicensed under the **MIT License + Additional Term (Attribution on Product Surfaces)** — see [`LICENSE`](./LICENSE).\n",
+          "iconExt": ".svg"
+        }
+      }
+    },
+    "apollyonin__trajectory-lens-antigravity": {
+      "latest": "1.0.0",
+      "versions": {
+        "1.0.0": {
+          "gitTag": "v1.0.0",
+          "commitSha": "a72022f0e81249ad055d4b087b1ceebe6c3103d5",
+          "tarballUrl": "https://github.com/Apollyonin/trajectory-lens-antigravity/releases/download/v1.0.0/trajectory-lens.tar.gz",
+          "sha256": "3cb0f8d01c793de3b5137dfb27f75439227627552431e6ba847a6864a1596984",
+          "sizeBytes": 287116,
+          "publishedAt": "2026-11-27T18:06:33Z",
+          "manifest": {
+            "name": "trajectory-lens",
+            "displayName": "Trajectory Lens",
+            "version": "1.0.0",
+            "description": "AI-assisted Antigravity plugin re-implemented based on DSH official model trajectory visualization features: turn/step ledger, parallel execution DAG, subagent span waterfall, token & prompt-cache analytics, session compare, plain-language guide, and standalone HTML/Markdown export (Official Safe Mode, zero proxy).",
+            "logo": "assets/logo.svg",
+            "suggestedPrompts": [
+              "打开 Trajectory Lens 侧边栏，可视化分析当前会话的模型运作轨迹与耗时瓶颈",
+              "总结当前会话的轮次、工具调用分布、Prompt Cache 命中率与异常重试步骤",
+              "将当前会话的完整运作轨迹导出为可离线回放的独立 HTML 报告"
+            ],
+            "author": "Apollyonin (AI-assisted re-implementation for Antigravity)",
+            "homepage": "https://github.com/Apollyonin/trajectory-lens-antigravity",
+            "repository": "https://github.com/Apollyonin/trajectory-lens-antigravity"
+          },
+          "companion": {
+            "schemaVersion": 1,
+            "pluginRoot": ".",
+            "categories": [
+              "monitoring-quota",
+              "developer-tools"
+            ],
+            "tags": [
+              "trajectory",
+              "dag",
+              "subagent",
+              "waterfall",
+              "prompt-cache",
+              "mcp-app"
+            ],
+            "platforms": [
+              "win32",
+              "darwin",
+              "linux"
+            ],
+            "releaseAsset": "trajectory-lens.tar.gz"
+          },
+          "capabilities": {
+            "badges": [
+              "global-rules",
+              "mcp-stdio",
+              "lifecycle-hooks"
+            ],
+            "rulesEstimatedTokens": 336,
+            "mcpServers": [
+              "trajectory-lens_trajectory-lens"
+            ],
+            "mcpRemoteDomains": [],
+            "hookEvents": [
+              "PostInvocation",
+              "PostToolUse",
+              "PreInvocation",
+              "SessionStart",
+              "Stop"
+            ],
+            "hostEnhancementKind": []
+          },
+          "stars": 0,
+          "readmeMarkdown": "# Trajectory Lens (`trajectory-lens`)\n\n> **声明 / Notice**：本项目为**使用 AI 辅助开发**、**基于 DSH 官方模型运行轨迹可视化功能重新设计与重开发**的 Google Antigravity 插件（官方零代理安全模式，非 DSH 或 Google 官方项目）。\n>\n> *Notice: This project is an independent AI-assisted plugin developed for Google Antigravity and re-implemented based on DSH's official model trajectory visualization features. It runs in Official Safe Mode (zero proxy) and is not an official DSH or Google product.*\n\n---\n\n## 核心特性（对标 DSH 官方轨迹功能重开发）\n\n- **Turn / Step Ledger & Timeline（轮次/步骤台账与时间线）**：以 Turn 为层级关联 `PLANNER_RESPONSE` 思考摘要、并行工具调用、`GENERIC` 返回结果、`SYSTEM_MESSAGE`、`CHECKPOINT` 压缩边界与 `ERROR_MESSAGE` 事件，支持实时自动跟随与 `1x / 5x / 20x` 回放时间轴。\n- **Execution Graph (DAG)（执行有向无环图）**：交互式 SVG DAG 视图，支持从左到右（`LR`）与从上到下（`TB`）两种布局、并行工具扇出与收敛边、按轮次/类别筛选、拖拽缩放及点击节点检视详情。\n- **Multi-Agent Subagent Waterfall（多代理子代理瀑布流）**：递归关联 `invoke_subagent` 派生与 `send_message` 回调（读取 `~/.gemini/antigravity/brain/<childId>/`），构建层级 Span 树与挂钟时间瀑布流，支持一键下钻查看子代理轨迹。\n- **Tokens, Prompt Cache & Latency Analytics（Token、缓存与耗时分析）**：双轴上下文增长与 Prompt Cache 命中率曲线、压缩边界标记、工具分类占比、Top-10 最慢调用、工作区涉及文件（支持侧边栏打开）及自动化模式洞察（重试循环、缓存跌落、耗时异常）。\n- **Session Compare（双会话对比）**：任意两个本地会话的 KPI 差异对比表与上下文增长叠加曲线。\n- **Plain-Language Guide（`白话导读`）**：一键切换 `ZH` / `EN` 通俗导读模式，将底层遥测翻译为面向初学者的轮次总结与术语卡片。\n- **Offline Export & Step Fork（离线导出与历史步骤类 Fork 交接）**：导出可离线回放的单文件交互式 HTML 报告或 Markdown 审计报告；支持从任意历史步骤触发新交接会话（`target: \"new\"`）。\n\n---\n\n## 官方零代理安全模式与数据边界\n\n- 仅读取本地会话产物：`transcript.jsonl`、`transcript_full.jsonl`、`.system_generated/steps/*/output.txt`、`.system_generated/tasks/task-*.log` 以及被动生命周期钩子（`SessionStart`、`PreInvocation`、`PostInvocation`、`PostToolUse`、`Stop` -> `hooks/telemetry-hook.mjs`）。\n- **不拦截网络流量、不启动 MITM 代理、不修改 `CLOUD_CODE_URL`**。\n- **透明数据边界说明**：\n  - `thinking` 字段展示的是 Antigravity 官方落盘的 **Thought Summary**，而非原始未过滤思维链；\n  - 内置系统提示词与底层工具 Schema 不会写入本地 transcript；\n  - 历史步骤 **Fork** 通过结构化交接开启新会话（`target: \"new\"`），不会篡改或回滚原会话历史。\n\n---\n\n## 目录结构\n\n| 路径 | 说明 |\n|---|---|\n| `hooks/telemetry-hook.mjs` | 被动生命周期钩子，记录执行耗时与工具事件台账 |\n| `server/` | MCP Server（`mcp-server.mjs`）、轨迹解析（`parser.mjs`）、双会话对比（`compare.mjs`）、HTML/Markdown 导出（`exporter.mjs`）、路径解析（`paths.mjs`）、钩子台账（`hook-ledger.mjs`） |\n| `ui/src/` & `ui/dist/app.html` | 交互式侧边面板前端源码、esbuild 构建脚本与单文件产物 |\n| `skills/trajectory/` | `/trajectory` 技能定义 |\n| `rules/AGENTS.md` | Trajectory Lens 官方安全模式与数据边界约束 |\n| `scripts/install-global.mjs` | 同步构建产物与运行时文件至全局插件目录的辅助脚本 |\n| `tests/` | 解析器与端到端 MCP 冒烟测试（`parser.test.mjs`、`mcp-smoke.test.mjs`） |\n\n---\n\n## 安装、构建与测试\n\n1. 安装依赖、构建前端并运行测试：\n   ```bash\n   npm install\n   npm run build:ui\n   npm test\n   ```\n2. 将运行时文件部署到 Antigravity 插件目录：\n   - 可将构建后的插件目录内容（`plugin.json`、`mcp_config.json`、`hooks.json`、`package.json`、`package-lock.json`、`README.md`、`LICENSE`、`assets/`、`hooks/`、`rules/`、`skills/`、`server/`、`ui/dist/`、`node_modules/`）复制至 `~/.gemini/config/plugins/trajectory-lens`（Windows 为 `%USERPROFILE%\\.gemini\\config\\plugins\\trajectory-lens`），或运行 `npm run install:global`。\n3. 在 Antigravity **Plugins Manager** 中启用 `trajectory-lens`（或重启 Antigravity），即可在侧边栏打开 **Trajectory Lens**。\n\n---\n\n## 声明与许可（Notice & License）\n\n- 本插件功能设计与交互灵感源自 **DSH 官方模型轨迹可视化功能**，**全部代码为使用 AI 面向 Google Antigravity 重新设计与重开发实现**（官方安全模式，零代理）。\n- 本项目基于 **MIT License** 开源，详见 [`LICENSE`](./LICENSE)。\n",
+          "readmeZhMarkdown": "# Trajectory Lens (`trajectory-lens`)\n\n> **声明 / Notice**：本项目为**使用 AI 辅助开发**、**基于 DSH 官方模型运行轨迹可视化功能重新设计与重开发**的 Google Antigravity 插件（官方零代理安全模式，非 DSH 或 Google 官方项目）。\n>\n> *Notice: This project is an independent AI-assisted plugin developed for Google Antigravity and re-implemented based on DSH's official model trajectory visualization features. It runs in Official Safe Mode (zero proxy) and is not an official DSH or Google product.*\n\n---\n\n## 核心特性（对标 DSH 官方轨迹功能重开发）\n\n- **Turn / Step Ledger & Timeline（轮次/步骤台账与时间线）**：以 Turn 为层级关联 `PLANNER_RESPONSE` 思考摘要、并行工具调用、`GENERIC` 返回结果、`SYSTEM_MESSAGE`、`CHECKPOINT` 压缩边界与 `ERROR_MESSAGE` 事件，支持实时自动跟随与 `1x / 5x / 20x` 回放时间轴。\n- **Execution Graph (DAG)（执行有向无环图）**：交互式 SVG DAG 视图，支持从左到右（`LR`）与从上到下（`TB`）两种布局、并行工具扇出与收敛边、按轮次/类别筛选、拖拽缩放及点击节点检视详情。\n- **Multi-Agent Subagent Waterfall（多代理子代理瀑布流）**：递归关联 `invoke_subagent` 派生与 `send_message` 回调（读取 `~/.gemini/antigravity/brain/<childId>/`），构建层级 Span 树与挂钟时间瀑布流，支持一键下钻查看子代理轨迹。\n- **Tokens, Prompt Cache & Latency Analytics（Token、缓存与耗时分析）**：双轴上下文增长与 Prompt Cache 命中率曲线、压缩边界标记、工具分类占比、Top-10 最慢调用、工作区涉及文件（支持侧边栏打开）及自动化模式洞察（重试循环、缓存跌落、耗时异常）。\n- **Session Compare（双会话对比）**：任意两个本地会话的 KPI 差异对比表与上下文增长叠加曲线。\n- **Plain-Language Guide（`白话导读`）**：一键切换 `ZH` / `EN` 通俗导读模式，将底层遥测翻译为面向初学者的轮次总结与术语卡片。\n- **Offline Export & Step Fork（离线导出与历史步骤类 Fork 交接）**：导出可离线回放的单文件交互式 HTML 报告或 Markdown 审计报告；支持从任意历史步骤触发新交接会话（`target: \"new\"`）。\n\n---\n\n## 官方零代理安全模式与数据边界\n\n- 仅读取本地会话产物：`transcript.jsonl`、`transcript_full.jsonl`、`.system_generated/steps/*/output.txt`、`.system_generated/tasks/task-*.log` 以及被动生命周期钩子（`SessionStart`、`PreInvocation`、`PostInvocation`、`PostToolUse`、`Stop` -> `hooks/telemetry-hook.mjs`）。\n- **不拦截网络流量、不启动 MITM 代理、不修改 `CLOUD_CODE_URL`**。\n- **透明数据边界说明**：\n  - `thinking` 字段展示的是 Antigravity 官方落盘的 **Thought Summary**，而非原始未过滤思维链；\n  - 内置系统提示词与底层工具 Schema 不会写入本地 transcript；\n  - 历史步骤 **Fork** 通过结构化交接开启新会话（`target: \"new\"`），不会篡改或回滚原会话历史。\n\n---\n\n## 目录结构\n\n| 路径 | 说明 |\n|---|---|\n| `hooks/telemetry-hook.mjs` | 被动生命周期钩子，记录执行耗时与工具事件台账 |\n| `server/` | MCP Server（`mcp-server.mjs`）、轨迹解析（`parser.mjs`）、双会话对比（`compare.mjs`）、HTML/Markdown 导出（`exporter.mjs`）、路径解析（`paths.mjs`）、钩子台账（`hook-ledger.mjs`） |\n| `ui/src/` & `ui/dist/app.html` | 交互式侧边面板前端源码、esbuild 构建脚本与单文件产物 |\n| `skills/trajectory/` | `/trajectory` 技能定义 |\n| `rules/AGENTS.md` | Trajectory Lens 官方安全模式与数据边界约束 |\n| `scripts/install-global.mjs` | 同步构建产物与运行时文件至全局插件目录的辅助脚本 |\n| `tests/` | 解析器与端到端 MCP 冒烟测试（`parser.test.mjs`、`mcp-smoke.test.mjs`） |\n\n---\n\n## 安装、构建与测试\n\n1. 安装依赖、构建前端并运行测试：\n   ```bash\n   npm install\n   npm run build:ui\n   npm test\n   ```\n2. 将运行时文件部署到 Antigravity 插件目录：\n   - 可将构建后的插件目录内容（`plugin.json`、`mcp_config.json`、`hooks.json`、`package.json`、`package-lock.json`、`README.md`、`LICENSE`、`assets/`、`hooks/`、`rules/`、`skills/`、`server/`、`ui/dist/`、`node_modules/`）复制至 `~/.gemini/config/plugins/trajectory-lens`（Windows 为 `%USERPROFILE%\\.gemini\\config\\plugins\\trajectory-lens`），或运行 `npm run install:global`。\n3. 在 Antigravity **Plugins Manager** 中启用 `trajectory-lens`（或重启 Antigravity），即可在侧边栏打开 **Trajectory Lens**。\n\n---\n\n## 声明与许可（Notice & License）\n\n- 本插件功能设计与交互灵感源自 **DSH 官方模型轨迹可视化功能**，**全部代码为使用 AI 面向 Google Antigravity 重新设计与重开发实现**（官方安全模式，零代理）。\n- 本项目基于 **MIT License** 开源，详见 [`LICENSE`](./LICENSE)。\n",
+          "readmeEnMarkdown": "# Trajectory Lens (`trajectory-lens`)\n\n> **Notice**: This project is an **AI-assisted plugin** developed for **Google Antigravity**, re-implemented from **DSH's official model execution trajectory visualizer features**. It runs in **Official Safe Mode (zero proxy)** and is not an official DSH or Google product.\n\n---\n\n## Core Features (Re-implemented with DSH Parity)\n\n- **Turn / Step Ledger & Timeline**: Hierarchical turn view pairing `PLANNER_RESPONSE` reasoning summaries, parallel tool calls, `GENERIC` tool outputs, `SYSTEM_MESSAGE`, `CHECKPOINT` compaction markers, and `ERROR_MESSAGE` events, with live auto-follow and `1x / 5x / 20x` replay scrubbing.\n- **Execution Graph (DAG)**: Interactive SVG directed acyclic graph supporting `LR` / `TB` layouts, parallel tool fan-out & convergence edges, category/turn filtering, pan & zoom, and click-to-inspect details.\n- **Multi-Agent Subagent Waterfall**: Recursively links `invoke_subagent` spawns and `send_message` callbacks across `~/.gemini/antigravity/brain/<childId>/` into a span tree & wall-clock waterfall with one-click drill-down.\n- **Tokens, Prompt Cache & Latency Analytics**: Dual-axis context growth & prompt-cache hit-rate charts, compaction markers, tool category mix, Top-10 slowest calls, workspace touched files, and automated pattern insights (retry loops, cache drops, latency outliers).\n- **Session Compare**: Side-by-side KPI comparison table and overlaid context curves across any two local sessions.\n- **Plain-Language Guide**: One-click `ZH` / `EN` toggle translating low-level telemetry into clear turn summaries and glossary cards.\n- **Offline Export & Step Fork**: Export standalone single-file interactive HTML replay pages or Markdown audit reports; trigger a fork-like handoff conversation (`target: \"new\"`) from any historical step.\n\n---\n\n## Official Safe Mode Data Scope\n\n- Reads only local Antigravity session artifacts (`transcript.jsonl`, `transcript_full.jsonl`, `.system_generated/steps/*/output.txt`, `.system_generated/tasks/task-*.log`) and passive lifecycle hooks (`SessionStart`, `PreInvocation`, `PostInvocation`, `PostToolUse`, `Stop` -> `hooks/telemetry-hook.mjs`).\n- Does **not** intercept network traffic, launch MITM proxies, or modify `CLOUD_CODE_URL`.\n- **Transparent boundaries**: `thinking` reflects official Thought Summaries; built-in system prompts and schemas are not persisted locally; historical step \"Fork\" spawns a new handoff conversation (`target: \"new\"`) without mutating prior session history.\n\n---\n\n## Installation, Build & Tests\n\nInstall via **AGY Market** or deploy the built runtime files to `~/.gemini/config/plugins/trajectory-lens` (Windows: `%USERPROFILE%\\.gemini\\config\\plugins\\trajectory-lens`) and enable `trajectory-lens` in **Plugins Manager**.\n\nFor development from source:\n```bash\nnpm install\nnpm run build:ui\nnpm test\n```\n\n---\n\n## Attribution & License\n\nDesigned with AI assistance and re-implemented based on DSH's official model trajectory visualization features for Google Antigravity.\n\nLicensed under the **MIT License** — see [`LICENSE`](./LICENSE).\n",
+          "iconExt": ".svg"
+        }
+      }
     }
   }
 }
