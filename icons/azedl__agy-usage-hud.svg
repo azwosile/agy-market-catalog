@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <style>
+    .bar { fill: #1A1C22; }
+    @media (prefers-color-scheme: dark) {
+      .bar { fill: #E8EAED; }
+    }
+  </style>
+  <g class="bar">
+    <rect x="14" y="74" width="19" height="40" rx="9.5"/>
+    <rect x="41" y="54" width="19" height="60" rx="9.5"/>
+    <rect x="68" y="34" width="19" height="80" rx="9.5"/>
+    <rect x="95" y="14" width="19" height="100" rx="9.5"/>
+  </g>
+</svg>

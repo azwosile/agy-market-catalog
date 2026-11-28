@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <rect width="128" height="128" rx="24" fill="#6C63FF"/>
+  <text x="64" y="48" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="18" fill="white">un</text>
+  <text x="64" y="78" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="22" fill="white">Draw</text>
+  <rect x="30" y="88" width="68" height="4" rx="2" fill="rgba(255,255,255,0.5)"/>
+  <circle cx="40" cy="100" r="4" fill="rgba(255,255,255,0.7)"/>
+  <circle cx="56" cy="100" r="4" fill="rgba(255,255,255,0.5)"/>
+  <circle cx="72" cy="100" r="4" fill="rgba(255,255,255,0.3)"/>
+</svg>

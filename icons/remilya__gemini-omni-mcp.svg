@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="Gemini Omni MCP Logo">
+  <defs>
+    <linearGradient id="omniRingGrad" x1="28" y1="28" x2="228" y2="228" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4285F4"/>
+      <stop offset="50%" stop-color="#9B72CB"/>
+      <stop offset="100%" stop-color="#D96570"/>
+    </linearGradient>
+    <linearGradient id="sparkleGrad" x1="74" y1="74" x2="182" y2="182" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="50%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Safe ~10% outer padding around main artwork (content spans x/y 26..230) -->
+  <circle cx="128" cy="128" r="96" fill="#0F172A" stroke="url(#omniRingGrad)" stroke-width="8"/>
+
+  <!-- Orbital multimodal rings -->
+  <ellipse cx="128" cy="128" rx="84" ry="34" transform="rotate(-28 128 128)" fill="none" stroke="url(#omniRingGrad)" stroke-width="5" stroke-opacity="0.85"/>
+  <ellipse cx="128" cy="128" rx="84" ry="34" transform="rotate(28 128 128)" fill="none" stroke="url(#omniRingGrad)" stroke-width="5" stroke-opacity="0.85"/>
+
+  <!-- Central 4-point Gemini sparkle -->
+  <path d="M128 66 C133 102 154 123 190 128 C154 133 133 154 128 190 C123 154 102 133 66 128 C102 123 123 102 128 66 Z" fill="url(#sparkleGrad)" stroke="#F8FAFC" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- Accent nodes representing vision, video, audio, and code -->
+  <circle cx="198" cy="90" r="8" fill="#60A5FA" stroke="#0F172A" stroke-width="3"/>
+  <circle cx="58" cy="166" r="8" fill="#F43F5E" stroke="#0F172A" stroke-width="3"/>
+  <circle cx="128" cy="128" r="7" fill="#FFFFFF"/>
+</svg>

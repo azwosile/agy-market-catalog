@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" fill="none">
+  <defs>
+    <linearGradient id="mu-ring" x1="16" y1="16" x2="112" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="55%" stop-color="#4f8cff"/>
+      <stop offset="100%" stop-color="#22c55e"/>
+    </linearGradient>
+    <linearGradient id="mu-bar" x1="36" y1="88" x2="36" y2="44" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4f8cff"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer rounded container with 10% margin (14..114) -->
+  <rect x="14" y="14" width="100" height="100" rx="24" fill="#111622" stroke="url(#mu-ring)" stroke-width="5"/>
+  <!-- Gauge arc -->
+  <path d="M34 68 A30 30 0 1 1 94 68" stroke="url(#mu-ring)" stroke-width="7" stroke-linecap="round"/>
+  <!-- Token bars -->
+  <rect x="40" y="72" width="10" height="22" rx="4" fill="url(#mu-bar)"/>
+  <rect x="59" y="60" width="10" height="34" rx="4" fill="url(#mu-bar)"/>
+  <rect x="78" y="48" width="10" height="46" rx="4" fill="#22c55e"/>
+  <!-- Live pulse dot -->
+  <circle cx="94" cy="34" r="6" fill="#22c55e"/>
+</svg>

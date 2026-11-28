@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="14" y1="14" x2="114" y2="114" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#151C2C"/>
+      <stop offset="100%" stop-color="#0D111A"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="28" y1="36" x2="100" y2="92" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+  </defs>
+  <rect x="12" y="12" width="104" height="104" rx="24" fill="url(#bgGrad)" stroke="#38BDF8" stroke-opacity="0.45" stroke-width="4"/>
+  <circle cx="30" cy="30" r="4" fill="#F87171"/>
+  <circle cx="43" cy="30" r="4" fill="#FBBF24"/>
+  <circle cx="56" cy="30" r="4" fill="#34D399"/>
+  <path d="M34 54L52 68L34 82" stroke="url(#accentGrad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="60" y1="82" x2="92" y2="82" stroke="#38BDF8" stroke-width="8" stroke-linecap="round"/>
+  <text x="94" y="34" text-anchor="end" font-family="Consolas, monospace" font-size="13" font-weight="700" fill="#94A3B8">WSL</text>
+</svg>

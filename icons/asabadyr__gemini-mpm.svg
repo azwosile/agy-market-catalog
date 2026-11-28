@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" fill="none">
+  <!-- ~12.5% safe margin: all geometry inside [32..224] x [32..224] -->
+  <defs>
+    <linearGradient id="shieldGrad" x1="40" y1="32" x2="216" y2="224" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+    <linearGradient id="coreFill" x1="64" y1="48" x2="192" y2="208" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0F172A" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#1E293B" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer high-contrast geometric shield -->
+  <path
+    d="M128 34 L212 70 V132 C212 178 176 208 128 222 C80 208 44 178 44 132 V70 L128 34 Z"
+    fill="url(#coreFill)"
+    stroke="url(#shieldGrad)"
+    stroke-width="10"
+    stroke-linejoin="round"
+  />
+
+  <!-- Inner Subtle Rim for Light/Dark Legibility -->
+  <path
+    d="M128 50 L196 80 V131 C196 168 166 193 128 206 C90 193 60 168 60 131 V80 L128 50 Z"
+    stroke="#E2E8F0"
+    stroke-opacity="0.22"
+    stroke-width="2.5"
+    stroke-linejoin="round"
+  />
+
+  <!-- Orchestration Wave Edges (Orchestrator -> Maker / Critic -> Verified Artifact) -->
+  <line x1="128" y1="84" x2="88" y2="132" stroke="#38BDF8" stroke-width="6" stroke-linecap="round"/>
+  <line x1="128" y1="84" x2="168" y2="132" stroke="#818CF8" stroke-width="6" stroke-linecap="round"/>
+  <line x1="88" y1="132" x2="128" y2="174" stroke="#10B981" stroke-width="6" stroke-linecap="round"/>
+  <line x1="168" y1="132" x2="128" y2="174" stroke="#10B981" stroke-width="6" stroke-linecap="round"/>
+  <line x1="88" y1="132" x2="168" y2="132" stroke="#94A3B8" stroke-width="4" stroke-dasharray="6 6" stroke-linecap="round"/>
+
+  <!-- Top Node: Orchestrator -->
+  <circle cx="128" cy="84" r="14" fill="#38BDF8" stroke="#FFFFFF" stroke-width="4"/>
+
+  <!-- Left Node: Maker -->
+  <circle cx="88" cy="132" r="13" fill="#6366F1" stroke="#FFFFFF" stroke-width="4"/>
+
+  <!-- Right Node: Critic -->
+  <circle cx="168" cy="132" r="13" fill="#F59E0B" stroke="#FFFFFF" stroke-width="4"/>
+
+  <!-- Bottom Node: Verified Gate Check -->
+  <circle cx="128" cy="174" r="15" fill="#10B981" stroke="#FFFFFF" stroke-width="4"/>
+  <path d="M121 174 L126 179 L136 169" stroke="#0F172A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

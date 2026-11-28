@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" fill="none">
+  <defs>
+    <linearGradient id="awRing" x1="20" y1="20" x2="108" y2="108" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#669DF6" />
+      <stop offset="55%" stop-color="#5CC6FC" />
+      <stop offset="100%" stop-color="#9B72CB" />
+    </linearGradient>
+    <linearGradient id="awCore" x1="48" y1="48" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8CE0FF" />
+      <stop offset="100%" stop-color="#3186FF" />
+    </linearGradient>
+  </defs>
+  <!-- ~10% margin: outer content stays within [14..114] -->
+  <circle cx="64" cy="64" r="46" stroke="url(#awRing)" stroke-width="5" stroke-opacity="0.92" />
+  <circle cx="64" cy="64" r="34" stroke="url(#awRing)" stroke-width="1.75" stroke-dasharray="14 8" stroke-opacity="0.72" />
+  <!-- 6 radial spokes representing StarPie sectors -->
+  <g stroke="url(#awRing)" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.88">
+    <line x1="64" y1="20" x2="64" y2="39" />
+    <line x1="102" y1="42" x2="85.6" y2="51.5" />
+    <line x1="102" y1="86" x2="85.6" y2="76.5" />
+    <line x1="64" y1="108" x2="64" y2="89" />
+    <line x1="26" y1="86" x2="42.4" y2="76.5" />
+    <line x1="26" y1="42" x2="42.4" y2="51.5" />
+  </g>
+  <!-- Sector nodes -->
+  <circle cx="64" cy="20" r="4" fill="#669DF6" />
+  <circle cx="102" cy="42" r="3.5" fill="#5CC6FC" />
+  <circle cx="102" cy="86" r="3.5" fill="#9B72CB" />
+  <circle cx="64" cy="108" r="3.5" fill="#669DF6" />
+  <circle cx="26" cy="86" r="3.5" fill="#5CC6FC" />
+  <circle cx="26" cy="42" r="3.5" fill="#9B72CB" />
+  <!-- Priority Anchor center hub -->
+  <circle cx="64" cy="64" r="15" fill="url(#awCore)" fill-opacity="0.18" stroke="url(#awCore)" stroke-width="3" />
+  <path d="M64 53V73M58 58H70M55 66C55 71 59 75 64 75C69 75 73 71 73 66" stroke="url(#awCore)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

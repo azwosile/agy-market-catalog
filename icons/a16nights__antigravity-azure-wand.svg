@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="12" y1="8" x2="116" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="55%" stop-color="#172554"/>
+      <stop offset="100%" stop-color="#0c4a6e"/>
+    </linearGradient>
+    <linearGradient id="rod" x1="28" y1="100" x2="86" y2="42" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="55%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#e0f2fe"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7dd3fc" stop-opacity="0.95"/>
+      <stop offset="55%" stop-color="#38bdf8" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect x="6" y="6" width="116" height="116" rx="28" fill="url(#bg)" stroke="#38bdf8" stroke-opacity="0.38" stroke-width="2.5"/>
+  <circle cx="84" cy="44" r="32" fill="url(#glow)"/>
+  <circle cx="84" cy="44" r="22" stroke="#7dd3fc" stroke-opacity="0.45" stroke-width="1.6" stroke-dasharray="4 4"/>
+  <path d="M29 99 L79 49" stroke="url(#rod)" stroke-width="9" stroke-linecap="round"/>
+  <path d="M29 99 L47 81" stroke="#0ea5e9" stroke-opacity="0.7" stroke-width="9" stroke-linecap="round"/>
+  <path d="M84 24 L88.2 39.8 L104 44 L88.2 48.2 L84 64 L79.8 48.2 L64 44 L79.8 39.8 Z" fill="#f0f9ff" stroke="#38bdf8" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M51 30 L53 36 L59 38 L53 40 L51 46 L49 40 L43 38 L49 36 Z" fill="#a5f3fc"/>
+  <path d="M98 70 L99.5 74.5 L104 76 L99.5 77.5 L98 82 L96.5 77.5 L92 76 L96.5 74.5 Z" fill="#c4b5fd"/>
+  <circle cx="66" cy="86" r="3" fill="#7dd3fc" opacity="0.85"/>
+  <circle cx="38" cy="56" r="2.2" fill="#e0f2fe" opacity="0.75"/>
+</svg>

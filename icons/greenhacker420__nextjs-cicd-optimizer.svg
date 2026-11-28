@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="layerTop" x1="150" y1="150" x2="352" y2="300" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101D42"/><stop offset="1" stop-color="#06112D"/>
+    </linearGradient>
+    <linearGradient id="layerMid" x1="120" y1="260" x2="382" y2="370" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#087BFF"/><stop offset="1" stop-color="#1550D8"/>
+    </linearGradient>
+    <linearGradient id="layerBottom" x1="130" y1="350" x2="390" y2="450" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#123FD0"/><stop offset="1" stop-color="#082B91"/>
+    </linearGradient>
+    <linearGradient id="motion" x1="55" y1="210" x2="180" y2="210" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#20D9FF"/><stop offset="1" stop-color="#126BFF"/>
+    </linearGradient>
+    <linearGradient id="chevron" x1="340" y1="80" x2="470" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1B42"/><stop offset=".55" stop-color="#08275A"/><stop offset="1" stop-color="#087CFF"/>
+    </linearGradient>
+    <linearGradient id="check" x1="210" y1="195" x2="315" y2="250" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#21F0E5"/><stop offset="1" stop-color="#13C9FF"/>
+    </linearGradient>
+  </defs>
+  <g stroke-linejoin="round">
+    <path d="M36 170h94l-35 22H36c-11 0-20-9-20-20s9-20 20-20h116l-35 22H36" fill="url(#motion)"/>
+    <path d="M62 112h112l-34 21H62c-9 0-16-7-16-16s7-16 16-16h145l-34 21H62" fill="url(#motion)" opacity=".92"/>
+    <path d="M80 228h92l-34 22H80c-10 0-18-8-18-18s8-18 18-18h112l-34 22H80" fill="url(#motion)" opacity=".86"/>
+    <path d="m236 52 92 0c29 0 55 12 75 32l76 78c29 30 29 78 0 108L330 420l-50-28 149-150c14-14 14-36 0-50l-76-78c-7-7-16-11-26-11h-67l-24-51Z" fill="url(#chevron)"/>
+    <path d="m256 145 105 58c14 8 14 28 0 36l-105 58c-8 4-17 4-25 0l-105-58c-14-8-14-28 0-36l105-58c8-4 17-4 25 0Z" fill="url(#layerTop)"/>
+    <path d="m126 244 105 58c8 4 17 4 25 0l105-58 39 22c14 8 14 28 0 36l-131 73c-8 4-17 4-25 0l-131-73c-14-8-14-28 0-36l13-7Z" fill="url(#layerMid)"/>
+    <path d="m113 323 118 65c8 4 17 4 25 0l118-65 26 15c14 8 14 28 0 36l-144 80c-8 4-17 4-25 0l-144-80c-14-8-14-28 0-36l26-15Z" fill="url(#layerBottom)"/>
+    <path d="m211 205 44 33 73-44" stroke="url(#check)" stroke-width="23" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

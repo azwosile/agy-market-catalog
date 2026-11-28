@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" fill="none">
+  <rect x="14" y="14" width="100" height="100" rx="24" fill="#0F172A" stroke="#38BDF8" stroke-width="4"/>
+  <!-- Antigravity bubble (left-top) -->
+  <path d="M28 42C28 36.4772 32.4772 32 38 32H68C73.5228 32 78 36.4772 78 42V56C78 61.5228 73.5228 66 68 66H44L33 74V66C30.2386 66 28 63.7614 28 61V42Z" fill="#2563EB"/>
+  <circle cx="44" cy="49" r="3.5" fill="#FFFFFF"/>
+  <circle cx="53" cy="49" r="3.5" fill="#FFFFFF"/>
+  <circle cx="62" cy="49" r="3.5" fill="#FFFFFF"/>
+  <!-- Codex bubble (right-bottom) -->
+  <path d="M100 66C100 60.4772 95.5228 56 90 56H60C54.4772 56 50 60.4772 50 66V80C50 85.5228 54.4772 90 60 90H84L95 98V90C97.7614 90 100 87.7614 100 85V66Z" fill="#10B981"/>
+  <path d="M65 69L71 73L65 77" stroke="#06281E" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="75" y1="77" x2="85" y2="77" stroke="#06281E" stroke-width="3.5" stroke-linecap="round"/>
+</svg>

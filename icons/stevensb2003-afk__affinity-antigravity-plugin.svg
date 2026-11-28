@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="affGrad" x1="16" y1="16" x2="112" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#35E8C6"/>
+      <stop offset="50%" stop-color="#14B8A6"/>
+      <stop offset="100%" stop-color="#0EA5E9"/>
+    </linearGradient>
+  </defs>
+  <rect x="14" y="14" width="100" height="100" rx="24" fill="#0F172A" stroke="url(#affGrad)" stroke-width="4"/>
+  <path d="M64 30 L94 88 H76 L69 74 H49 L57 58 H62 L56 46 L38 88 H34 Z" fill="url(#affGrad)"/>
+  <polygon points="64,30 94,88 76,88 55,47" fill="#5EEAD4" opacity="0.85"/>
+  <polygon points="34,88 56,45 64,61 50,88" fill="#38BDF8" opacity="0.9"/>
+</svg>

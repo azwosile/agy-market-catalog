@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Antigravity 界面汉化">
+  <rect x="13" y="13" width="102" height="102" rx="24" fill="#1E293B" stroke="#60A5FA" stroke-width="4" />
+  <rect x="22" y="22" width="84" height="84" rx="16" fill="#0F172A" />
+  <text x="45" y="64" text-anchor="middle" dominant-baseline="central" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="36" font-weight="700" fill="#F8FAFC">中</text>
+  <line x1="69" y1="38" x2="57" y2="90" stroke="#60A5FA" stroke-width="4" stroke-linecap="round" />
+  <text x="84" y="72" text-anchor="middle" dominant-baseline="central" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="34" font-weight="700" fill="#93C5FD">A</text>
+</svg>

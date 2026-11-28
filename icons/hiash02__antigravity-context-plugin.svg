@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" fill="none">
+  <!-- Background gauge track (~10% margin inside 128x128) -->
+  <circle cx="64" cy="64" r="46" stroke="#64748B" stroke-opacity="0.28" stroke-width="11" />
+  <!-- Active context usage arc (~68% of circumference: 2 * pi * 46 ≈ 289.03) -->
+  <circle
+    cx="64"
+    cy="64"
+    r="46"
+    stroke="#0EA5E9"
+    stroke-width="11"
+    stroke-linecap="round"
+    stroke-dasharray="196 290"
+    transform="rotate(-90 64 64)"
+  />
+  <!-- Cached segment accent -->
+  <circle
+    cx="64"
+    cy="64"
+    r="46"
+    stroke="#10B981"
+    stroke-width="11"
+    stroke-linecap="round"
+    stroke-dasharray="128 290"
+    transform="rotate(-90 64 64)"
+  />
+  <!-- Inner dial ring -->
+  <circle cx="64" cy="64" r="27" stroke="#64748B" stroke-opacity="0.35" stroke-width="2" />
+  <!-- Gauge needle pointing toward active level -->
+  <path d="M64 64 L81 47" stroke="#0EA5E9" stroke-width="4.5" stroke-linecap="round" />
+  <circle cx="64" cy="64" r="5.5" fill="#0EA5E9" />
+  <!-- Bottom tick marks -->
+  <rect x="46" y="84" width="36" height="4" rx="2" fill="#64748B" fill-opacity="0.65" />
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" fill="none">
+  <defs>
+    <linearGradient id="sa-ring" x1="16" y1="12" x2="112" y2="116" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="52%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+    <linearGradient id="sa-core" x1="36" y1="32" x2="92" y2="96" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer hexagonal shield -->
+  <path d="M64 8L112 34V84C112 102 91 115 64 121C37 115 16 102 16 84V34L64 8Z"
+        fill="#0F172A" fill-opacity="0.92" stroke="url(#sa-ring)" stroke-width="5" stroke-linejoin="round"/>
+  <!-- Inner orbital arcs -->
+  <circle cx="64" cy="62" r="30" stroke="url(#sa-ring)" stroke-width="3" stroke-dasharray="10 6" opacity="0.85"/>
+  <!-- Satellite nodes (Router -> Subagents) -->
+  <circle cx="64" cy="32" r="5" fill="#38BDF8"/>
+  <circle cx="90" cy="77" r="5" fill="#A855F7"/>
+  <circle cx="38" cy="77" r="5" fill="#22D3EE"/>
+  <!-- Connecting spokes -->
+  <path d="M64 37V52M85.5 74.5L73 67M42.5 74.5L55 67" stroke="#E2E8F0" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+  <!-- Central Chief Router diamond -->
+  <path d="M64 46L78 62L64 78L50 62L64 46Z" fill="url(#sa-core)" stroke="#F8FAFC" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="64" cy="62" r="4.5" fill="#FFFFFF"/>
+</svg>

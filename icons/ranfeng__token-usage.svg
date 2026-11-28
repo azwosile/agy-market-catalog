@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <defs>
+    <linearGradient id="in-blue" x1="14" y1="14" x2="64" y2="114" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="out-green" x1="76" y1="14" x2="114" y2="96" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="cache-amber" x1="46" y1="108" x2="102" y2="102" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Subtle Track Ring -->
+  <circle cx="64" cy="64" r="50" stroke="rgba(148,163,184,0.22)" stroke-width="11"/>
+
+  <!-- Tri-color Token Gauge Arcs (Input Blue, Output Green, Cache Amber) -->
+  <path d="M 59.6 14.2 A 50 50 0 0 0 35.3 105.0" stroke="url(#in-blue)" stroke-width="11" stroke-linecap="round"/>
+  <path d="M 81.1 17.0 A 50 50 0 0 1 107.3 89.0" stroke="url(#out-green)" stroke-width="11" stroke-linecap="round"/>
+  <path d="M 97.5 101.2 A 50 50 0 0 1 50.2 112.1" stroke="url(#cache-amber)" stroke-width="11" stroke-linecap="round"/>
+
+  <!-- Center Geometric Token Hexagon -->
+  <polygon points="64,32 91.7,48 91.7,80 64,96 36.3,80 36.3,48" fill="rgba(15,23,42,0.08)" stroke="rgba(100,116,139,0.42)" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- Inner Tri-color Token Telemetry Bars -->
+  <rect x="48" y="61" width="7.5" height="19" rx="3.75" fill="#2563EB"/>
+  <rect x="60.25" y="48" width="7.5" height="32" rx="3.75" fill="#059669"/>
+  <rect x="72.5" y="56" width="7.5" height="24" rx="3.75" fill="#D97706"/>
+</svg>

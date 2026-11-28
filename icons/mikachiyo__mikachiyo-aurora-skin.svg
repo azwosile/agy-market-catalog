@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#070d24"/>
+      <stop offset="58%" stop-color="#0c1538"/>
+      <stop offset="100%" stop-color="#192056"/>
+    </linearGradient>
+    <linearGradient id="aurora" x1="0" y1="1" x2="1" y2="0.2">
+      <stop offset="0%" stop-color="#c4cef6" stop-opacity="0.72"/>
+      <stop offset="38%" stop-color="#7333ff" stop-opacity="0.78"/>
+      <stop offset="72%" stop-color="#1ea8ff" stop-opacity="0.62"/>
+      <stop offset="100%" stop-color="#0b28c4" stop-opacity="0.1"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b93a8" stop-opacity="0.46"/>
+      <stop offset="100%" stop-color="#43495c" stop-opacity="0.34"/>
+    </linearGradient>
+  </defs>
+  <rect x="24" y="24" width="208" height="208" rx="46" fill="url(#sky)"/>
+  <path d="M24 176 C68 128, 118 158, 162 114 C190 88, 212 96, 232 82 L232 186 C232 211 211 232 186 232 L70 232 C45 232 24 211 24 186 Z" fill="url(#aurora)"/>
+  <rect x="48" y="64" width="60" height="128" rx="16" fill="#080e24" fill-opacity="0.68" stroke="#c8d8ff" stroke-opacity="0.18" stroke-width="2"/>
+  <rect x="58" y="80" width="40" height="18" rx="7" fill="url(#glass)" stroke="#e2e8f0" stroke-opacity="0.24" stroke-width="1.5"/>
+  <rect x="122" y="138" width="86" height="54" rx="16" fill="url(#glass)" stroke="#e2e8f0" stroke-opacity="0.26" stroke-width="1.5"/>
+  <circle cx="152" cy="76" r="4.5" fill="#e8f0ff"/>
+  <circle cx="188" cy="94" r="3" fill="#93c5fd"/>
+  <circle cx="174" cy="60" r="2.2" fill="#c4b5fd"/>
+</svg>

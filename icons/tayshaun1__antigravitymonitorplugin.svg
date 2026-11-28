@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" fill="none">
+  <defs>
+    <linearGradient id="gaugeGrad" x1="16" y1="88" x2="112" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="pulseGrad" x1="36" y1="64" x2="92" y2="96" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer gauge track -->
+  <path d="M 22 86 A 46 46 0 1 1 106 86" stroke="#64748b" stroke-opacity="0.32" stroke-width="10" stroke-linecap="round"/>
+  <!-- Active gauge arc -->
+  <path d="M 22 86 A 46 46 0 0 1 94 34" stroke="url(#gaugeGrad)" stroke-width="10" stroke-linecap="round"/>
+  <!-- Center throughput pulse waveform -->
+  <path d="M 34 78 L 49 78 L 57 54 L 69 92 L 78 68 L 85 78 L 96 78" stroke="url(#pulseGrad)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Indicator dot -->
+  <circle cx="94" cy="34" r="5.5" fill="#818cf8"/>
+</svg>

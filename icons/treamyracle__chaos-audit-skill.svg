@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="logo-title">
+  <title id="logo-title">chaos-audit mark</title>
+  <rect x="16" y="16" width="224" height="224" rx="40" fill="#14161A" stroke="#CFC8BA" stroke-width="4"/>
+  <!-- Symmetrical 1:2 architectural shear along fault plane x + 0.5*y = 192 -->
+  <!-- Upper track (left normal, right sheared +8px down) -->
+  <path fill="#F6F4EF" d="M 48 76 H 132 L 116 108 H 48 Z"/>
+  <path fill="#F6F4EF" d="M 172 84 H 208 V 116 H 156 Z"/>
+  <!-- Lower track (180-deg rotational twin: left sheared -8px up, right normal) -->
+  <path fill="#F6F4EF" d="M 48 140 H 100 L 84 172 H 48 Z"/>
+  <path fill="#F6F4EF" d="M 140 148 H 208 V 180 H 124 Z"/>
+  <!-- Vermilion 1:2 fault shear plane passing symmetrically through center (128,128) -->
+  <path fill="#C83E2B" d="M 154 56 H 174 L 102 200 H 82 Z"/>
+</svg>

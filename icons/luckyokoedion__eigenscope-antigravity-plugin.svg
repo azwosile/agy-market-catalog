@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="EigenScope Semantic Firewall">
+  <defs>
+    <linearGradient id="esShieldGrad" x1="16" y1="12" x2="112" y2="116" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0D9488" />
+      <stop offset="100%" stop-color="#0F766E" />
+    </linearGradient>
+    <linearGradient id="esCoreGrad" x1="40" y1="36" x2="88" y2="92" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#CCFBF1" />
+      <stop offset="100%" stop-color="#5EEAD4" />
+    </linearGradient>
+  </defs>
+  <!-- ~10% transparent safe margin around shield silhouette -->
+  <path
+    d="M64 13L20 30v31c0 28.4 18.8 49.4 44 55 25.2-5.6 44-26.6 44-55V30L64 13z"
+    fill="#0F172A"
+    stroke="url(#esShieldGrad)"
+    stroke-width="6"
+    stroke-linejoin="round"
+  />
+  <!-- Orthogonal channel separation axes -->
+  <path
+    d="M64 31v64M35 61h58"
+    stroke="#2DD4BF"
+    stroke-width="4"
+    stroke-linecap="round"
+    opacity="0.7"
+  />
+  <!-- Protected task core prism -->
+  <path
+    d="M64 37L85 61L64 85L43 61Z"
+    fill="none"
+    stroke="url(#esCoreGrad)"
+    stroke-width="6"
+    stroke-linejoin="round"
+  />
+  <circle cx="64" cy="61" r="7.5" fill="#F8FAFC" />
+</svg>

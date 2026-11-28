@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" fill="none">
+  <!-- 12.5% safe margin around 32..224 -->
+  <rect x="32" y="32" width="192" height="192" rx="40" fill="#0F172A" stroke="#38BDF8" stroke-width="8"/>
+  <!-- Browser bar dots -->
+  <circle cx="64" cy="64" r="6" fill="#38BDF8"/>
+  <circle cx="84" cy="64" r="6" fill="#94A3B8"/>
+  <line x1="40" y1="86" x2="216" y2="86" stroke="#334155" stroke-width="6"/>
+  <!-- Globe / URL arc on left -->
+  <circle cx="92" cy="148" r="30" stroke="#38BDF8" stroke-width="7"/>
+  <ellipse cx="92" cy="148" rx="13" ry="30" stroke="#38BDF8" stroke-width="5"/>
+  <line x1="62" y1="148" x2="122" y2="148" stroke="#38BDF8" stroke-width="5"/>
+  <!-- Arrow to Markdown Skill badge on right -->
+  <path d="M132 148H154M154 148L144 138M154 148L144 158" stroke="#F8FAFC" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- SKILL.md card -->
+  <rect x="164" y="114" width="40" height="68" rx="8" fill="#38BDF8"/>
+  <line x1="173" y1="132" x2="195" y2="132" stroke="#0F172A" stroke-width="6" stroke-linecap="round"/>
+  <line x1="173" y1="148" x2="195" y2="148" stroke="#0F172A" stroke-width="6" stroke-linecap="round"/>
+  <path d="M174 165L181 172L195 158" stroke="#0F172A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

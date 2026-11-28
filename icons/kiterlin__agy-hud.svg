@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="AGY HUD Logo">
+  <defs>
+    <linearGradient id="agyBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#24273A"/>
+      <stop offset="100%" stop-color="#1E2030"/>
+    </linearGradient>
+    <linearGradient id="agyBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8839EF"/>
+      <stop offset="100%" stop-color="#209FB5"/>
+    </linearGradient>
+  </defs>
+  <!-- ~10% outer padding inside 128x128 square for clean frame crop -->
+  <rect x="14" y="14" width="100" height="100" rx="22" fill="url(#agyBg)" stroke="url(#agyBorder)" stroke-width="3.5"/>
+  <!-- Top HUD bar: model pill + status dot -->
+  <rect x="26" y="30" width="46" height="12" rx="6" fill="#C6A0F6"/>
+  <circle cx="84" cy="36" r="5" fill="#7DC4E4"/>
+  <circle cx="97" cy="36" r="5" fill="#A6DA95"/>
+  <!-- Context progress bar (green) -->
+  <rect x="26" y="54" width="76" height="10" rx="5" fill="#363A4F"/>
+  <rect x="26" y="54" width="42" height="10" rx="5" fill="#A6DA95"/>
+  <!-- Quota progress bar (sapphire) -->
+  <rect x="26" y="72" width="76" height="10" rx="5" fill="#363A4F"/>
+  <rect x="26" y="72" width="60" height="10" rx="5" fill="#7DC4E4"/>
+  <!-- Activity strip (running + completed checks) -->
+  <circle cx="31" cy="95" r="4.5" fill="#EED49F"/>
+  <rect x="41" y="92" width="24" height="6" rx="3" fill="#CAD3F5" opacity="0.85"/>
+  <circle cx="74" cy="95" r="4.5" fill="#A6DA95"/>
+  <rect x="84" y="92" width="18" height="6" rx="3" fill="#A5ADCB" opacity="0.75"/>
+</svg>

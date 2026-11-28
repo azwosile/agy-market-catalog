@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none">
+  <defs>
+    <linearGradient id="onyxBg" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E222D"/>
+      <stop offset="55%" stop-color="#13161E"/>
+      <stop offset="100%" stop-color="#0B0D12"/>
+    </linearGradient>
+    <radialGradient id="topGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(92 30) rotate(130) scale(76)">
+      <stop offset="0%" stop-color="#4C8DFF" stop-opacity="0.34"/>
+      <stop offset="65%" stop-color="#2F71E3" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#2F71E3" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="glassRim" x1="64" y1="12" x2="64" y2="116" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.28"/>
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.03"/>
+    </linearGradient>
+    <linearGradient id="backTile" x1="30" y1="28" x2="72" y2="74" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+    <linearGradient id="frontTile" x1="52" y1="50" x2="98" y2="98" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#252C3E"/>
+      <stop offset="100%" stop-color="#141926"/>
+    </linearGradient>
+    <linearGradient id="accentPill" x1="57" y1="59" x2="91" y2="59" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#78B6FF"/>
+    </linearGradient>
+    <filter id="cardShadow" x="44" y="44" width="62" height="62" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#05070B" flood-opacity="0.58"/>
+    </filter>
+  </defs>
+
+  <!-- Outer Onyx glass container -->
+  <rect x="12" y="12" width="104" height="104" rx="26" fill="url(#onyxBg)"/>
+  <rect x="12" y="12" width="104" height="104" rx="26" fill="url(#topGlow)"/>
+  <rect x="12" y="12" width="104" height="104" rx="26" stroke="#0F172A" stroke-opacity="0.22" stroke-width="1"/>
+  <rect x="12.75" y="12.75" width="102.5" height="102.5" rx="25.25" stroke="url(#glassRim)" stroke-width="1.5"/>
+
+  <!-- Source English tile ("A") -->
+  <rect x="30" y="29" width="44" height="44" rx="11" fill="url(#backTile)"/>
+  <path d="M44 60L52 40L60 60M46.6 54H57.4" stroke="#1E293B" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Subtle transfer indicator dot -->
+  <path d="M80 37C86.5 37 91 41.5 91 48" stroke="#60A5FA" stroke-opacity="0.55" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="80" cy="37" r="2" fill="#93C5FD" fill-opacity="0.85"/>
+
+  <!-- Elevated Simplified Chinese glass tile ("文") -->
+  <g filter="url(#cardShadow)">
+    <rect x="52" y="51" width="46" height="46" rx="12" fill="url(#frontTile)"/>
+    <rect x="52.6" y="51.6" width="44.8" height="44.8" rx="11.4" stroke="#FFFFFF" stroke-opacity="0.24" stroke-width="1.2"/>
+    <rect x="59" y="57.5" width="32" height="5.5" rx="2.75" fill="url(#accentPill)"/>
+    <!-- Crisp geometric "文" glyph -->
+    <path d="M75 66.5V69" stroke="#F8FAFC" stroke-width="3.4" stroke-linecap="round"/>
+    <path d="M62.5 70.5H87.5" stroke="#F8FAFC" stroke-width="3.2" stroke-linecap="round"/>
+    <path d="M81.5 70.5C79.5 78.2 73 84.5 63.5 88.2" stroke="#F8FAFC" stroke-width="3.2" stroke-linecap="round"/>
+    <path d="M68.5 70.5C71.5 77.8 77.5 84.2 86.5 88.2" stroke="#93C5FD" stroke-width="3.2" stroke-linecap="round"/>
+  </g>
+</svg>

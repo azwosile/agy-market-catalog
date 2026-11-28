@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" fill="none">
+  <defs>
+    <!-- Signature diagonal light spectrum: Solar Amber -> Warm White -> Electric Blue -->
+    <linearGradient id="rtlAmber" x1="16" y1="14" x2="112" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF5A00"/>
+      <stop offset="56%" stop-color="#FFA93A"/>
+      <stop offset="100%" stop-color="#FFF2E2"/>
+    </linearGradient>
+
+    <linearGradient id="ltrBlue" x1="16" y1="72" x2="112" y2="114" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#EBF7FF"/>
+      <stop offset="44%" stop-color="#58BFFF"/>
+      <stop offset="100%" stop-color="#1769FF"/>
+    </linearGradient>
+  </defs>
+
+  <!--
+    Pure transparent-canvas vector logomark (zero background box / zero outer tile).
+    Top RTL ribbon spans [13, 115] x [14, 56]; bottom LTR ribbon spans [13, 115] x [72, 114]
+    with a crisp 16px center negative-space gap and 180-degree rotational symmetry.
+  -->
+
+  <!-- Top: Right-to-Left (RTL) Ribbon -->
+  <path fill="url(#rtlAmber)" d="
+    M 15.5 31
+    L 34 15.5
+    Q 37.5 12.5 41 16
+    L 42.5 17.5
+    Q 45.5 21 42 24
+    L 36.5 28.5
+    H 108.5
+    A 6.5 6.5 0 0 1 108.5 41.5
+    H 36.5
+    L 42 46
+    Q 45.5 49 42.5 52.5
+    L 41 54
+    Q 37.5 57.5 34 54.5
+    L 15.5 39
+    Q 10.5 35 15.5 31
+    Z"/>
+
+  <!-- Bottom: Left-to-Right (LTR) Ribbon -->
+  <path fill="url(#ltrBlue)" d="
+    M 112.5 97
+    L 94 112.5
+    Q 90.5 115.5 87 112
+    L 85.5 110.5
+    Q 82.5 107 86 104
+    L 91.5 99.5
+    H 19.5
+    A 6.5 6.5 0 0 1 19.5 86.5
+    H 91.5
+    L 86 82
+    Q 82.5 79 85.5 75.5
+    L 87 74
+    Q 90.5 70.5 94 73.5
+    L 112.5 89
+    Q 117.5 93 112.5 97
+    Z"/>
+</svg>

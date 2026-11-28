@@ -1,0 +1,1801 @@
+{
+  "schemaVersion": 1,
+  "track": "verified",
+  "generatedAt": "2026-11-28T10:25:01.456Z",
+  "catalogVersion": "2026.1128.1",
+  "plugins": [
+    {
+      "id": "a16nights__antigravity-azure-compass",
+      "canonicalName": "agent-presets",
+      "scopedName": "a16nights--agent-presets",
+      "forceScopedInstall": false,
+      "displayName": "苍蓝罗盘——Agent 预设与上下文监控",
+      "description": {
+        "zh": "苍蓝罗盘：Agent 工作模式预设中心、全局 AGENTS.md 无损热同步编辑器与上下文水位监测插件，支持自动 /compact 压缩联动、外接模型防掉线强化与苍蓝侧栏总控。",
+        "en": "Azure Compass: Agent preset hub, live global AGENTS.md editor with snapshot rollback, and context-window monitor with auto /compact dispatch and external model anti-drift guards."
+      },
+      "version": "1.4.8",
+      "gitTag": "v1.4.8",
+      "commitSha": "adebf7301b94376bd78d777b94dc4ea59cc27f6c",
+      "repository": {
+        "url": "https://github.com/A16Nights/antigravity-azure-compass",
+        "repositoryId": 1464883304,
+        "ownerId": 104626775,
+        "stars": 1,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/A16Nights/antigravity-azure-compass/archive/adebf7301b94376bd78d777b94dc4ea59cc27f6c.tar.gz",
+        "sha256": "bd172371e069be2e497809b1859490a9c982e549e23bb8cf8ea4d01a4dbfd718",
+        "sizeBytes": 304555,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/a16nights__antigravity-azure-compass.svg",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "agents-reasoning"
+        ],
+        "tags": [
+          "usage-monitor",
+          "monitor",
+          "compact",
+          "cloud",
+          "sidebar"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "sidecar-ui",
+          "mcp-stdio",
+          "lifecycle-hooks"
+        ],
+        "rulesEstimatedTokens": 0,
+        "mcpServers": [
+          "agent-presets_agent-presets-nav"
+        ],
+        "mcpRemoteDomains": [],
+        "hookEvents": [
+          "PreInvocation",
+          "PreToolUse",
+          "SessionStart",
+          "Stop"
+        ],
+        "hostEnhancementKind": []
+      },
+      "updatedAt": "2026-11-27T20:55:44Z",
+      "ranking": {
+        "score": 84.11,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.1474,
+          "freshness": 0.9939,
+          "completeness": 0.9024,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 1
+        },
+        "archived": false,
+        "stale": false
+      }
+    },
+    {
+      "id": "a16nights__antigravity-azure-corridor",
+      "canonicalName": "azure-corridor",
+      "scopedName": "a16nights--azure-corridor",
+      "forceScopedInstall": false,
+      "displayName": "苍蓝回廊——会话与工作区管理",
+      "description": {
+        "zh": "苍蓝回廊：100% 直连 Antigravity 2.35+ 官方 ConversationService 与工作区配置，支持 FTS5 正文全文搜索、官方分组/标签/归档双向同步与跨工作区转移续聊。",
+        "en": "Azure Corridor: 100% native Antigravity 2.35+ ConversationService and workspace manager with FTS5 full-text search, two-way groups/tags/archive sync, and cross-workspace session transfer."
+      },
+      "version": "1.2.3",
+      "gitTag": "v1.2.3",
+      "commitSha": "7c10fadfaf83fcc6273db3c4489e746f6b4e6c3c",
+      "repository": {
+        "url": "https://github.com/A16Nights/antigravity-azure-corridor",
+        "repositoryId": 1464978800,
+        "ownerId": 104626775,
+        "stars": 1,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/A16Nights/antigravity-azure-corridor/archive/7c10fadfaf83fcc6273db3c4489e746f6b4e6c3c.tar.gz",
+        "sha256": "eda60c222db99905d54dbc0503464caf787d48a9bd19165e2e1093a7ebe426d7",
+        "sizeBytes": 339771,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/a16nights__antigravity-azure-corridor.svg",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "productivity"
+        ],
+        "tags": [
+          "cloud",
+          "code",
+          "sidebar",
+          "mcp"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "sidecar-ui",
+          "mcp-stdio"
+        ],
+        "rulesEstimatedTokens": 0,
+        "mcpServers": [
+          "azure-corridor_azure-corridor-nav"
+        ],
+        "mcpRemoteDomains": [],
+        "hookEvents": [],
+        "hostEnhancementKind": []
+      },
+      "status": "TAG_MUTATION_BLOCKED",
+      "updatedAt": "2026-11-27T18:50:35Z",
+      "ranking": {
+        "score": 0,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.1474,
+          "freshness": 0.993,
+          "completeness": 0.9024,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 0,
+          "effectiveStars": 1
+        },
+        "archived": false,
+        "stale": false,
+        "status": "TAG_MUTATION_BLOCKED"
+      }
+    },
+    {
+      "id": "a16nights__antigravity-azure-orbit",
+      "canonicalName": "azure-orbit",
+      "scopedName": "a16nights--azure-orbit",
+      "forceScopedInstall": false,
+      "displayName": "苍蓝星轨",
+      "description": {
+        "zh": "苍蓝星轨：将外部大模型 API（DeepSeek / OpenAI / Anthropic / OpenRouter / Ollama 等）直接挂载进 Antigravity 左下角原生模型下拉菜单作为主脑使用，支持热读取与 2.35+ 补丁管理。",
+        "en": "Azure Orbit: mount external LLM APIs (DeepSeek, OpenAI, Anthropic, OpenRouter, Ollama) directly into Antigravity native model selector with hot-reload and 2.32+ to 2.35+ patch tools."
+      },
+      "version": "1.1.8",
+      "gitTag": "v1.1.8",
+      "commitSha": "d8666d92b6f1293084558723b297497fdf279f68",
+      "repository": {
+        "url": "https://github.com/A16Nights/antigravity-azure-orbit",
+        "repositoryId": 1464817805,
+        "ownerId": 104626775,
+        "stars": 1,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/A16Nights/antigravity-azure-orbit/releases/download/v1.1.8/antigravity-azure-orbit.tar.gz",
+        "sha256": "d93db3aba345399e24d253891a9d27ca1e37fa566ff4147a8f2657f5524597b4",
+        "sizeBytes": 5198641,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/a16nights__antigravity-azure-orbit.svg",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "mcp-integrations",
+          "agents-reasoning"
+        ],
+        "tags": [
+          "custom-models",
+          "deepseek",
+          "openai",
+          "anthropic",
+          "ollama",
+          "model-selector",
+          "azure-suite"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "global-rules",
+          "sidecar-ui",
+          "mcp-stdio",
+          "host-enhancement"
+        ],
+        "rulesEstimatedTokens": 196,
+        "mcpServers": [
+          "azure-orbit_azure-orbit"
+        ],
+        "mcpRemoteDomains": [],
+        "hookEvents": [],
+        "hostEnhancementKind": [
+          "app-asar",
+          "cdp"
+        ]
+      },
+      "updatedAt": "2026-11-25T21:38:31Z",
+      "ranking": {
+        "score": 86.1,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.1474,
+          "freshness": 0.9732,
+          "completeness": 1,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 1
+        },
+        "archived": false,
+        "stale": false
+      }
+    },
+    {
+      "id": "a16nights__antigravity-azure-prism",
+      "canonicalName": "azure-prism",
+      "scopedName": "a16nights--azure-prism",
+      "forceScopedInstall": false,
+      "displayName": "苍蓝棱镜——思维链观测与实时翻译",
+      "description": {
+        "zh": "苍蓝棱镜：原生 MCP App 思维链实时观测与多通道中文翻译面板，支持原生标题与无限历史分页、引用思考到下条消息上下文，以及免密钥零 Token 机翻或外部模型译文。",
+        "en": "Azure Prism: native MCP App Chain-of-Thought viewer with native session titles, infinite history pagination, quote-to-chat interactions, and keyless zero-token or external LLM translation."
+      },
+      "version": "1.3.3",
+      "gitTag": "v1.3.3",
+      "commitSha": "b77a445940eb78eef4f71f1adf5fb140612d28ca",
+      "repository": {
+        "url": "https://github.com/A16Nights/antigravity-azure-prism",
+        "repositoryId": 1467127418,
+        "ownerId": 104626775,
+        "stars": 1,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/A16Nights/antigravity-azure-prism/archive/b77a445940eb78eef4f71f1adf5fb140612d28ca.tar.gz",
+        "sha256": "c3ef2826e0850e756829fec0f52605d28dffca98f6d2272c152af3c525190444",
+        "sizeBytes": 77583,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/a16nights__antigravity-azure-prism.svg",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "monitoring-quota"
+        ],
+        "tags": [
+          "reasoning",
+          "subagent",
+          "cloud",
+          "connector",
+          "mcp"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "mcp-stdio"
+        ],
+        "rulesEstimatedTokens": 0,
+        "mcpServers": [
+          "azure-prism_azure-prism"
+        ],
+        "mcpRemoteDomains": [],
+        "hookEvents": [],
+        "hostEnhancementKind": []
+      },
+      "updatedAt": "2026-11-27T19:16:38Z",
+      "ranking": {
+        "score": 84.1,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.1474,
+          "freshness": 0.9932,
+          "completeness": 0.9024,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 1
+        },
+        "archived": false,
+        "stale": false
+      }
+    },
+    {
+      "id": "a16nights__antigravity-azure-wand",
+      "canonicalName": "azure-wand",
+      "scopedName": "a16nights--azure-wand",
+      "forceScopedInstall": false,
+      "displayName": "苍蓝魔杖——Windows 桌面与网页操控",
+      "description": {
+        "zh": "苍蓝魔杖：Windows 低打扰可视化桌面与网页操控插件，内置 26 项 UIA / OCR / 后台网页 CDP 工具、15 状态独立输入动态 AI 光标、苍蓝玻璃思考浮窗与快捷键急停。",
+        "en": "Azure Wand: low-intrusion Windows desktop and web automation plugin with 26 UIA/OCR/CDP tools, a 15-state non-intrusive dynamic AI cursor, glass thought HUDs, and instant hotkeys."
+      },
+      "version": "1.3.3",
+      "gitTag": "v1.3.3",
+      "commitSha": "52014f622f36c977cc7bb3fed7294e1b203da8cd",
+      "repository": {
+        "url": "https://github.com/A16Nights/antigravity-azure-wand",
+        "repositoryId": 1471061740,
+        "ownerId": 104626775,
+        "stars": 2,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/A16Nights/antigravity-azure-wand/archive/52014f622f36c977cc7bb3fed7294e1b203da8cd.tar.gz",
+        "sha256": "b374e4b4b9d6d95e652b3166432ab57a1f0de9a8ba3337e80bba02ff6b70d055",
+        "sizeBytes": 9016519,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/a16nights__antigravity-azure-wand.svg",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "mcp-integrations",
+          "automation"
+        ],
+        "tags": [
+          "windows",
+          "uia",
+          "ocr",
+          "cdp",
+          "desktop-automation",
+          "cursor",
+          "azure-suite"
+        ],
+        "platforms": [
+          "win32"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "global-rules",
+          "sidecar-ui",
+          "mcp-stdio",
+          "host-enhancement"
+        ],
+        "rulesEstimatedTokens": 304,
+        "mcpServers": [
+          "azure-wand_azure-wand",
+          "azure-wand_azure-wand-independent",
+          "azure-wand_azure-wand-nav"
+        ],
+        "mcpRemoteDomains": [],
+        "hookEvents": [],
+        "hostEnhancementKind": [
+          "cdp"
+        ]
+      },
+      "updatedAt": "2026-11-27T19:16:44Z",
+      "ranking": {
+        "score": 85.45,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.2015,
+          "freshness": 0.9932,
+          "completeness": 0.9024,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 2
+        },
+        "archived": false,
+        "stale": false
+      }
+    },
+    {
+      "id": "a16nights__antigravity-external-orchestrator",
+      "canonicalName": "external-orchestrator",
+      "scopedName": "a16nights--external-orchestrator",
+      "forceScopedInstall": false,
+      "displayName": "苍蓝协奏台——外部模型调度与省流",
+      "description": {
+        "zh": "苍蓝协奏台：零依赖多渠道外部大模型协同调度插件，自动委派 DeepSeek / OpenAI / Anthropic / 本地网关等模型执行文件读写与终端任务，支持自定义角色、容灾链与断路器。",
+        "en": "External Orchestrator: zero-dependency multi-provider LLM task router for Antigravity with custom worker profiles, fallback chains, circuit breakers, and a live sidecar console."
+      },
+      "version": "1.4.7",
+      "gitTag": "v1.4.7",
+      "commitSha": "d395c143716a316c58b4e388897cb6215a037336",
+      "repository": {
+        "url": "https://github.com/A16Nights/antigravity-external-orchestrator",
+        "repositoryId": 1464757548,
+        "ownerId": 104626775,
+        "stars": 1,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/A16Nights/antigravity-external-orchestrator/archive/d395c143716a316c58b4e388897cb6215a037336.tar.gz",
+        "sha256": "3cef3a70a2f8a2059c97f148b72dd716ae0fa4dec799179cb84745f29a325830",
+        "sizeBytes": 651810,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/a16nights__antigravity-external-orchestrator.svg",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "agents-reasoning"
+        ],
+        "tags": [
+          "subagent",
+          "sidebar",
+          "mcp",
+          "hooks"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "global-rules",
+          "sidecar-ui",
+          "mcp-stdio",
+          "lifecycle-hooks"
+        ],
+        "rulesEstimatedTokens": 574,
+        "mcpServers": [
+          "external-orchestrator_orchestrator"
+        ],
+        "mcpRemoteDomains": [],
+        "hookEvents": [
+          "PreInvocation"
+        ],
+        "hostEnhancementKind": []
+      },
+      "lastEscalation": {
+        "fromVersion": "1.4.6",
+        "toVersion": "1.2.2",
+        "severity": "MODERATE",
+        "reasons": [
+          "ADDED_MCP:external-orchestrator_external-orchestrator"
+        ],
+        "escalation": {
+          "addedBadges": [],
+          "addedRemoteDomains": [],
+          "addedHookEvents": [],
+          "addedHostEnhancementKinds": [],
+          "addedMcpServers": [
+            "external-orchestrator_external-orchestrator"
+          ],
+          "rulesTokenDelta": -19,
+          "suspiciousShellFindings": []
+        },
+        "detectedAt": "2026-11-27T16:42:33.750Z"
+      },
+      "updatedAt": "2026-11-27T19:16:08Z",
+      "ranking": {
+        "score": 84.1,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.1474,
+          "freshness": 0.9932,
+          "completeness": 0.9024,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 1
+        },
+        "archived": false,
+        "stale": false
+      }
+    },
+    {
+      "id": "a16nights__antigravity-lanxi-memory",
+      "canonicalName": "lanxi-memory",
+      "scopedName": "a16nights--lanxi-memory",
+      "forceScopedInstall": false,
+      "displayName": "蓝汐——认知图谱长期记忆",
+      "description": {
+        "zh": "蓝汐 · 潮汐认知图谱：纯本地五层 Markdown 认知记忆库与 SQLite FTS5 全文检索，结合幂律遗忘曲线、硬保护防失忆与「潮汐星海」交互星图工作台。",
+        "en": "Lanxi Memory: local-first 5-layer Markdown cognitive graph with SQLite CJK FTS5 search, tidal forgetting curves, hard-protection guards, and the Tidal Starfield visual workbench."
+      },
+      "version": "1.5.4",
+      "gitTag": "v1.5.4",
+      "commitSha": "47de13a4d23a82613338b3f54d5d1da9560fc10a",
+      "repository": {
+        "url": "https://github.com/A16Nights/antigravity-lanxi-memory",
+        "repositoryId": 1464688700,
+        "ownerId": 104626775,
+        "stars": 1,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/A16Nights/antigravity-lanxi-memory/archive/47de13a4d23a82613338b3f54d5d1da9560fc10a.tar.gz",
+        "sha256": "7d435be7d323c2b1cc94497fb92045260c18d5333c4b132427ddf784fd242935",
+        "sizeBytes": 171906,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/a16nights__antigravity-lanxi-memory.svg",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "writing-knowledge"
+        ],
+        "tags": [
+          "knowledge",
+          "writing",
+          "code",
+          "sidebar",
+          "mcp"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "global-rules",
+          "sidecar-ui",
+          "mcp-stdio",
+          "lifecycle-hooks"
+        ],
+        "rulesEstimatedTokens": 213,
+        "mcpServers": [
+          "lanxi-memory_lanxi-memory"
+        ],
+        "mcpRemoteDomains": [],
+        "hookEvents": [
+          "PreInvocation",
+          "SessionStart",
+          "Stop"
+        ],
+        "hostEnhancementKind": []
+      },
+      "updatedAt": "2026-11-27T19:16:23Z",
+      "ranking": {
+        "score": 84.1,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.1474,
+          "freshness": 0.9932,
+          "completeness": 0.9024,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 1
+        },
+        "archived": false,
+        "stale": false
+      }
+    },
+    {
+      "id": "a16nights__antigravity-soul-md",
+      "canonicalName": "soul-md",
+      "scopedName": "a16nights--soul-md",
+      "forceScopedInstall": false,
+      "displayName": "苍蓝魂匣——人设卡与分层记忆",
+      "description": {
+        "zh": "苍蓝魂匣（Soul.md）：多人设卡热切换、工作区专属人设绑定与分层文件记忆（core.md + topics/*.md）插件，提供外接模型底层身份锚防掉线强化与可视化工作台。",
+        "en": "Soul.md Studio: multi-persona card switcher, per-workspace persona binding, PreInvocation anti-drift identity anchors, and layered per-persona Markdown memory (core.md + topics/*.md)."
+      },
+      "version": "2.3.9",
+      "gitTag": "v2.3.9",
+      "commitSha": "ac0da0738186c850a61c7e3bb09824d7d3d57920",
+      "repository": {
+        "url": "https://github.com/A16Nights/antigravity-soul-md",
+        "repositoryId": 1464688845,
+        "ownerId": 104626775,
+        "stars": 1,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/A16Nights/antigravity-soul-md/archive/ac0da0738186c850a61c7e3bb09824d7d3d57920.tar.gz",
+        "sha256": "2f2c2eaa5a12abe1ebd842b78d2ae8c5aa7d035aa13603b348b76eb064a1c54f",
+        "sizeBytes": 171687,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/a16nights__antigravity-soul-md.svg",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "agents-reasoning"
+        ],
+        "tags": [
+          "reasoning",
+          "subagent",
+          "knowledge",
+          "writing",
+          "sidebar"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "global-rules",
+          "sidecar-ui",
+          "mcp-stdio",
+          "lifecycle-hooks"
+        ],
+        "rulesEstimatedTokens": 85,
+        "mcpServers": [
+          "soul-md_soul-md"
+        ],
+        "mcpRemoteDomains": [],
+        "hookEvents": [
+          "PreInvocation"
+        ],
+        "hostEnhancementKind": []
+      },
+      "updatedAt": "2026-11-27T19:16:28Z",
+      "ranking": {
+        "score": 84.1,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.1474,
+          "freshness": 0.9932,
+          "completeness": 0.9024,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 1
+        },
+        "archived": false,
+        "stale": false
+      }
+    },
+    {
+      "id": "a16nights__antigravity-think-zh",
+      "canonicalName": "think-zh",
+      "scopedName": "a16nights--think-zh",
+      "forceScopedInstall": false,
+      "displayName": "思语中文——外接模型中文思考切换",
+      "description": {
+        "zh": "思语中文（Think-ZH）：将模型内部思考与推理语言一键锁定为简体中文（或切回默认英文），支持静态规则与外接模型智能 PreInvocation 双通道防漂移与实时预览。",
+        "en": "Think-ZH: toggle model internal reasoning language between Simplified Chinese and default English with dual-channel static rules, smart PreInvocation hooks, and live directive preview."
+      },
+      "version": "1.2.1",
+      "gitTag": "v1.2.1",
+      "commitSha": "f699621e76dbd0ee48ff400823b7c9381362937f",
+      "repository": {
+        "url": "https://github.com/A16Nights/antigravity-think-zh",
+        "repositoryId": 1464768433,
+        "ownerId": 104626775,
+        "stars": 2,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/A16Nights/antigravity-think-zh/archive/f699621e76dbd0ee48ff400823b7c9381362937f.tar.gz",
+        "sha256": "7988bb750e6557a2473cf32ad611eaed77bd54f8c0377122f04334a0cc02c296",
+        "sizeBytes": 249261,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/a16nights__antigravity-think-zh.svg",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "agents-reasoning"
+        ],
+        "tags": [
+          "thinking",
+          "zh-cn",
+          "reasoning",
+          "hooks"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "global-rules",
+          "sidecar-ui",
+          "mcp-stdio",
+          "lifecycle-hooks"
+        ],
+        "rulesEstimatedTokens": 43,
+        "mcpServers": [
+          "think-zh_think-zh"
+        ],
+        "mcpRemoteDomains": [],
+        "hookEvents": [
+          "PreInvocation",
+          "SessionStart"
+        ],
+        "hostEnhancementKind": []
+      },
+      "updatedAt": "2026-11-27T19:16:33Z",
+      "ranking": {
+        "score": 85.45,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.2015,
+          "freshness": 0.9932,
+          "completeness": 0.9024,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 2
+        },
+        "archived": false,
+        "stale": false
+      }
+    },
+    {
+      "id": "apollyonin__billion-context-antigravity",
+      "canonicalName": "billion-context",
+      "scopedName": "apollyonin--billion-context",
+      "forceScopedInstall": false,
+      "displayName": "Billion Context",
+      "description": {
+        "zh": "基于 ranxianglei/billion-context 使用 AI 移植的 Antigravity 插件（官方零代理安全模式）：实时监控上下文占用与缓存，提供原生 /compact 复制助手及新增类 Fork 新会话交接功能。",
+        "en": "AI-assisted Antigravity port of ranxianglei/billion-context in Official Safe Mode: transcript-based context & cache telemetry, native /compact copy helper, and added fork-like Fresh Session Handoff."
+      },
+      "version": "1.0.0",
+      "gitTag": "v1.0.0",
+      "commitSha": "86b43fe723b312f709cd09725758a4369c366582",
+      "repository": {
+        "url": "https://github.com/Apollyonin/billion-context-antigravity",
+        "repositoryId": 1467800333,
+        "ownerId": 359833271,
+        "stars": 0,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/Apollyonin/billion-context-antigravity/releases/download/v1.0.0/billion-context.tar.gz",
+        "sha256": "f54e920bfe6744c49602f225a9dc7b792c6200c12db329b1140033dc788844f9",
+        "sizeBytes": 292204,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/apollyonin__billion-context-antigravity.svg",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "context-cache",
+          "monitoring-quota"
+        ],
+        "tags": [
+          "context",
+          "compact",
+          "prompt-cache",
+          "handoff",
+          "fork",
+          "mcp-app"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "global-rules",
+          "mcp-stdio",
+          "lifecycle-hooks"
+        ],
+        "rulesEstimatedTokens": 340,
+        "mcpServers": [
+          "billion-context_billion-context"
+        ],
+        "mcpRemoteDomains": [],
+        "hookEvents": [
+          "PostInvocation",
+          "PreInvocation",
+          "SessionStart",
+          "Stop"
+        ],
+        "hostEnhancementKind": []
+      },
+      "updatedAt": "2026-11-27T18:06:18Z",
+      "ranking": {
+        "score": 84.47,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.0652,
+          "freshness": 0.9927,
+          "completeness": 1,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 0
+        },
+        "archived": false,
+        "stale": false
+      }
+    },
+    {
+      "id": "apollyonin__trajectory-lens-antigravity",
+      "canonicalName": "trajectory-lens",
+      "scopedName": "apollyonin--trajectory-lens",
+      "forceScopedInstall": false,
+      "displayName": "Trajectory Lens",
+      "description": {
+        "zh": "使用 AI 基于 DSH 官方轨迹功能重开发的 Antigravity 插件（官方零代理安全模式）：提供轮次/步骤台账、并行执行 DAG、子代理瀑布流、Token 与缓存分析、双会话对比、白话导读及离线 HTML/MD 导出。",
+        "en": "AI-assisted Antigravity plugin re-implemented from DSH official trajectory features (Official Safe Mode): turn/step ledger, parallel execution DAG, subagent waterfall, token/cache analytics, compare, and offline export."
+      },
+      "version": "1.0.0",
+      "gitTag": "v1.0.0",
+      "commitSha": "a72022f0e81249ad055d4b087b1ceebe6c3103d5",
+      "repository": {
+        "url": "https://github.com/Apollyonin/trajectory-lens-antigravity",
+        "repositoryId": 1467809462,
+        "ownerId": 359833271,
+        "stars": 0,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/Apollyonin/trajectory-lens-antigravity/releases/download/v1.0.0/trajectory-lens.tar.gz",
+        "sha256": "3cb0f8d01c793de3b5137dfb27f75439227627552431e6ba847a6864a1596984",
+        "sizeBytes": 287116,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/apollyonin__trajectory-lens-antigravity.svg",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "monitoring-quota",
+          "developer-tools"
+        ],
+        "tags": [
+          "trajectory",
+          "dag",
+          "subagent",
+          "waterfall",
+          "prompt-cache",
+          "mcp-app"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "global-rules",
+          "mcp-stdio",
+          "lifecycle-hooks"
+        ],
+        "rulesEstimatedTokens": 336,
+        "mcpServers": [
+          "trajectory-lens_trajectory-lens"
+        ],
+        "mcpRemoteDomains": [],
+        "hookEvents": [
+          "PostInvocation",
+          "PostToolUse",
+          "PreInvocation",
+          "SessionStart",
+          "Stop"
+        ],
+        "hostEnhancementKind": []
+      },
+      "updatedAt": "2026-11-27T18:06:33Z",
+      "ranking": {
+        "score": 84.47,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.0652,
+          "freshness": 0.9927,
+          "completeness": 1,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 0
+        },
+        "archived": false,
+        "stale": false
+      }
+    },
+    {
+      "id": "asthestarsfalll__answer-card",
+      "canonicalName": "answer-card",
+      "scopedName": "asthestarsfalll--answer-card",
+      "forceScopedInstall": false,
+      "displayName": "Answer Card",
+      "description": {
+        "zh": "macOS 置顶悬浮回答卡片：当 Antigravity、DSH 或 Zed 中的 Agent 需要你批准工具调用、回答问题或回合结束时，直接在悬浮窗里一键决策、输入追问，无需切换窗口。",
+        "en": "macOS always-on-top answer card for Antigravity, DSH and Zed: approve tool calls, answer agent questions and follow up on turn completion from a floating window."
+      },
+      "version": "1.0.0",
+      "gitTag": "v1.0.0",
+      "commitSha": "b5ee3e34ece59937bbc2474692b532281011e420",
+      "repository": {
+        "url": "https://github.com/Asthestarsfalll/answer-card",
+        "repositoryId": 1459695011,
+        "ownerId": 72954905,
+        "stars": 0,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/Asthestarsfalll/answer-card/releases/download/v1.0.0/answer-card.tar.gz",
+        "sha256": "1287a679ced14ec72115764e016fc4e09940e7897f2e65b2c25fe838dc2442ed",
+        "sizeBytes": 299933,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/asthestarsfalll__answer-card.svg",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "productivity"
+        ],
+        "tags": [
+          "floating-window",
+          "approval",
+          "ask-question",
+          "completion-notify",
+          "mcp-app",
+          "settings-ui",
+          "macos",
+          "antigravity"
+        ],
+        "platforms": [
+          "darwin"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "global-rules",
+          "mcp-stdio",
+          "lifecycle-hooks"
+        ],
+        "rulesEstimatedTokens": 292,
+        "mcpServers": [
+          "answer-card_settings"
+        ],
+        "mcpRemoteDomains": [],
+        "hookEvents": [
+          "PreToolUse",
+          "Stop"
+        ],
+        "hostEnhancementKind": []
+      },
+      "updatedAt": "2026-11-27T07:51:09Z",
+      "ranking": {
+        "score": 84.37,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.0652,
+          "freshness": 0.9881,
+          "completeness": 1,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 0
+        },
+        "archived": false,
+        "stale": false
+      }
+    },
+    {
+      "id": "azwosile__agy-market",
+      "canonicalName": "agy-market",
+      "scopedName": "azwosile--agy-market",
+      "forceScopedInstall": false,
+      "displayName": "AGY Market · 反重力插件市场",
+      "description": {
+        "zh": "Google Antigravity 社区插件市场侧边栏，支持镜像下载校验、本地冲突检查与一键安装更新。",
+        "en": "Community plugin marketplace Sidebar panel & CLI for Google Antigravity with SHA-256 archive verification, conflict checks, and one-click updates."
+      },
+      "version": "1.7.2",
+      "gitTag": "v1.7.2",
+      "commitSha": "c8ff86a7afedab652a8dfc4de082b59e767b819c",
+      "repository": {
+        "url": "https://github.com/azwosile/agy-market",
+        "repositoryId": 1468650761,
+        "ownerId": 103982769,
+        "stars": 54,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/azwosile/agy-market/releases/download/v1.7.2/agy-market.tar.gz",
+        "sha256": "3f0c9f114361590dac1695723b8c6f60a54b2326e63ea4bab5202ff8282e98a7",
+        "sizeBytes": 516879,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/azwosile__agy-market.png",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "productivity",
+          "developer-tools"
+        ],
+        "tags": [
+          "marketplace",
+          "sidecar",
+          "plugin-manager",
+          "sidebar"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "sidecar-ui",
+          "host-enhancement"
+        ],
+        "rulesEstimatedTokens": 0,
+        "mcpServers": [],
+        "mcpRemoteDomains": [],
+        "hookEvents": [],
+        "hostEnhancementKind": [
+          "cdp"
+        ]
+      },
+      "updatedAt": "2026-11-28T08:55:50Z",
+      "ranking": {
+        "score": 99.13,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.646,
+          "freshness": 0.9993,
+          "completeness": 1,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 54
+        },
+        "archived": false,
+        "stale": false
+      }
+    },
+    {
+      "id": "azwosile__agy-wallpaper-prism",
+      "canonicalName": "agy-wallpaper-prism",
+      "scopedName": "azwosile--agy-wallpaper-prism",
+      "forceScopedInstall": false,
+      "displayName": "Wallpaper Prism",
+      "description": {
+        "zh": "Antigravity 黑曜棱镜毛玻璃皮肤与 Wallpaper Engine 工坊（支持浮岛/平铺布局、动态取色、本地视频与创意工坊壁纸）。",
+        "en": "Obsidian Prism glass skin and Wallpaper Engine studio for Antigravity with Floating Island layouts, dynamic accent tinting, and Ctrl+Alt+W controls."
+      },
+      "version": "2.4.1",
+      "gitTag": "v2.4.1",
+      "commitSha": "9139ee49656957caf75874827a7648b5762f8a43",
+      "repository": {
+        "url": "https://github.com/azwosile/agy-wallpaper-prism",
+        "repositoryId": 1467437597,
+        "ownerId": 103982769,
+        "stars": 31,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/azwosile/agy-wallpaper-prism/releases/download/v2.4.1/agy-wallpaper-prism-v2.4.1.tar.gz",
+        "sha256": "d8249d727f39becd48e63ecbe0f42d89502810698bbf1356f4d5007638c4f672",
+        "sizeBytes": 870006,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/azwosile__agy-wallpaper-prism.svg",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "ui-themes"
+        ],
+        "tags": [
+          "wallpaper",
+          "glass-skin",
+          "theme",
+          "sidebar"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "sidecar-ui",
+          "host-enhancement"
+        ],
+        "rulesEstimatedTokens": 0,
+        "mcpServers": [],
+        "mcpRemoteDomains": [],
+        "hookEvents": [],
+        "hostEnhancementKind": [
+          "cdp"
+        ]
+      },
+      "updatedAt": "2026-11-27T16:48:51Z",
+      "ranking": {
+        "score": 94.38,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.5599,
+          "freshness": 0.9921,
+          "completeness": 0.9024,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 31
+        },
+        "archived": false,
+        "stale": false
+      }
+    },
+    {
+      "id": "curelove__agy-anchor-wheel",
+      "canonicalName": "agy-anchor-wheel",
+      "scopedName": "curelove--agy-anchor-wheel",
+      "forceScopedInstall": false,
+      "displayName": "锚点轮盘 · AnchorWheel",
+      "description": {
+        "zh": "Google Antigravity 零侵入右侧栏导航增强插件：中键双侧分类轮盘、Tab 竖向层级树、0.25s 悬停快览、双向反链与自动防乱码。",
+        "en": "Non-overwriting Antigravity side-pane enhancer with hold-release Bilateral Category Wheel, Tab vertical-ancestor tree, 0.25s fast previews, Obsidian backlinks, and auto-encoding repair."
+      },
+      "version": "0.13.0",
+      "gitTag": "v0.13.0",
+      "commitSha": "62a34a065b17bd28b8bc79cb9fbba87c1bf7970d",
+      "repository": {
+        "url": "https://github.com/Curelove/agy-anchor-wheel",
+        "repositoryId": 1469249518,
+        "ownerId": 174407298,
+        "stars": 9,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/Curelove/agy-anchor-wheel/releases/download/v0.13.0/agy-anchor-wheel-v0.13.0.tar.gz",
+        "sha256": "896241a49357c9dd919092783e85d855f5744b3f4ca63a8c2f9e1ca32216d935",
+        "sizeBytes": 1512891,
+        "npmMirrorPkg": null,
+        "preservePaths": [
+          "data/**",
+          "sidecars/anchor_wheel/data/**"
+        ]
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/curelove__agy-anchor-wheel.svg",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "productivity",
+          "writing-knowledge"
+        ],
+        "tags": [
+          "sidecar",
+          "video-preview",
+          "adobe-preview",
+          "pptx-preview",
+          "docx-preview",
+          "office-preview",
+          "ipynb",
+          "sqlite"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "sidecar-ui",
+          "host-enhancement"
+        ],
+        "rulesEstimatedTokens": 0,
+        "mcpServers": [],
+        "mcpRemoteDomains": [],
+        "hookEvents": [],
+        "hostEnhancementKind": [
+          "cdp"
+        ]
+      },
+      "updatedAt": "2026-11-27T07:09:36Z",
+      "ranking": {
+        "score": 89.75,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.3782,
+          "freshness": 0.9878,
+          "completeness": 0.9024,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 9
+        },
+        "archived": false,
+        "stale": false
+      }
+    },
+    {
+      "id": "wain1911__agy-notify",
+      "canonicalName": "agy-notify",
+      "scopedName": "wain1911--agy-notify",
+      "forceScopedInstall": false,
+      "displayName": "Notify Me · 消息提醒",
+      "description": {
+        "zh": "Antigravity 桌面消息提醒、原生提示音与 Discord/Bark/Gotify/Webhook 通知转发插件。",
+        "en": "Desktop alerts with Antigravity default sound, anti-disturb quiet rules, focus auto-dismiss, and Discord/Bark/Gotify/Webhook forwarding."
+      },
+      "version": "1.0.0",
+      "gitTag": "v1.0.0",
+      "commitSha": "cfed11d51bffe6f863e685f6b9223b1e8759f4ab",
+      "repository": {
+        "url": "https://github.com/wain1911/agy-notify",
+        "repositoryId": 1475338061,
+        "ownerId": 351514321,
+        "stars": 0,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/wain1911/agy-notify/releases/download/v1.0.0/agy-notify.tar.gz",
+        "sha256": "e9b909a5344df6441c5bb69f2b23a613f0376f25a1d1f3859bbc360429f62c73",
+        "sizeBytes": 382278,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/wain1911__agy-notify.svg",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "productivity"
+        ],
+        "tags": [
+          "automation",
+          "mcp",
+          "hooks"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "mcp-stdio",
+          "lifecycle-hooks",
+          "host-enhancement"
+        ],
+        "rulesEstimatedTokens": 0,
+        "mcpServers": [
+          "agy-notify_notify"
+        ],
+        "mcpRemoteDomains": [],
+        "hookEvents": [
+          "PostToolUse",
+          "PreToolUse",
+          "Stop"
+        ],
+        "hostEnhancementKind": [
+          "cdp"
+        ]
+      },
+      "updatedAt": "2026-11-28T09:15:43Z",
+      "ranking": {
+        "score": 78.52,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.0652,
+          "freshness": 0.9995,
+          "completeness": 0.7561,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 0
+        },
+        "archived": false,
+        "stale": false
+      }
+    },
+    {
+      "id": "yuezhu114__agy-novel-forge",
+      "canonicalName": "novel-forge",
+      "scopedName": "yuezhu114--novel-forge",
+      "forceScopedInstall": false,
+      "displayName": "小说锻炉",
+      "description": {
+        "zh": "Antigravity 中文长篇写作工程插件（移植自 dsh-novel-forge）：24 个 novel_* 硬门禁/账本/审计 MCP 工具 + Sidecar 侧栏工作台 + /novel 写作技能。",
+        "en": "Engineering guardrails for long-form Chinese fiction in Antigravity (ported from dsh-novel-forge), featuring 24 novel_* MCP tools, hard gates, ledgers, /novel skill, and a Sidecar workbench."
+      },
+      "version": "1.11.1",
+      "gitTag": "1.11.1",
+      "commitSha": "4ff6171c7fdb3cbbe23f34e3ccf4adfe4ccfc721",
+      "repository": {
+        "url": "https://github.com/yuezhu114/agy-novel-forge",
+        "repositoryId": 1474754773,
+        "ownerId": 299222958,
+        "stars": 0,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/yuezhu114/agy-novel-forge/archive/4ff6171c7fdb3cbbe23f34e3ccf4adfe4ccfc721.tar.gz",
+        "sha256": "64ace5cfb3a713980c1aeb0c1e1fc95f7fcc552787dd9c9be3499548cd9b11d2",
+        "sizeBytes": 4264693,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/yuezhu114__agy-novel-forge.svg",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "writing-knowledge"
+        ],
+        "tags": [
+          "writing",
+          "security",
+          "sidebar",
+          "mcp"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "sidecar-ui",
+          "mcp-stdio"
+        ],
+        "rulesEstimatedTokens": 0,
+        "mcpServers": [
+          "novel-forge_novel-forge"
+        ],
+        "mcpRemoteDomains": [],
+        "hookEvents": [],
+        "hostEnhancementKind": []
+      },
+      "updatedAt": "2026-11-27T18:44:30Z",
+      "ranking": {
+        "score": 79.6,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.0652,
+          "freshness": 0.993,
+          "completeness": 0.8049,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 0
+        },
+        "archived": false,
+        "stale": false
+      }
+    },
+    {
+      "id": "yuhuan-dev__antigravity-usage-monitor",
+      "canonicalName": "usage-monitor",
+      "scopedName": "yuhuan-dev--usage-monitor",
+      "forceScopedInstall": false,
+      "displayName": "Usage & Speed Monitor",
+      "description": {
+        "zh": "Antigravity 全客户端用量监控：实时 TPS/TTFT/费用、10 类上下文构成、四池额度追踪与租约预占、子代理/Swarm 隔离、历史趋势热力图与项目归因排行、调用明细异常筛选、xlsx 报表导出、跨端会话迁移、按模型上下文限制。覆盖 Desktop 顶栏胶囊与侧栏、IDE 胶囊、CLI statusLine 及独立 Web，不修改 app.asar，无 npm 依赖。",
+        "en": "Full-stack Antigravity monitor: live TPS/TTFT/cost, 10-category context, four-pool quota with lease reservation, subagent/Swarm isolation, trend heatmaps, project rankings, anomaly filters, xlsx export, session migration and per-model context limits. Desktop/IDE capsule, CLI statusLine and web."
+      },
+      "version": "1.5.6",
+      "gitTag": "v1.5.6",
+      "commitSha": "15ca28144c5ca314049e531b09d1befa75474a9f",
+      "repository": {
+        "url": "https://github.com/yuhuan-dev/antigravity-usage-monitor",
+        "repositoryId": 1417850082,
+        "ownerId": 355444809,
+        "stars": 566,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/yuhuan-dev/antigravity-usage-monitor/archive/15ca28144c5ca314049e531b09d1befa75474a9f.tar.gz",
+        "sha256": "804cb7ec60f0a5283b2323c356a3d38329a3d6c2345b782811c44070e2ebf8ad",
+        "sizeBytes": 6475763,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/yuhuan-dev__antigravity-usage-monitor.svg",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "monitoring-quota"
+        ],
+        "tags": [
+          "usage-monitor",
+          "speed",
+          "quota",
+          "sidebar"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "sidecar-ui",
+          "mcp-stdio",
+          "host-enhancement"
+        ],
+        "rulesEstimatedTokens": 0,
+        "mcpServers": [
+          "usage-monitor_host"
+        ],
+        "mcpRemoteDomains": [],
+        "hookEvents": [],
+        "hostEnhancementKind": [
+          "cdp"
+        ]
+      },
+      "updatedAt": "2026-11-26T18:48:21Z",
+      "ranking": {
+        "score": 100,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 1,
+          "freshness": 0.9824,
+          "completeness": 0.9024,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 566
+        },
+        "archived": false,
+        "stale": false
+      }
+    },
+    {
+      "id": "yukikaguraa__agy-archive-manager",
+      "canonicalName": "archive-manager",
+      "scopedName": "yukikaguraa--archive-manager",
+      "forceScopedInstall": false,
+      "displayName": "会话管理 (Session Manager)",
+      "description": {
+        "zh": "Google Antigravity 原生会话与归档管理插件：支持分类检索、完整记录免恢复预览、超长自动折叠、原地归档/恢复撤回与导出 Markdown。",
+        "en": "Native session & archive manager for Google Antigravity with full-text search, full-transcript preview, auto-collapse, instant archive/restore with undo, and Markdown export."
+      },
+      "version": "2.3.1",
+      "gitTag": "v2.3.1",
+      "commitSha": "14e714dc322d179840c725f3b925e7a7ba20f2ef",
+      "repository": {
+        "url": "https://github.com/YukiKaguraA/agy-archive-manager",
+        "repositoryId": 1472969969,
+        "ownerId": 299237637,
+        "stars": 2,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/YukiKaguraA/agy-archive-manager/releases/download/v2.3.1/archive-manager.tar.gz",
+        "sha256": "7869051aeee46a8b18128f2d05e2a6b7afecf8e2382929f3938000ca424e602c",
+        "sizeBytes": 1704452,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/yukikaguraa__agy-archive-manager.svg",
+        "screenshots": [
+          "docs/screenshots/hero-light.png",
+          "docs/screenshots/hero-dark.png",
+          "docs/screenshots/preview-main.png",
+          "docs/screenshots/preview-archived.png"
+        ]
+      },
+      "taxonomy": {
+        "categories": [
+          "productivity"
+        ],
+        "tags": [
+          "session-manager",
+          "archive",
+          "conversation",
+          "markdown-export",
+          "sidebar"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "sidecar-ui",
+          "host-enhancement"
+        ],
+        "rulesEstimatedTokens": 0,
+        "mcpServers": [],
+        "mcpRemoteDomains": [],
+        "hookEvents": [],
+        "hostEnhancementKind": [
+          "cdp"
+        ]
+      },
+      "updatedAt": "2026-11-27T13:44:47Z",
+      "ranking": {
+        "score": 87.83,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.2015,
+          "freshness": 0.9907,
+          "completeness": 1,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 2
+        },
+        "archived": false,
+        "stale": false
+      }
+    },
+    {
+      "id": "yunjuanyunshu114-byte__antigravity-observer",
+      "canonicalName": "gemini-neko-cockpit",
+      "scopedName": "yunjuanyunshu114-byte--gemini-neko-cockpit",
+      "forceScopedInstall": false,
+      "displayName": "Gemini 猫娘观察台 · Antigravity Observer",
+      "description": {
+        "zh": "Google Antigravity 2.0 应用内右下角 Gemini 猫娘桌面挂件与上下文 Token / 缓存命中率 / 模型额度实时观察台。",
+        "en": "In-app Gemini Neko companion widget and live context window, prompt-cache hit rate, and model quota observer cockpit for Antigravity 2.0."
+      },
+      "version": "1.4.0",
+      "gitTag": "v1.4.0",
+      "commitSha": "1b83ffc155d8b5e80fe73159795dabcd678eeac0",
+      "repository": {
+        "url": "https://github.com/yunjuanyunshu114-byte/antigravity-observer",
+        "repositoryId": 1459531455,
+        "ownerId": 346653287,
+        "stars": 127,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/yunjuanyunshu114-byte/antigravity-observer/archive/1b83ffc155d8b5e80fe73159795dabcd678eeac0.tar.gz",
+        "sha256": "40b48b27c1935649c286d6fb9b3ec4f13bf8aa1cbd71f0e75843fddd797eee3b",
+        "sizeBytes": 2299533,
+        "npmMirrorPkg": null,
+        "preservePaths": [
+          "hud_prefs.json",
+          "daily_tokens_cache.json",
+          "runtime_server.json",
+          "assets/custom/**"
+        ]
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/yunjuanyunshu114-byte__antigravity-observer.png",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "monitoring-quota",
+          "ui-themes"
+        ],
+        "tags": [
+          "telemetry",
+          "quota",
+          "companion-widget",
+          "context"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "sidecar-ui",
+          "host-enhancement"
+        ],
+        "rulesEstimatedTokens": 0,
+        "mcpServers": [],
+        "mcpRemoteDomains": [],
+        "hookEvents": [],
+        "hostEnhancementKind": [
+          "app-asar"
+        ]
+      },
+      "status": "TAG_MUTATION_BLOCKED",
+      "updatedAt": "2026-11-27T16:41:55Z",
+      "ranking": {
+        "score": 0,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.781,
+          "freshness": 0.9921,
+          "completeness": 0.8049,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 0,
+          "effectiveStars": 127
+        },
+        "archived": false,
+        "stale": false,
+        "status": "TAG_MUTATION_BLOCKED"
+      }
+    },
+    {
+      "id": "zou172866__agy-dart",
+      "canonicalName": "agy-dart",
+      "scopedName": "zou172866--agy-dart",
+      "forceScopedInstall": false,
+      "displayName": "agy-dart",
+      "description": {
+        "zh": "Antigravity 全合一低延迟加速、KV-Cache 保护、上下文窗口守卫与 Sidecar 卡死看门狗面板插件。",
+        "en": "All-in-one Antigravity latency accelerator, KV-cache protector, SQLite FTS5 context-window guard, and live Sidecar dashboard."
+      },
+      "version": "1.10.0",
+      "gitTag": "v1.10.0",
+      "commitSha": "8679fd6cdf87eb7536fb1024aee5278064f85b6e",
+      "repository": {
+        "url": "https://github.com/zou172866/Antigravity-agy-dart",
+        "repositoryId": 1465415390,
+        "ownerId": 295114258,
+        "stars": 245,
+        "pluginRoot": "."
+      },
+      "distribution": {
+        "tarballUrl": "https://github.com/zou172866/Antigravity-agy-dart/releases/download/v1.10.0/agy-dart-1.10.0.tgz",
+        "sha256": "eb025c09b9c9178e7d74dd5fa1a138aefea76d0cdecbfce96aa3b9f025320e25",
+        "sizeBytes": 894257,
+        "npmMirrorPkg": null,
+        "preservePaths": []
+      },
+      "media": {
+        "iconUrl": "https://azwosile.github.io/agy-market-catalog/icons/zou172866__agy-dart.svg",
+        "screenshots": []
+      },
+      "taxonomy": {
+        "categories": [
+          "context-cache",
+          "developer-tools"
+        ],
+        "tags": [
+          "kv-cache",
+          "context-guard",
+          "latency",
+          "mcp"
+        ],
+        "platforms": [
+          "win32",
+          "darwin",
+          "linux"
+        ]
+      },
+      "capabilities": {
+        "badges": [
+          "global-rules",
+          "sidecar-ui",
+          "mcp-stdio",
+          "lifecycle-hooks"
+        ],
+        "rulesEstimatedTokens": 312,
+        "mcpServers": [
+          "agy-dart_context",
+          "agy-dart_fast"
+        ],
+        "mcpRemoteDomains": [],
+        "hookEvents": [
+          "PostToolUse",
+          "PreInvocation",
+          "PreToolUse",
+          "SessionStart",
+          "Stop"
+        ],
+        "hostEnhancementKind": []
+      },
+      "updatedAt": "2026-11-28T04:00:51Z",
+      "ranking": {
+        "score": 100,
+        "compatTier": "native",
+        "breakdown": {
+          "popularity": 0.8858,
+          "freshness": 0.9971,
+          "completeness": 1,
+          "native": 1,
+          "hygiene": 1,
+          "nativeGate": 1,
+          "trackBonus": 8,
+          "penaltyMultiplier": 1,
+          "effectiveStars": 245
+        },
+        "archived": false,
+        "stale": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="16" y1="14" x2="112" y2="114" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#11161D"/>
+      <stop offset="100%" stop-color="#090C10"/>
+    </linearGradient>
+    <linearGradient id="bolt" x1="34" y1="26" x2="96" y2="102" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="55%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0EA5E9"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="16" y1="14" x2="112" y2="114" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.55"/>
+      <stop offset="50%" stop-color="#94A3B8" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0EA5E9" stop-opacity="0.45"/>
+    </linearGradient>
+  </defs>
+  <!-- 10% baked margin container so frame crop never clips -->
+  <rect x="13" y="13" width="102" height="102" rx="24" fill="url(#bg)" stroke="url(#rim)" stroke-width="2"/>
+  <!-- Subtle technical crosshair ticks -->
+  <path d="M27 33H33M27 33V27M101 95H95M101 95V101" stroke="#38BDF8" stroke-opacity="0.35" stroke-width="1.75" stroke-linecap="round"/>
+  <!-- Primary warp chevron (H-speed geometric prism) -->
+  <path d="M40 38L64 64L40 90H54L78 64L54 38H40Z" fill="#F8FAFC"/>
+  <path d="M62 38L86 64L62 90H76L100 64L76 38H62Z" fill="url(#bolt)"/>
+  <!-- Precision speed-line accent -->
+  <rect x="29" y="62.25" width="14" height="3.5" rx="1.75" fill="#38BDF8"/>
+</svg>

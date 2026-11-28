@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="16" y1="16" x2="112" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="52%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+    <linearGradient id="starGrad" x1="64" y1="30" x2="98" y2="68" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FEF08A"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <!-- 12% outer margin baked in (16..112) -->
+  <rect x="16" y="16" width="96" height="96" rx="24" fill="url(#bgGrad)" stroke="#FFFFFF" stroke-width="3"/>
+  <!-- Alpha checkerboard badge corner -->
+  <rect x="26" y="26" width="10" height="10" rx="2" fill="#FFFFFF" fill-opacity="0.32"/>
+  <rect x="36" y="36" width="10" height="10" rx="2" fill="#FFFFFF" fill-opacity="0.32"/>
+  <rect x="36" y="26" width="10" height="10" rx="2" fill="#0F172A" fill-opacity="0.25"/>
+  <rect x="26" y="36" width="10" height="10" rx="2" fill="#0F172A" fill-opacity="0.25"/>
+  <!-- Cute pet paw silhouette -->
+  <ellipse cx="60" cy="78" rx="18" ry="15" fill="#FFFFFF"/>
+  <circle cx="39" cy="58" r="7.5" fill="#FFFFFF"/>
+  <circle cx="53" cy="50" r="7.5" fill="#FFFFFF"/>
+  <circle cx="69" cy="50" r="7.5" fill="#FFFFFF"/>
+  <circle cx="82" cy="59" r="7.5" fill="#FFFFFF"/>
+  <!-- Sparkling 24fps magic star -->
+  <path d="M92 26 L95.5 35.5 L105 39 L95.5 42.5 L92 52 L88.5 42.5 L79 39 L88.5 35.5 Z" fill="url(#starGrad)" stroke="#FFFFFF" stroke-width="1.5"/>
+  <!-- Baseline indicator (foot_y = 330) -->
+  <line x1="34" y1="100" x2="94" y2="100" stroke="#FEF08A" stroke-width="3" stroke-linecap="round" stroke-dasharray="5 5"/>
+</svg>

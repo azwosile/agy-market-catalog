@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b2238" />
+      <stop offset="100%" stop-color="#2c1e4a" />
+    </linearGradient>
+    <linearGradient id="accentGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c9cff" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+  </defs>
+  <rect x="44" y="34" width="144" height="184" rx="18" fill="#13192b" stroke="#6366f1" stroke-opacity="0.45" stroke-width="2.5" transform="rotate(-6 116 126)" />
+  <rect x="56" y="36" width="148" height="186" rx="18" fill="url(#cardBg)" stroke="url(#accentGlow)" stroke-width="3.5" />
+  <circle cx="110" cy="96" r="24" fill="url(#accentGlow)" fill-opacity="0.22" stroke="#a5b4fc" stroke-width="2.5" />
+  <path d="M110 78 L114 91 L127 95 L114 99 L110 112 L106 99 L93 95 L106 91 Z" fill="#e0e7ff" />
+  <line x1="82" y1="142" x2="176" y2="142" stroke="#a5b4fc" stroke-width="5" stroke-linecap="round" stroke-opacity="0.85" />
+  <line x1="82" y1="164" x2="154" y2="164" stroke="#818cf8" stroke-width="4" stroke-linecap="round" stroke-opacity="0.65" />
+  <line x1="82" y1="184" x2="136" y2="184" stroke="#c084fc" stroke-width="4" stroke-linecap="round" stroke-opacity="0.55" />
+  <path d="M182 54 L186 64 L196 68 L186 72 L182 82 L178 72 L168 68 L178 64 Z" fill="#f0abfc" />
+</svg>

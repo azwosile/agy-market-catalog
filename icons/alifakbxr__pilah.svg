@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="PILAH mark">
+  <rect width="256" height="256" rx="44" fill="#F4F3EF"/>
+  <path d="M73 198V60h65c37 0 65 21 65 54s-28 54-65 54h-29" fill="none" stroke="#181C22" stroke-width="23" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="143" cy="114" r="12" fill="#4263EB"/>
+</svg>

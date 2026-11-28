@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <rect width="128" height="128" rx="30" fill="#0D2B22"/>
+  <rect x="1.5" y="1.5" width="125" height="125" rx="28.5" stroke="rgba(246,242,234,0.16)" stroke-width="3"/>
+  <!-- Outer Bone shield crest -->
+  <path d="M64 24L96 38V64C96 83 82 96 64 103C46 96 32 83 32 64V38L64 24Z" stroke="#F6F2EA" stroke-width="9.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Inner Emerald token-compression chevron & filter bar -->
+  <path d="M49 54L64 67L79 54" stroke="#10B981" stroke-width="9.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M52 78H76" stroke="#10B981" stroke-width="9.5" stroke-linecap="round"/>
+  <!-- Signature Vermilion core token dot -->
+  <circle cx="64" cy="43" r="7.5" fill="#E84A27"/>
+</svg>

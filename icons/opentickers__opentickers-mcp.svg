@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="256" height="256">
+  <defs>
+    <linearGradient id="ot-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161b22" />
+      <stop offset="100%" stop-color="#0d1117" />
+    </linearGradient>
+    <linearGradient id="ot-accent" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="50%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="ot-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Squircle -->
+  <rect width="32" height="32" rx="8" fill="url(#ot-bg)" stroke="#30363d" stroke-width="1.2" />
+
+  <!-- Subtle glow background circle -->
+  <circle cx="16" cy="16" r="10" fill="url(#ot-glow)" />
+
+  <!-- OpenTickers Stylized "O" Arc -->
+  <path d="M 19 6.5 C 17.5 5.8 15.5 5.5 13.5 5.8 C 8.5 6.6 5 10.8 5 16 C 5 21.5 9 26 15 26 C 21 26 25 21.8 25 16.5 C 25 15.2 24.6 14 23.8 13"
+        fill="none"
+        stroke="url(#ot-accent)"
+        stroke-width="2.8"
+        stroke-linecap="round" />
+
+  <!-- Ascending Ticker Line -->
+  <path d="M 10 17.5 L 14 13.5 L 17.5 16.5 L 24.5 9"
+        fill="none"
+        stroke="#ffffff"
+        stroke-width="2.2"
+        stroke-linecap="round"
+        stroke-linejoin="round" />
+
+  <!-- Peak Ticker Dot -->
+  <circle cx="24.5" cy="9" r="1.8" fill="#34d399" />
+</svg>

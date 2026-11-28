@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE047"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded badge with ~10% outer margin -->
+  <rect x="13" y="13" width="102" height="102" rx="26" fill="url(#bgGrad)"/>
+  <!-- Back bubble (Codex / Technical) -->
+  <rect x="26" y="29" width="48" height="36" rx="10" fill="#0F172A" fill-opacity="0.88" stroke="#E2E8F0" stroke-width="2.5"/>
+  <path d="M38 43 L44 47 L38 51" fill="none" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="49" y1="51" x2="61" y2="51" stroke="#E2E8F0" stroke-width="3" stroke-linecap="round"/>
+  <!-- Front bubble (Gemini / Human language) -->
+  <rect x="52" y="61" width="50" height="36" rx="10" fill="#FFFFFF" stroke="#1E293B" stroke-width="2.5"/>
+  <!-- Sparkle inside human bubble -->
+  <path d="M77 69 C78.2 75 80 76.8 86 78 C80 79.2 78.2 81 77 87 C75.8 81 74 79.2 68 78 C74 76.8 75.8 75 77 69 Z" fill="url(#bgGrad)"/>
+  <!-- Translation bridge arrow -->
+  <path d="M80 39 C92 39 94 46 92 54" fill="none" stroke="url(#accentGrad)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M87 50 L92 55 L97 49" fill="none" stroke="url(#accentGrad)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M46 86 C35 86 33 79 35 71" fill="none" stroke="#FDE047" stroke-width="4" stroke-linecap="round"/>
+  <path d="M30 75 L35 70 L40 76" fill="none" stroke="#FDE047" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

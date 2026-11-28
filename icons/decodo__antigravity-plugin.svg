@@ -1,0 +1,14 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg { fill: transparent; }
+    .mark { fill: #0F0F0F; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #0F0F0F; }
+      .mark { fill: #FFFFFF; }
+    }
+  </style>
+  <rect class="bg" width="48" height="48" fill="white"/>
+  <path class="mark" d="M25 9H10V27H16V15H25C29.9714 15 34 19.0286 34 24C34 28.9714 29.9714 33 25 33H22V39H25C33.2843 39 40 32.2843 40 24C40 15.7157 33.2843 9 25 9Z" fill="#0F0F0F"/>
+  <path class="mark" d="M16 33H10V39H16V33Z" fill="#0F0F0F"/>
+  <path class="mark" d="M22.0002 27H16.0002V33H22.0002V27Z" fill="#0F0F0F"/>
+</svg>

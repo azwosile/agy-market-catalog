@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00D2FF" />
+      <stop offset="100%" stop-color="#7B2CBF" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF007F" />
+      <stop offset="100%" stop-color="#7B2CBF" />
+    </linearGradient>
+  </defs>
+  <!-- Background Shield / Hexagon Frame -->
+  <polygon points="64,14 108,38 108,90 64,114 20,90 20,38" fill="none" stroke="url(#grad1)" stroke-width="4" stroke-linejoin="round" />
+  
+  <!-- Network Connections -->
+  <line x1="64" y1="36" x2="38" y2="52" stroke="#4CC9F0" stroke-width="2.5" opacity="0.8" />
+  <line x1="64" y1="36" x2="90" y2="52" stroke="#4CC9F0" stroke-width="2.5" opacity="0.8" />
+  <line x1="38" y1="52" x2="38" y2="82" stroke="#7B2CBF" stroke-width="2.5" opacity="0.8" />
+  <line x1="90" y1="52" x2="90" y2="82" stroke="#7B2CBF" stroke-width="2.5" opacity="0.8" />
+  <line x1="38" y1="82" x2="64" y2="98" stroke="url(#grad2)" stroke-width="2.5" opacity="0.8" />
+  <line x1="90" y1="82" x2="64" y2="98" stroke="url(#grad2)" stroke-width="2.5" opacity="0.8" />
+  <line x1="64" y1="36" x2="64" y2="64" stroke="#FFFFFF" stroke-width="2" opacity="0.6" />
+  <line x1="38" y1="52" x2="64" y2="64" stroke="#FFFFFF" stroke-width="2" opacity="0.6" />
+  <line x1="90" y1="52" x2="64" y2="64" stroke="#FFFFFF" stroke-width="2" opacity="0.6" />
+  <line x1="38" y1="82" x2="64" y2="64" stroke="#FFFFFF" stroke-width="2" opacity="0.6" />
+  <line x1="90" y1="82" x2="64" y2="64" stroke="#FFFFFF" stroke-width="2" opacity="0.6" />
+  <line x1="64" y1="98" x2="64" y2="64" stroke="#FFFFFF" stroke-width="2" opacity="0.6" />
+
+  <!-- Central Hub (Planner) -->
+  <circle cx="64" cy="64" r="8" fill="#FFFFFF" stroke="#00D2FF" stroke-width="3" />
+
+  <!-- Specialist Satellite Nodes -->
+  <circle cx="64" cy="36" r="6" fill="#00D2FF" />
+  <circle cx="38" cy="52" r="6" fill="#4CC9F0" />
+  <circle cx="90" cy="52" r="6" fill="#4CC9F0" />
+  <circle cx="38" cy="82" r="6" fill="#B5179E" />
+  <circle cx="90" cy="82" r="6" fill="#B5179E" />
+  <circle cx="64" cy="98" r="6" fill="#F72585" />
+</svg>

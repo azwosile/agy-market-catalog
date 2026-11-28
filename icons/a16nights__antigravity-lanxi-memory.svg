@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1829" />
+      <stop offset="100%" stop-color="#072c44" />
+    </linearGradient>
+    <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#22d3ee" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+    <radialGradient id="glowGrad" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <circle cx="128" cy="128" r="102" fill="url(#oceanGrad)" stroke="#38bdf8" stroke-opacity="0.45" stroke-width="3" />
+  <circle cx="128" cy="128" r="96" fill="url(#glowGrad)" />
+  <circle cx="128" cy="128" r="72" fill="none" stroke="#38bdf8" stroke-opacity="0.22" stroke-width="1.5" stroke-dasharray="5 5" />
+  <circle cx="128" cy="128" r="46" fill="none" stroke="#22d3ee" stroke-opacity="0.32" stroke-width="1.5" />
+  <path d="M52 146 Q90 116 128 144 T204 136" fill="none" stroke="url(#waveGrad)" stroke-width="7" stroke-linecap="round" />
+  <path d="M64 168 Q100 144 134 166 T194 158" fill="none" stroke="#38bdf8" stroke-opacity="0.55" stroke-width="4" stroke-linecap="round" />
+  <line x1="94" y1="88" x2="132" y2="72" stroke="#bae6fd" stroke-opacity="0.65" stroke-width="2" />
+  <line x1="132" y1="72" x2="168" y2="98" stroke="#bae6fd" stroke-opacity="0.65" stroke-width="2" />
+  <line x1="94" y1="88" x2="168" y2="98" stroke="#bae6fd" stroke-opacity="0.35" stroke-width="1.5" />
+  <circle cx="94" cy="88" r="6" fill="#7dd3fc" />
+  <circle cx="132" cy="72" r="8" fill="#e0f2fe" stroke="#38bdf8" stroke-width="2.5" />
+  <circle cx="168" cy="98" r="5.5" fill="#a5b4fc" />
+</svg>

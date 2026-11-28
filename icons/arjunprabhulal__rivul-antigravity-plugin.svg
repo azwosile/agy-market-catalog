@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Full 1a confluence — same geometry as RIVUL_MARK_PATHS / RivulMark. Three tributaries meet, then one current continues. -->
+  <rect width="64" height="64" rx="14" fill="#2e77d0"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+    <path d="M7 15C23 15 26 32 42 32" stroke="#ffffff" opacity="0.72"/>
+    <path d="M9 49C24 49 28 33 42 32" stroke="#ffffff" opacity="0.72"/>
+    <path d="M7 32H42" stroke="#ffffff" opacity="0.72"/>
+    <path d="M42 32H57" stroke="#ffffff"/>
+  </g>
+</svg>

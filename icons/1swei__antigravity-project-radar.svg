@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <defs>
+    <linearGradient id="ag-radar-dish" x1="18" y1="12" x2="104" y2="106" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="50%" stop-color="#1D4ED8"/>
+      <stop offset="100%" stop-color="#1E3A8A"/>
+    </linearGradient>
+    <linearGradient id="ag-radar-sweep" x1="60" y1="10" x2="106" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#A5F3FC" stop-opacity="0.72"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.06"/>
+    </linearGradient>
+    <linearGradient id="ag-radar-badge" x1="78" y1="74" x2="116" y2="116" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4ADE80"/>
+      <stop offset="100%" stop-color="#16A34A"/>
+    </linearGradient>
+    <mask id="ag-radar-cut">
+      <rect width="128" height="128" fill="white"/>
+      <circle cx="95" cy="95" r="25.5" fill="black"/>
+    </mask>
+  </defs>
+  <g mask="url(#ag-radar-cut)">
+    <circle cx="60" cy="60" r="51" fill="url(#ag-radar-dish)"/>
+    <circle cx="60" cy="60" r="50" stroke="#BFDBFE" stroke-opacity="0.30" stroke-width="2"/>
+    <circle cx="60" cy="60" r="34" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="2.2"/>
+    <circle cx="60" cy="60" r="17" stroke="#FFFFFF" stroke-opacity="0.20" stroke-width="2"/>
+    <line x1="60" y1="13" x2="60" y2="107" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="1.8"/>
+    <line x1="13" y1="60" x2="107" y2="60" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="1.8"/>
+    <path d="M60 60 L60 9 A51 51 0 0 1 107.5 41.2 Z" fill="url(#ag-radar-sweep)"/>
+    <path d="M60 10.5 A49.5 49.5 0 0 1 106 42" stroke="#67E8F9" stroke-width="5" stroke-linecap="round"/>
+    <line x1="60" y1="60" x2="98" y2="45" stroke="#ECFEFF" stroke-width="3.6" stroke-linecap="round"/>
+    <circle cx="60" cy="60" r="6" fill="#FFFFFF"/>
+    <circle cx="95" cy="46" r="5.5" fill="#A5F3FC"/>
+    <circle cx="34" cy="78" r="7" fill="#FBBF24"/>
+  </g>
+  <circle cx="95" cy="95" r="20" fill="url(#ag-radar-badge)"/>
+  <path d="M86 95.5L92.5 102L104.5 89" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
