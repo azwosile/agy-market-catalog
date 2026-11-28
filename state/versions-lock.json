@@ -8032,6 +8032,63 @@
           "iconExt": ".svg"
         }
       }
+    },
+    "wain1911__agy-notify": {
+      "latest": "1.0.0",
+      "versions": {
+        "1.0.0": {
+          "gitTag": "v1.0.0",
+          "commitSha": "cfed11d51bffe6f863e685f6b9223b1e8759f4ab",
+          "tarballUrl": "https://github.com/wain1911/agy-notify/releases/download/v1.0.0/agy-notify.tar.gz",
+          "sha256": "e9b909a5344df6441c5bb69f2b23a613f0376f25a1d1f3859bbc360429f62c73",
+          "sizeBytes": 382278,
+          "publishedAt": "2026-11-28T09:15:43Z",
+          "manifest": {
+            "name": "agy-notify",
+            "displayName": "Notify Me · 消息提醒",
+            "description": "Desktop alerts with Antigravity default sound, anti-disturb quiet rules, focus auto-dismiss, and Discord/Bark/Gotify/Webhook forwarding",
+            "version": "1.0.0",
+            "logo": "assets/logo.svg",
+            "author": {
+              "name": "wain1911",
+              "url": "https://github.com/wain1911"
+            },
+            "homepage": "https://github.com/wain1911/agy-notify",
+            "repository": "https://github.com/wain1911/agy-notify",
+            "suggestedPrompts": [
+              "Open Notify Me settings to configure alerts and webhooks",
+              "Enable Discord or Bark forwarding for Antigravity approval alerts",
+              "Check notification history and quiet policy"
+            ]
+          },
+          "companion": null,
+          "capabilities": {
+            "badges": [
+              "mcp-stdio",
+              "lifecycle-hooks",
+              "host-enhancement"
+            ],
+            "rulesEstimatedTokens": 0,
+            "mcpServers": [
+              "agy-notify_notify"
+            ],
+            "mcpRemoteDomains": [],
+            "hookEvents": [
+              "PostToolUse",
+              "PreToolUse",
+              "Stop"
+            ],
+            "hostEnhancementKind": [
+              "cdp"
+            ]
+          },
+          "stars": 0,
+          "readmeMarkdown": "",
+          "readmeZhMarkdown": "",
+          "readmeEnMarkdown": "",
+          "iconExt": ".svg"
+        }
+      }
     }
   }
 }

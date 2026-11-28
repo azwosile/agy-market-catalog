@@ -372,6 +372,21 @@
       ],
       "registeredAt": "2026-11-28T04:23:19.640Z",
       "nodeId": "R_kgDOV-b41Q"
+    },
+    "agy-notify": {
+      "entrySlug": "wain1911__agy-notify",
+      "canonicalName": "agy-notify",
+      "repositoryId": 1475338061,
+      "ownerId": 351514321,
+      "repoFullName": "wain1911/agy-notify",
+      "pluginRoot": ".",
+      "status": "active",
+      "claimedSkills": [],
+      "claimedAgents": [],
+      "claimedMcpServers": [
+        "agy-notify_notify"
+      ],
+      "registeredAt": "2026-11-28T10:24:57.328Z"
     }
   }
 }
