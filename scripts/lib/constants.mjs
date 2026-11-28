@@ -49,6 +49,7 @@ export const SUBMISSION_YAML_ALLOWED_KEYS = new Set([
   'category',
   'description',
   'releaseAsset',
+  'preservePaths',
 ]);
 
 export const ALLOWED_CATEGORIES = new Set([
@@ -243,8 +244,9 @@ export function compareSemver(a, b) {
 
 /**
  * Strict, deterministic parser for Track-1 flat submission YAML files.
- * Supports top-level scalar strings and 1-level nested maps (such as `description: { zh, en }`).
- * Rejects anchors, aliases, multi-document streams, or executable YAML tags.
+ * Supports top-level scalar strings, inline empty arrays (`[]`), 1-level nested maps
+ * (such as `description: { zh, en }`), and 2-space indented string lists (such as `preservePaths`).
+ * Rejects anchors, aliases, multi-document streams, mixed list/map containers, or executable YAML tags.
  */
 export function parseSubmissionYaml(rawText) {
   if (typeof rawText !== 'string') {
@@ -256,25 +258,78 @@ export function parseSubmissionYaml(rawText) {
   }
   const lines = text.split(/\r?\n/);
   const result = {};
-  let currentMapKey = null;
+  let activeContainerKey = null;
+  let pendingContainerKey = null;
 
-  function unquoteScalar(val) {
+  function finalizePendingContainer() {
+    if (pendingContainerKey !== null) {
+      // An empty `key:` block followed immediately by another top-level key or EOF resolves to `null`
+      // rather than an empty object/array, keeping `description:` and `preservePaths:` unambiguous.
+      result[pendingContainerKey] = null;
+      pendingContainerKey = null;
+    }
+  }
+
+  function unquoteScalar(val, lineNo) {
     const trimmed = val.trim();
     if (!trimmed) return '';
-    if ((trimmed.startsWith('"') && trimmed.endsWith('"')) || (trimmed.startsWith("'") && trimmed.endsWith("'"))) {
-      if (trimmed.startsWith('"')) {
-        try {
-          return JSON.parse(trimmed);
-        } catch {
-          return trimmed.slice(1, -1);
+    if (trimmed.startsWith('"')) {
+      let escaped = false;
+      let endIdx = -1;
+      for (let i = 1; i < trimmed.length; i++) {
+        const ch = trimmed[i];
+        if (escaped) {
+          escaped = false;
+          continue;
+        }
+        if (ch === '\\') {
+          escaped = true;
+          continue;
+        }
+        if (ch === '"') {
+          endIdx = i;
+          break;
         }
       }
-      return trimmed.slice(1, -1).replace(/''/g, "'");
+      if (endIdx === -1) {
+        throw new Error(`Line ${lineNo}: Unterminated double-quoted YAML scalar`);
+      }
+      const afterQuote = trimmed.slice(endIdx + 1);
+      if (afterQuote && !/^\s+(?:#.*)?$/.test(afterQuote)) {
+        throw new Error(`Line ${lineNo}: Unexpected trailing characters after quoted scalar: ${trimmed}`);
+      }
+      const quotedPart = trimmed.slice(0, endIdx + 1);
+      try {
+        return JSON.parse(quotedPart);
+      } catch {
+        return quotedPart.slice(1, -1);
+      }
+    }
+    if (trimmed.startsWith("'")) {
+      let endIdx = -1;
+      for (let i = 1; i < trimmed.length; i++) {
+        if (trimmed[i] === "'") {
+          if (trimmed[i + 1] === "'") {
+            i++;
+            continue;
+          }
+          endIdx = i;
+          break;
+        }
+      }
+      if (endIdx === -1) {
+        throw new Error(`Line ${lineNo}: Unterminated single-quoted YAML scalar`);
+      }
+      const afterQuote = trimmed.slice(endIdx + 1);
+      if (afterQuote && !/^\s+(?:#.*)?$/.test(afterQuote)) {
+        throw new Error(`Line ${lineNo}: Unexpected trailing characters after quoted scalar: ${trimmed}`);
+      }
+      return trimmed.slice(1, endIdx).replace(/''/g, "'");
     }
     if (/^[!&*]/.test(trimmed)) {
       throw new Error(`Disallowed YAML tag/anchor syntax: ${trimmed}`);
     }
-    return trimmed.replace(/\s+#.*$/, '').trim();
+    return trimmed.replace(/(?:^|\s+)#.*$/, '').trim();
   }
 
   for (let idx = 0; idx < lines.length; idx++) {
@@ -288,7 +343,8 @@ export function parseSubmissionYaml(rawText) {
     const trimmed = rawLine.trim();
 
     if (indent === 0) {
-      currentMapKey = null;
+      finalizePendingContainer();
+      activeContainerKey = null;
       const m = /^([A-Za-z0-9_]+)\s*:\s*(.*)$/.exec(trimmed);
       if (!m) {
         throw new Error(`Line ${lineNo}: Invalid top-level YAML mapping "${trimmed}"`);
@@ -298,26 +354,57 @@ export function parseSubmissionYaml(rawText) {
         throw new Error(`Line ${lineNo}: Duplicate YAML key "${key}"`);
       }
       if (!rest || /^#/.test(rest)) {
-        result[key] = {};
-        currentMapKey = key;
+        pendingContainerKey = key;
+      } else if (/^\[\s*\](?:\s+#.*)?$/.test(rest)) {
+        result[key] = [];
       } else {
-        result[key] = unquoteScalar(rest);
+        result[key] = unquoteScalar(rest, lineNo);
       }
-    } else if (indent === 2 && currentMapKey) {
-      const m = /^([A-Za-z0-9_]+)\s*:\s*(.*)$/.exec(trimmed);
-      if (!m) {
-        throw new Error(`Line ${lineNo}: Invalid nested YAML mapping "${trimmed}"`);
+    } else if (indent === 2 && (pendingContainerKey !== null || activeContainerKey !== null)) {
+      const targetKey = pendingContainerKey !== null ? pendingContainerKey : activeContainerKey;
+      if (trimmed === '-' || /^-\s+/.test(trimmed)) {
+        if (pendingContainerKey !== null) {
+          result[targetKey] = [];
+          activeContainerKey = targetKey;
+          pendingContainerKey = null;
+        } else if (!Array.isArray(result[targetKey])) {
+          throw new Error(`Line ${lineNo}: Cannot mix YAML list item with mapping under "${targetKey}"`);
+        }
+        const itemMatch = /^-\s+(.*)$/.exec(trimmed);
+        if (!itemMatch) {
+          throw new Error(`Line ${lineNo}: Empty YAML list item under "${targetKey}"`);
+        }
+        const rawItem = itemMatch[1].trim();
+        const isQuotedItem = rawItem.startsWith('"') || rawItem.startsWith("'");
+        const parsedItem = unquoteScalar(rawItem, lineNo);
+        if (!isQuotedItem && !parsedItem) {
+          throw new Error(`Line ${lineNo}: Empty YAML list item under "${targetKey}"`);
+        }
+        result[targetKey].push(parsedItem);
+      } else {
+        const m = /^([A-Za-z0-9_]+)\s*:\s*(.*)$/.exec(trimmed);
+        if (!m) {
+          throw new Error(`Line ${lineNo}: Invalid nested YAML mapping "${trimmed}"`);
+        }
+        if (pendingContainerKey !== null) {
+          result[targetKey] = {};
+          activeContainerKey = targetKey;
+          pendingContainerKey = null;
+        } else if (Array.isArray(result[targetKey])) {
+          throw new Error(`Line ${lineNo}: Cannot mix YAML mapping with list under "${targetKey}"`);
+        }
+        const [, subKey, subVal] = m;
+        if (Object.prototype.hasOwnProperty.call(result[targetKey], subKey)) {
+          throw new Error(`Line ${lineNo}: Duplicate nested key "${targetKey}.${subKey}"`);
+        }
+        result[targetKey][subKey] = unquoteScalar(subVal, lineNo);
       }
-      const [, subKey, subVal] = m;
-      if (Object.prototype.hasOwnProperty.call(result[currentMapKey], subKey)) {
-        throw new Error(`Line ${lineNo}: Duplicate nested key "${currentMapKey}.${subKey}"`);
-      }
-      result[currentMapKey][subKey] = unquoteScalar(subVal);
     } else {
       throw new Error(`Line ${lineNo}: Unsupported indentation level (${indent} spaces)`);
     }
   }
 
+  finalizePendingContainer();
   return result;
 }
 

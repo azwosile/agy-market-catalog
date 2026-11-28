@@ -13,6 +13,11 @@
     "pluginRoot": { "type": "string" },
     "category": { "type": "string" },
     "releaseAsset": { "type": "string" },
+    "preservePaths": {
+      "type": "array",
+      "maxItems": 64,
+      "items": { "type": "string", "minLength": 1, "maxLength": 200 }
+    },
     "description": {
       "type": "object",
       "additionalProperties": false,

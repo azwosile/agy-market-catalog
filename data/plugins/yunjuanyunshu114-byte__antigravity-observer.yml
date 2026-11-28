@@ -4,3 +4,8 @@ category: monitoring-quota
 description:
   zh: Google Antigravity 2.0 应用内右下角 Gemini 猫娘桌面挂件与上下文 Token / 缓存命中率 / 模型额度实时观察台。
   en: In-app Gemini Neko companion widget and live context window, prompt-cache hit rate, and model quota observer cockpit for Antigravity 2.0.
+preservePaths:
+  - hud_prefs.json
+  - daily_tokens_cache.json
+  - runtime_server.json
+  - assets/custom/**

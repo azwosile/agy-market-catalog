@@ -25,6 +25,7 @@ import {
   MAX_RULE_FILE_BYTES,
   MAX_TARBALL_BYTES,
   normalizeRelPosix,
+  parseSubmissionYaml,
 } from '../scripts/lib/constants.mjs';
 import { CURATED_TAXONOMY_OVERRIDES, inferPluginTaxonomy } from '../scripts/lib/taxonomy-classifier.mjs';
 import {
@@ -2678,4 +2679,234 @@ test('100MB archive gate is removed on Node 24 while security boundaries, rule 2
     ([, v]) => v?.reason === 'ERR_TAR_DECOMPRESS_LIMIT',
   );
   assert.equal(decompBlocked.length, 0);
+});
+
+test('Issue #6: YAML parser, submission schema, validator, and catalog compiler support preservePaths cleanly', () => {
+  // 1. Schema includes preservePaths with expected bounds
+  const schema = JSON.parse(
+    readFileSync(join(CATALOG_REPO_ROOT, 'schemas', 'submission-entry.schema.json'), 'utf8'),
+  );
+  assert.deepEqual(schema.properties.preservePaths, {
+    type: 'array',
+    maxItems: 64,
+    items: { type: 'string', minLength: 1, maxLength: 200 },
+  });
+
+  // 2. parseSubmissionYaml supports 2-space indented lists (before or after nested mappings),
+  //    Windows CRLF + BOM, quotes, inline comments, globs, and inline empty `[]`
+  const crlfYaml =
+    '\uFEFF' +
+    [
+      'url: https://github.com/alice/prism-helper',
+      'category: monitoring-quota',
+      'preservePaths:',
+      '  - hud_prefs.json # inline comment',
+      '  -   "assets/custom/#theme/**" # preserve # inside quotes',
+      "  - '*.bak' # single-quoted glob",
+      '  - ./hud_prefs.json',
+      '  - runtime\\state.json',
+      'description:',
+      '  zh: "支持保留路径 # 测试" # 中文说明',
+      '  en: Preserve paths test plugin.',
+    ].join('\r\n');
+
+  const parsedCrlf = parseSubmissionYaml(crlfYaml);
+  assert.deepEqual(parsedCrlf.preservePaths, [
+    'hud_prefs.json',
+    'assets/custom/#theme/**',
+    '*.bak',
+    './hud_prefs.json',
+    'runtime\\state.json',
+  ]);
+  assert.deepEqual(parsedCrlf.description, {
+    zh: '支持保留路径 # 测试',
+    en: 'Preserve paths test plugin.',
+  });
+
+  const validatedCrlf = validateSingleEntryFile('data/plugins/alice__prism-helper.yml', crlfYaml);
+  assert.deepEqual(validatedCrlf.preservePaths, [
+    'hud_prefs.json',
+    'assets/custom/#theme/**',
+    '*.bak',
+    'runtime/state.json',
+  ]);
+
+  // Inline empty array `preservePaths: []` (with optional trailing comment)
+  const inlineEmpty = validateSingleEntryFile(
+    'data/plugins/alice__prism-helper.yml',
+    `url: https://github.com/alice/prism-helper\ncategory: monitoring-quota\ndescription:\n  zh: 测试插件\n  en: Test plugin\npreservePaths: [] # none\n`,
+  );
+  assert.deepEqual(inlineEmpty.preservePaths, []);
+
+  // Empty block `preservePaths:` followed by another key or EOF resolves to null and fails validation
+  const emptyBeforeKey = parseSubmissionYaml(
+    `url: https://github.com/alice/prism-helper\npreservePaths:\ncategory: monitoring-quota\ndescription:\n  zh: 测试插件\n  en: Test plugin\n`,
+  );
+  assert.equal(emptyBeforeKey.preservePaths, null);
+  assert.throws(
+    () =>
+      validateSingleEntryFile(
+        'data/plugins/alice__prism-helper.yml',
+        `url: https://github.com/alice/prism-helper\npreservePaths:\ncategory: monitoring-quota\ndescription:\n  zh: 测试插件\n  en: Test plugin\n`,
+      ),
+    /ERR_INVALID_PRESERVE_PATHS/,
+  );
+
+  const emptyAtEof = parseSubmissionYaml(
+    `url: https://github.com/alice/prism-helper\ncategory: monitoring-quota\ndescription:\n  zh: 测试插件\n  en: Test plugin\npreservePaths:\n`,
+  );
+  assert.equal(emptyAtEof.preservePaths, null);
+
+  // 3. Reject malformed YAML constructs: mixed list/mapping, empty/comment-only items, anchors/tags, description array
+  assert.throws(
+    () =>
+      parseSubmissionYaml(
+        `url: https://github.com/alice/prism-helper\ncategory: monitoring-quota\ndescription:\n  zh: 测试\n  - oops\n`,
+      ),
+    /Cannot mix YAML list item with mapping/,
+  );
+  assert.throws(
+    () =>
+      parseSubmissionYaml(
+        `url: https://github.com/alice/prism-helper\ncategory: monitoring-quota\npreservePaths:\n  - hud_prefs.json\n  zh: oops\n`,
+      ),
+    /Cannot mix YAML mapping with list/,
+  );
+  assert.throws(
+    () => parseSubmissionYaml(`preservePaths:\n  - # comment only\n`),
+    /Empty YAML list item/,
+  );
+  assert.throws(
+    () => parseSubmissionYaml(`preservePaths:\n  -   \n`),
+    /Empty YAML list item/,
+  );
+  assert.throws(
+    () => parseSubmissionYaml(`preservePaths:\n  - *.json\n`),
+    /Disallowed YAML tag\/anchor syntax/,
+  );
+  assert.throws(
+    () =>
+      validateSingleEntryFile(
+        'data/plugins/alice__prism-helper.yml',
+        `url: https://github.com/alice/prism-helper\ncategory: monitoring-quota\ndescription:\n  - only a list\n`,
+      ),
+    /ERR_INVALID_DESCRIPTION/,
+  );
+
+  // 4. Reject unsafe or invalid preservePaths in validateSingleEntryFile
+  const badPreservePaths = [
+    { item: '"../secret.json"', re: /ERR_UNSAFE_PRESERVE_PATH/ },
+    { item: '"foo/../bar.json"', re: /ERR_UNSAFE_PRESERVE_PATH/ },
+    { item: '"..\\\\secret.json"', re: /ERR_UNSAFE_PRESERVE_PATH/ },
+    { item: '"/etc/passwd"', re: /ERR_UNSAFE_PRESERVE_PATH/ },
+    { item: '"\\\\Windows\\\\System32"', re: /ERR_UNSAFE_PRESERVE_PATH/ },
+    { item: '"C:\\\\secret.json"', re: /ERR_UNSAFE_PRESERVE_PATH/ },
+    { item: '"."', re: /ERR_UNSAFE_PRESERVE_PATH/ },
+    { item: '"./"', re: /ERR_UNSAFE_PRESERVE_PATH/ },
+    { item: '""', re: /ERR_INVALID_PRESERVE_PATHS/ },
+    { item: `"${'a'.repeat(201)}"`, re: /ERR_INVALID_PRESERVE_PATHS/ },
+    { item: '"bad\\u0000path"', re: /ERR_INVALID_PRESERVE_PATHS/ },
+  ];
+  for (const { item, re } of badPreservePaths) {
+    assert.throws(
+      () =>
+        validateSingleEntryFile(
+          'data/plugins/alice__prism-helper.yml',
+          `url: https://github.com/alice/prism-helper\ncategory: monitoring-quota\ndescription:\n  zh: 测试插件\n  en: Test plugin\npreservePaths:\n  - ${item}\n`,
+        ),
+      re,
+      `Expected ${item} to be rejected by ${re}`,
+    );
+  }
+
+  const tooManyItems = Array.from({ length: 65 }, (_, i) => `  - file_${i}.json`).join('\n');
+  assert.throws(
+    () =>
+      validateSingleEntryFile(
+        'data/plugins/alice__prism-helper.yml',
+        `url: https://github.com/alice/prism-helper\ncategory: monitoring-quota\ndescription:\n  zh: 测试插件\n  en: Test plugin\npreservePaths:\n${tooManyItems}\n`,
+      ),
+    /ERR_INVALID_PRESERVE_PATHS/,
+  );
+
+  // 5. compileCatalogArtifacts merges & deduplicates companion.preservePaths + yamlEntry.preservePaths
+  const mergedCompiled = compileCatalogArtifacts({
+    entries: [
+      {
+        entrySlug: 'alice__prism-helper',
+        category: 'monitoring-quota',
+        preservePaths: ['hud_prefs.json', 'assets/custom/**', 'runtime_server.json'],
+        description: { zh: '测试插件', en: 'Test plugin' },
+      },
+    ],
+    ledger: {
+      schemaVersion: 1,
+      entries: {
+        'prism-helper': {
+          entrySlug: 'alice__prism-helper',
+          canonicalName: 'prism-helper',
+          repoFullName: 'alice/prism-helper',
+          repositoryId: 12345,
+          ownerId: 99,
+          pluginRoot: '.',
+          status: 'active',
+        },
+      },
+    },
+    versionsLock: {
+      schemaVersion: 1,
+      locks: {
+        'alice__prism-helper': {
+          latest: '1.0.0',
+          versions: {
+            '1.0.0': {
+              gitTag: 'v1.0.0',
+              commitSha: COMMIT_A,
+              tarballUrl: 'https://example.com/prism.tar.gz',
+              sha256: 'a'.repeat(64),
+              sizeBytes: 1024,
+              manifest: { name: 'prism-helper', version: '1.0.0' },
+              companion: { preservePaths: ['companion_only.json', 'hud_prefs.json'] },
+              capabilities: { badges: ['declarative-only'] },
+            },
+          },
+        },
+      },
+    },
+  });
+  assert.deepEqual(mergedCompiled.indexJson.plugins[0].distribution.preservePaths, [
+    'companion_only.json',
+    'hud_prefs.json',
+    'assets/custom/**',
+    'runtime_server.json',
+  ]);
+
+  // 6. Live validation & compilation of yunjuanyunshu114-byte__antigravity-observer.yml
+  const liveEntries = validateEntriesDirectory(join(CATALOG_REPO_ROOT, 'data', 'plugins'));
+  const observerEntry = liveEntries.find((e) => e.entrySlug === 'yunjuanyunshu114-byte__antigravity-observer');
+  assert.ok(observerEntry, 'Expected yunjuanyunshu114-byte__antigravity-observer entry');
+  assert.deepEqual(observerEntry.preservePaths, [
+    'hud_prefs.json',
+    'daily_tokens_cache.json',
+    'runtime_server.json',
+    'assets/custom/**',
+  ]);
+
+  const liveLedger = JSON.parse(readFileSync(join(CATALOG_REPO_ROOT, 'state', 'ledger.json'), 'utf8'));
+  const liveVersionsLock = JSON.parse(readFileSync(join(CATALOG_REPO_ROOT, 'state', 'versions-lock.json'), 'utf8'));
+  const liveCompiled = compileCatalogArtifacts({
+    entries: liveEntries,
+    ledger: liveLedger,
+    versionsLock: liveVersionsLock,
+  });
+  const liveObserver = liveCompiled.indexJson.plugins.find(
+    (p) => p.id === 'yunjuanyunshu114-byte__antigravity-observer',
+  );
+  assert.ok(liveObserver, 'Expected compiled yunjuanyunshu114-byte__antigravity-observer plugin');
+  assert.deepEqual(liveObserver.distribution.preservePaths, [
+    'hud_prefs.json',
+    'daily_tokens_cache.json',
+    'runtime_server.json',
+    'assets/custom/**',
+  ]);
 });

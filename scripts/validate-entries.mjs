@@ -68,7 +68,7 @@ export function validateSingleEntryFile(filename, rawYaml) {
     );
   }
 
-  if (!parsed.description || typeof parsed.description !== 'object') {
+  if (!parsed.description || typeof parsed.description !== 'object' || Array.isArray(parsed.description)) {
     throw new Error(`ERR_INVALID_DESCRIPTION: "description" must be an object with { zh, en } in ${base}`);
   }
   for (const dk of Object.keys(parsed.description)) {
@@ -92,6 +92,46 @@ export function validateSingleEntryFile(filename, rawYaml) {
     }
   }
 
+  let preservePaths = [];
+  if (parsed.preservePaths !== undefined) {
+    if (!Array.isArray(parsed.preservePaths)) {
+      throw new Error(`ERR_INVALID_PRESERVE_PATHS: "preservePaths" must be an array of relative path strings in ${base}`);
+    }
+    if (parsed.preservePaths.length > 64) {
+      throw new Error(`ERR_INVALID_PRESERVE_PATHS: "preservePaths" exceeds 64 items in ${base}`);
+    }
+    const deduped = new Set();
+    for (const rawItem of parsed.preservePaths) {
+      if (typeof rawItem !== 'string') {
+        throw new Error(`ERR_INVALID_PRESERVE_PATHS: "preservePaths" entries must be strings in ${base}`);
+      }
+      if (/[\x00-\x1f\x7f]/.test(rawItem)) {
+        throw new Error(`ERR_INVALID_PRESERVE_PATHS: "preservePaths" contains control characters in ${base}`);
+      }
+      const trimmed = rawItem.trim();
+      if (trimmed.length < 1 || trimmed.length > 200) {
+        throw new Error(`ERR_INVALID_PRESERVE_PATHS: "preservePaths" items must be 1..200 characters in ${base}`);
+      }
+      if (/^[/\\]/.test(trimmed) || /^[A-Za-z]:/.test(trimmed)) {
+        throw new Error(`ERR_UNSAFE_PRESERVE_PATH: Absolute or drive-prefixed preservePath "${rawItem}" is forbidden in ${base}`);
+      }
+      if (trimmed.replace(/\\/g, '/').split('/').includes('..')) {
+        throw new Error(`ERR_UNSAFE_PRESERVE_PATH: Path traversal ".." is forbidden in preservePath "${rawItem}" in ${base}`);
+      }
+      const normalized = normalizeRelPosix(trimmed);
+      if (
+        normalized === '.' ||
+        normalized.startsWith('/') ||
+        /^[A-Za-z]:/.test(normalized) ||
+        normalized.split('/').some((seg) => seg === '..' || seg === '.')
+      ) {
+        throw new Error(`ERR_UNSAFE_PRESERVE_PATH: Invalid relative preservePath "${rawItem}" in ${base}`);
+      }
+      deduped.add(normalized);
+    }
+    preservePaths = [...deduped];
+  }
+
   return {
     entrySlug,
     owner: urlOwner,
@@ -101,6 +141,7 @@ export function validateSingleEntryFile(filename, rawYaml) {
     pluginRoot,
     category: parsed.category,
     releaseAsset: parsed.releaseAsset || null,
+    preservePaths,
     description: {
       zh: parsed.description.zh.trim(),
       en: parsed.description.en.trim(),

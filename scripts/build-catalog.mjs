@@ -197,7 +197,14 @@ export function compileCatalogArtifacts({
         sha256: verData.sha256,
         sizeBytes: Number(verData.sizeBytes || 0),
         npmMirrorPkg: verData.npmMirrorPkg || null,
-        preservePaths: companion.preservePaths || [],
+        preservePaths: [
+          ...new Set(
+            [
+              ...(Array.isArray(companion.preservePaths) ? companion.preservePaths : []),
+              ...(Array.isArray(yamlEntry?.preservePaths) ? yamlEntry.preservePaths : []),
+            ].filter((p) => typeof p === 'string' && p.trim().length > 0),
+          ),
+        ],
       },
       media: {
         iconUrl,
