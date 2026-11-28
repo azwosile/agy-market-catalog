@@ -1,0 +1,7 @@
+url: https://github.com/Apollyonin/billion-context-antigravity
+pluginRoot: .
+category: context-cache
+releaseAsset: billion-context.tar.gz
+description:
+  zh: 基于 ranxianglei/billion-context 使用 AI 移植的 Antigravity 插件（官方零代理安全模式）：实时监控上下文占用与缓存，提供原生 /compact 复制助手及新增类 Fork 新会话交接功能。
+  en: AI-assisted Antigravity port of ranxianglei/billion-context in Official Safe Mode: transcript-based context & cache telemetry, native /compact copy helper, and added fork-like Fresh Session Handoff.

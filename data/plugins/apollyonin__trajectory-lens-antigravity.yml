@@ -1,0 +1,7 @@
+url: https://github.com/Apollyonin/trajectory-lens-antigravity
+pluginRoot: .
+category: monitoring-quota
+releaseAsset: trajectory-lens.tar.gz
+description:
+  zh: 使用 AI 基于 DSH 官方轨迹功能重开发的 Antigravity 插件（官方零代理安全模式）：提供轮次/步骤台账、并行执行 DAG、子代理瀑布流、Token 与缓存分析、双会话对比、白话导读及离线 HTML/MD 导出。
+  en: AI-assisted Antigravity plugin re-implemented from DSH official trajectory features (Official Safe Mode): turn/step ledger, parallel execution DAG, subagent waterfall, token/cache analytics, compare, and offline export.
